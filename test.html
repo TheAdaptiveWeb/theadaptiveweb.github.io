@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Adaptive Web - Adaptive Web Accessibility Toolkit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" type="image/png" href="https://avatars2.githubusercontent.com/u/34218781?s=200&v=4"/>
+    <link rel="shortcut icon" type="image/png" href="https://avatars2.githubusercontent.com/u/34218781?s=200&v=4"/>
+</head>
+<body>
+    <div id="preload-mover" style="margin: 0; padding: 0; width: 100px; height: 100px;">
+    <div class="logo" id="preloader"></div>
+    </div>
+
+    <script src="js/aw.js"></script>
+    <script>
+        preloadMover = document.getElementById('preload-mover');
+        let w = innerWidth, h = innerHeight;
+
+        let x = Math.floor((w / 2) - 50), y = Math.floor((h / 2) - 50);
+        preloadMover.style.transform = `translate(${x}px, ${y}px)`;
+
+        onload = () => {
+            setTimeout(() => {
+                preloadMover.style.transition = 'transform 1s ease-in-out';
+                preloadMover.style.transform = 'translate(0px, 0px)';
+            }, 1500);
+        };
+    </script>
+</body>
+</html>
