@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import {withRouter, Link} from 'react-router-dom';
 
 class MenuItem extends React.Component {
     render() {
+        let active = this.props.location.pathname.startsWith(this.props.path);
         return (
-            <MenuItemDiv active={this.props.active}>
-                <Image image={this.props.image} active={this.props.active} />
+            <Link to={this.props.path}>
+            <MenuItemDiv active={active}>
+                <Image image={this.props.image} active={active} />
                 <Label>{this.props.text}</Label>
             </MenuItemDiv>
+            </Link>
         );
     }
 }
@@ -37,4 +41,4 @@ vertical-align:top;
 margin-top: 2px;
 `;
 
-export default MenuItem;
+export default withRouter(MenuItem);

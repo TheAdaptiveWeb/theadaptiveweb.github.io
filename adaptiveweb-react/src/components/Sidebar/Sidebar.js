@@ -8,21 +8,15 @@ import InfoImage from './info.png';
 import styled from 'styled-components';
 
 class Sidebar extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.selected = 0;
-    }
-
     render() {
         return (
             <SidebarDiv>
                 <Masthead />
                 <Menu>
-                    <MenuItem image={AdapterImage} text="Adapters" active={this.selected === 0} />
-                    <MenuItem image={HelpImage} text="Help" active={this.selected === 1} />
-                    <MenuItem image={SettingsImage} text="Settings" active={this.selected === 2} />
-                    <MenuItem image={InfoImage} text="Info" active={this.selected === 3} />
+                    <MenuItem path="/adapters" image={AdapterImage} text="Adapters" active={this.selected === 0} />
+                    <MenuItem path="/help" image={HelpImage} text="Help" active={this.selected === 1} />
+                    <MenuItem path="/settings" image={SettingsImage} text="Settings" active={this.selected === 2} />
+                    <MenuItem path="/info" image={InfoImage} text="Info" active={this.selected === 3} />
                 </Menu>
             </SidebarDiv>
         );

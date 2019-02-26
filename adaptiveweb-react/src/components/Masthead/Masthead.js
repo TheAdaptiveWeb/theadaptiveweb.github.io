@@ -21,6 +21,7 @@ text-align: center;
 
 const Title = styled.div`
 font-size: 32px;
+margin-top:10px;
 `;
 
 const Subtitle = styled.div`
