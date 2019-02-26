@@ -1,13 +1,11 @@
 import * as React from 'react';
 import './Sidebar.css';
-import Masthead from '../Masthead';
+import { Masthead, Menu, MenuItem } from '../';
 
 import AdapterImage from './adapter.png';
 import HelpImage from './help.png';
 import SettingsImage from './settings.png';
 import InfoImage from './info.png';
-import Menu from '../Menu';
-import MenuItem from '../MenuItem';
 
 class Sidebar extends React.Component {
     constructor(props) {

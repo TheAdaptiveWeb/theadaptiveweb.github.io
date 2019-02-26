@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Masthead.css';
-import Logo from '../Logo';
+import { Logo } from '../';
 
 class Masthead extends React.Component {
     render() {

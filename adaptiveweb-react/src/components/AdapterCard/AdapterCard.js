@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './AdapterCard.css';
-import Card from '../Card';
+import { Card } from '../';
 
 class AdapterCard extends React.Component {
     constructor(props) {
