@@ -15,9 +15,9 @@ class MenuItem extends React.Component {
     render() {
         let imageStyle = { 'background-image': `url(${this.image})` };
         return (
-            <div className={"MenuItem" + ((this.active) ? " MenuItem-Active" : "")}>
-                <div className="MenuItem-Image" style={imageStyle} />
-                <div className="MenuItem-Label">{this.text}</div>
+            <div className={"MenuItem" + ((this.active) ? " Active" : "")}>
+                <div className="Image" style={imageStyle} />
+                <div className="Label">{this.text}</div>
             </div>
         );
     }

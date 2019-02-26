@@ -7,7 +7,7 @@
     text-transform: uppercase;
 }
 
-.MenuItem-Active {
+.Active {
     color: #fff;
     background: #4a90e2;
     background: -moz-linear-gradient(-45deg, #4a90e2 0%, #7db9e8 100%);
@@ -16,7 +16,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a90e2', endColorstr='#7db9e8',GradientType=1 );
 }
 
-.MenuItem-Image {
+.Image {
     width: 30px;
     height: 30px;
     margin-right: 18px;
@@ -24,11 +24,11 @@
     display: inline-block;
 }
 
-.MenuItem-Active .MenuItem-Image {
+.Active .Image {
     filter: invert(100%);
 }
 
-.MenuItem-Label {
+.Label {
     display: inline-block;
     vertical-align:top;
     margin-top: 2px;
