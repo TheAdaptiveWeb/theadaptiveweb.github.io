@@ -14,8 +14,8 @@ class AdapterCard extends React.Component {
     render() {
         return (
             <Card>
-                <div className="AdapterCard-Title">{this.title}</div>
-                <div className="AdapterCard-Subtitle">{this.subtitle}</div>
+                <div className="Title">{this.title}</div>
+                <div className="Subtitle">{this.subtitle}</div>
             </Card>
         );
     }
