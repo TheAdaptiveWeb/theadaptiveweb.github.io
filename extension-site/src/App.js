@@ -10,7 +10,6 @@ class App extends Component {
         <>
           <Sidebar />
           <Route path="/adapters" component={(props) => {
-            console.log(props)
             return <p>Adapters</p>
           }}/>
         </>
