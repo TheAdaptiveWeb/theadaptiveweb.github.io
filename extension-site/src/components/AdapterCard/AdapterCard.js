@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Card } from '../';
 import styled from 'styled-components';
 import AdapterTag from '../AdapterTag';
 
@@ -14,6 +13,15 @@ class AdapterCard extends React.Component {
         );
     }
 }
+
+const Card = styled.div`
+background-color: #fff;
+box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
+border-radius: 3px;
+padding: 20px 15px;
+flex-grow: 1;
+margin: 10px;
+`;
 
 const Title = styled.div` 
 font-size: 20px;

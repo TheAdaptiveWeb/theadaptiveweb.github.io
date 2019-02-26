@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { Sidebar, Pager } from './components';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import AdapterPage from './views/AdapterPage';
 import PreloadLogo from './components/PreloadLogo';
+import { AdapterPage, HelpPage, SettingsPage, InfoPage } from './views';
 
 class App extends Component {
   render() {
@@ -16,13 +16,13 @@ class App extends Component {
               return <AdapterPage />
             }}/>
             <Route path="/help" component={(props) => {
-              return <p>Help</p>
+              return <HelpPage />
             }}/>
             <Route path="/settings" component={(props) => {
-              return <p>Settings</p>
+              return <SettingsPage />
             }}/>
             <Route path="/info" component={(props) => {
-              return <p>Info</p>
+              return <InfoPage />
             }}/>
           </Pager>
           <PreloadLogo />
