@@ -13,7 +13,7 @@ class MenuItem extends React.Component {
     }
 
     render() {
-        let imageStyle = { 'background-image': `url(${this.image})` };
+        let imageStyle = { backgroundImage: `url(${this.image})` };
         return (
             <div className={"MenuItem" + ((this.active) ? " Active" : "")}>
                 <div className="Image" style={imageStyle} />
