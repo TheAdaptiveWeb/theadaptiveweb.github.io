@@ -1,24 +1,26 @@
 import * as React from 'react';
-import './AdapterCard.css';
 import { Card } from '../';
+import styled from 'styled-components';
 
 class AdapterCard extends React.Component {
-    constructor(props) {
-        let { title, subtitle, tags } = props;
-
-        this.title = title;
-        this.subtitle = subtitle;
-        this.tags = tags;
-    }
-
     render() {
         return (
             <Card>
-                <div className="Title">{this.title}</div>
-                <div className="Subtitle">{this.subtitle}</div>
+                <Title>{this.props.title}</Title>
+                <Subtitle>{this.props.subtitle}</Subtitle>
             </Card>
         );
     }
 }
+
+const Title = styled.div` 
+font-size: 20px;
+color: ${props => props.active ? 'green' : 'black'};
+`;
+
+const Subtitle = styled.div` 
+font-size: 20px;
+color: ${props => props.active ? 'green' : 'black'};
+`;
 
 export default AdapterCard;

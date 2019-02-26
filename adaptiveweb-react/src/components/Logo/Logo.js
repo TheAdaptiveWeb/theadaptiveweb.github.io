@@ -1,13 +1,21 @@
 import * as React from 'react';
-import './Logo.css';
 import RawLogo from './Logo.png';
+import styled from 'styled-components';
 
 class Logo extends React.Component {
     render() {
         return (
-            <img alt="The Adaptive Web logo" src={RawLogo} className="Logo" />
+            <LogoDiv />
         );
     }
 }
+
+const LogoDiv = styled.div`
+background-image: url(${RawLogo});
+background-size: cover;
+width: 75px;
+height: 75px;
+margin: auto;
+`;
 
 export default Logo;

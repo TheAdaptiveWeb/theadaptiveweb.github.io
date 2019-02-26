@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Menu.css';
+import styled from 'styled-components';
 
 class Menu extends React.Component {
     constructor(props) {
@@ -16,5 +16,8 @@ class Menu extends React.Component {
         );
     }
 }
+
+const MenuDiv = styled.div`
+`;
 
 export default Menu;

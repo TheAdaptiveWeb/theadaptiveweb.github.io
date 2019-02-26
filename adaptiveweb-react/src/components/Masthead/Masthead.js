@@ -1,17 +1,31 @@
 import * as React from 'react';
-import './Masthead.css';
 import { Logo } from '../';
+import styled from 'styled-components';
 
 class Masthead extends React.Component {
     render() {
         return (
-            <div className="Masthead">
+            <MastheadDiv>
                 <Logo />
-                <div className="Title">The Adaptive Web</div>
-                <div className="Subtitle">Adaptive Web Accessibility Toolkit</div>
-            </div>
+                <Title>The Adaptive Web</Title>
+                <Subtitle>Adaptive Web Accessibility Toolkit</Subtitle>
+            </MastheadDiv>
         );
     }
 }
+
+const MastheadDiv = styled.div`
+padding: 20px;
+text-align: center;
+`;
+
+const Title = styled.div`
+font-size: 32px;
+`;
+
+const Subtitle = styled.div`
+font-size: 20px;
+color: #4A4A4A;
+`;
 
 export default Masthead;
