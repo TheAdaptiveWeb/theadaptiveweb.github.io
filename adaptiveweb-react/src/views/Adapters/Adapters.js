@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Masthead, Menu, MenuItem } from '../';
 
-import AdapterImage from './adapter.svg';
-import HelpImage from './help.svg';
-import SettingsImage from './settings.svg';
-import InfoImage from './info.svg';
+import AdapterImage from './adapter.png';
+import HelpImage from './help.png';
+import SettingsImage from './settings.png';
+import InfoImage from './info.png';
 import styled from 'styled-components';
 
-class Sidebar extends React.Component {
+class Adapters extends React.Component {
     render() {
         return (
             <SidebarDiv>
