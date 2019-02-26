@@ -24,6 +24,12 @@ class AdapterPage extends React.Component {
                     <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
                     <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
                     <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
+                    <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
+                    <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
+                    <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
+                    <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
+                    <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
+                    <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
                 </CardList>
             </Section>
         </Page>);
