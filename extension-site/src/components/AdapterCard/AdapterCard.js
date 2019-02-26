@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Card } from '../';
 import styled from 'styled-components';
+import AdapterTag from '../AdapterTag';
 
 class AdapterCard extends React.Component {
     render() {
@@ -8,6 +9,7 @@ class AdapterCard extends React.Component {
             <Card>
                 <Title>{this.props.title}</Title>
                 <Subtitle>{this.props.subtitle}</Subtitle>
+                {this.props.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
             </Card>
         );
     }
@@ -15,12 +17,11 @@ class AdapterCard extends React.Component {
 
 const Title = styled.div` 
 font-size: 20px;
-color: ${props => props.active ? 'green' : 'black'};
 `;
 
 const Subtitle = styled.div` 
-font-size: 20px;
-color: ${props => props.active ? 'green' : 'black'};
+font-size: 18px;
+color: #4A4A4A;
 `;
 
 export default AdapterCard;

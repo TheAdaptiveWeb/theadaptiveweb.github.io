@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Sidebar, Pager } from './components';
 import { HashRouter as Router, Route } from 'react-router-dom';
+import AdapterPage from './views/AdapterPage';
 
 class App extends Component {
   render() {
@@ -11,7 +12,7 @@ class App extends Component {
           <Sidebar />
           <Pager>
             <Route path="/adapters" component={(props) => {
-              return <p>Adapters</p>
+              return <AdapterPage />
             }}/>
             <Route path="/help" component={(props) => {
               return <p>Help</p>
