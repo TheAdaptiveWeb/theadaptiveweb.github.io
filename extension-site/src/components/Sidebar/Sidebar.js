@@ -6,6 +6,7 @@ import HelpImage from './help.svg';
 import SettingsImage from './settings.svg';
 import InfoImage from './info.svg';
 import styled from 'styled-components';
+import { keyframes } from 'styled-components';
 
 class Sidebar extends React.Component {
     render() {
@@ -23,6 +24,18 @@ class Sidebar extends React.Component {
     }
 }
 
+const introFrames = keyframes`
+0% {
+  transform: translate(-405px, 0);
+}
+50% {
+  transform: translate(-405px, 0);
+}
+100% {
+  transform: translate(0, 0);
+}
+`;
+
 const SidebarDiv = styled.div`
 position: fixed;
 top: 0;
@@ -32,6 +45,7 @@ width: 400px;
 padding: 0;
 background-color: #fff;
 box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.5);
+animation: ${introFrames} 2s ease-in-out;
 `;
 
 export default Sidebar;

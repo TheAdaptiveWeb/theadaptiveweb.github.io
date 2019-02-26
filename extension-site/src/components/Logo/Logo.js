@@ -1,6 +1,7 @@
 import * as React from 'react';
 import RawLogo from './Logo.png';
 import styled from 'styled-components';
+import { keyframes } from 'styled-components';
 
 class Logo extends React.Component {
     render() {

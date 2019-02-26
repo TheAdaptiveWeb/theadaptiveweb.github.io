@@ -3,6 +3,7 @@ import './App.css';
 import { Sidebar, Pager } from './components';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import AdapterPage from './views/AdapterPage';
+import PreloadLogo from './components/PreloadLogo';
 
 class App extends Component {
   render() {
@@ -24,7 +25,7 @@ class App extends Component {
               return <p>Info</p>
             }}/>
           </Pager>
-          
+          <PreloadLogo />
         </>
       </Router>
     );
