@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Section, AdapterCard, Page, CardList } from '../../components';
+import { Section, AdapterCard, Page, CardList, Modal } from '../../components';
 
 class AdapterPage extends React.Component {
     render() {
@@ -32,6 +32,9 @@ class AdapterPage extends React.Component {
                     <AdapterCard title="Video Audio Description" subtitle="Spoken audio description for web videos." tags={tags} />
                 </CardList>
             </Section>
+            <Modal>
+                Testing
+            </Modal>
         </Page>);
     }
 }
