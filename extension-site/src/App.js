@@ -52,7 +52,7 @@ const LogoAnimation = keyframes`
 `;
 
 const LogoDiv = styled.div`
-animation: ${LogoAnimation} 2s;
+animation: ${LogoAnimation} 2s ease-in-out;
 z-index: 1000;
 position: fixed;
 top: 20px;
