@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Sidebar, Pager, Logo } from './components';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { AdapterPage, HelpPage, SettingsPage, InfoPage } from './views';
 import styled from 'styled-components';
 import { keyframes } from 'styled-components';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class App extends Component {
   render() {
@@ -15,20 +16,28 @@ class App extends Component {
             <Logo />
           </LogoDiv>
           <Sidebar />
-          <Pager>
-            <Route path="/adapters" component={(props) => {
-              return <AdapterPage />
-            }}/>
-            <Route path="/help" component={(props) => {
-              return <HelpPage />
-            }}/>
-            <Route path="/settings" component={(props) => {
-              return <SettingsPage />
-            }}/>
-            <Route path="/info" component={(props) => {
-              return <InfoPage />
-            }}/>
-          </Pager>
+          <Route render={({location}) => (
+            <Pager>
+              <TransitionGroup>
+                <CSSTransition key={location.key} classNames="fade" timeout={550}>
+                  <Switch location={location}>
+                    <Route path="/adapters" component={(props) => {
+                      return <AdapterPage />
+                    }}/>
+                    <Route path="/help" component={(props) => {
+                      return <HelpPage />
+                    }}/>
+                    <Route path="/settings" component={(props) => {
+                      return <SettingsPage />
+                    }}/>
+                    <Route path="/info" component={(props) => {
+                      return <InfoPage />
+                    }}/>
+                  </Switch>
+                </CSSTransition>
+              </TransitionGroup>
+            </Pager>
+          )} />
         </>
       </Router>
     );
@@ -40,10 +49,10 @@ let yOffset = (window.innerHeight / 2) - 57;
 
 const LogoAnimation = keyframes`
 0% {
-  transform: translate(${xOffset}px, ${yOffset}px) rotate(0deg) scale(0);
+  transform: translate(${xOffset}px, ${yOffset}px) rotate(-360deg) scale(0);
 }
 50% {
-  transform: translate(${xOffset}px, ${yOffset}px) rotate(360deg) scale(1);
+  transform: translate(${xOffset}px, ${yOffset}px) rotate(0) scale(1);
 }
 100% {
   transform: translate(0, 0);
