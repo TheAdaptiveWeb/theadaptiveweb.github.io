@@ -1,11 +1,3 @@
-.Transition-enter {
-  transform: translate(100%, 0);
-}
-
-.Transition-enter.Transition-enter-active {
-  transition: transform 500ms ease-in;
-}
-
 .fade-enter {
   opacity: 0;
   z-index: 1;
@@ -13,5 +5,14 @@
 
 .fade-enter.fade-enter-active {
   opacity: 1;
-  transition: opacity 250ms ease-in;
+  transition: opacity 500ms ease-in-out;
+}
+
+.fade-exit {
+  opacity: 0;
+  z-index: 1;
+}
+
+a {
+  text-decoration: none;
 }

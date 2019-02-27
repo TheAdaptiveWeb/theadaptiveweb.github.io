@@ -16,28 +16,28 @@ class App extends Component {
             <Logo />
           </LogoDiv>
           <Sidebar />
-          <Route render={({location}) => (
-            <Pager>
+          <PageContainer>
+            <Route render={({location}) => (
               <TransitionGroup>
-                <CSSTransition key={location.key} classNames="fade" timeout={550}>
+                <CSSTransition key={location.pathname.split('/')[1]} classNames="fade" timeout={550}>
                   <Switch location={location}>
                     <Route path="/adapters" component={(props) => {
-                      return <AdapterPage />
+                      return <Pager><AdapterPage /></Pager>
                     }}/>
                     <Route path="/help" component={(props) => {
-                      return <HelpPage />
+                      return <Pager><HelpPage /></Pager>
                     }}/>
                     <Route path="/settings" component={(props) => {
-                      return <SettingsPage />
+                      return <Pager><SettingsPage /></Pager>
                     }}/>
                     <Route path="/info" component={(props) => {
-                      return <InfoPage />
+                      return <Pager><InfoPage /></Pager>
                     }}/>
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
-            </Pager>
-          )} />
+            )} />
+          </PageContainer>
         </>
       </Router>
     );
@@ -59,12 +59,33 @@ const LogoAnimation = keyframes`
 }
 `;
 
+const introFrames = keyframes`
+0% {
+  opacity: 0;
+}
+50% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+`;
+
 const LogoDiv = styled.div`
 animation: ${LogoAnimation} 2s ease-in-out;
 z-index: 1000;
 position: fixed;
 top: 20px;
 left: 163px;
+`;
+
+const PageContainer = styled.div`
+position: absolute;
+top: 0;
+left: 400px;
+right: 0;
+bottom: 0;
+animation: ${introFrames} 2s ease-in-out;
 `;
 
 export default App;
