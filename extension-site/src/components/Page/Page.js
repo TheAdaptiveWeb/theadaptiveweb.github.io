@@ -5,8 +5,10 @@ class Page extends React.Component {
     render() {
         return (
             <PageDiv>
-                <PageTitle>{this.props.title}</PageTitle>
-                <PageSubtitle>{this.props.subtitle}</PageSubtitle>
+                <PageHeader>
+                    <PageTitle>{this.props.title}</PageTitle>
+                    <PageSubtitle>{this.props.subtitle}</PageSubtitle>
+                </PageHeader>
                 {this.props.children}
             </PageDiv>
         );
@@ -15,6 +17,10 @@ class Page extends React.Component {
 
 const PageDiv = styled.div`
 
+`;
+
+const PageHeader = styled.div`
+padding: 20px 0;
 `;
 
 const PageTitle = styled.div`
