@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { Sidebar, Pager, Logo } from './components';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import PreloadLogo from './components/PreloadLogo';
 import { AdapterPage, HelpPage, SettingsPage, InfoPage } from './views';
 import styled from 'styled-components';
 import { keyframes } from 'styled-components';

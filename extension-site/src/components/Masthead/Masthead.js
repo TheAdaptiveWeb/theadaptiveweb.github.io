@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Logo } from '../';
 import styled from 'styled-components';
-import { keyframes } from 'styled-components';
 
 class Masthead extends React.Component {
     render() {
