@@ -25,7 +25,6 @@ class App extends Component {
               return <InfoPage />
             }}/>
           </Pager>
-          <PreloadLogo />
         </>
       </Router>
     );

@@ -22,17 +22,24 @@ padding: 20px;
 text-align: center;
 `;
 
+let xOffset = (window.innerWidth / 2) - (200 - 37) + 405;
+let yOffset = (window.innerHeight / 2) - (20);
+
 const LogoAnimation = keyframes`
 0% {
-    opacity: 0;
+  transform: translate(${xOffset}px, ${yOffset}px) rotate(0deg) scale(0);
+}
+50% {
+  transform: translate(${xOffset}px, ${yOffset}px) rotate(360deg) scale(1);
 }
 100% {
-    opacity: 0;
+  transform: translate(0, 0);
 }
 `;
 
 const LogoDiv = styled.div`
 animation: ${LogoAnimation} 2s;
+z-index: 1000;
 `;
 
 const Title = styled.div`
