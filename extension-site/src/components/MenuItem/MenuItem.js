@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { keyframes } from 'styled-components';
 import {withRouter, Link} from 'react-router-dom';
 
 class MenuItem extends React.Component {
@@ -16,6 +17,24 @@ class MenuItem extends React.Component {
     }
 }
 
+const ActiveFrames = keyframes`
+0% {
+    margin-left: 20px;
+}
+100% {
+    margin-left: 0;
+}
+`;
+
+const PassiveFrames = keyframes`
+0% {
+    margin-left: 0;
+}
+100% {
+    margin-left: 20px;
+}
+`;
+
 const MenuItemDiv = styled.div`
 font-weight: 200;
 color: ${props => (props.active) ? '#fff' : '#000'};
@@ -28,11 +47,13 @@ ${props => (props.active) && 'background: linear-gradient(45deg, #7db9e8 0%, #4a
 const Image = styled.div`
 width: 30px;
 height: 30px;
+${props => (props.active) && 'margin-left: 20px;'}
 margin-right: 18px;
 background-size: cover;
 display: inline-block;
 background-image: url(${props => props.image});
-${props => (props.active) ? 'filter: invert(100%);' : ''}
+${props => (props.active) && 'filter: invert(100%);'}
+animation: ${props => (props.active) ? PassiveFrames : ActiveFrames} 0.5s ease;
 `;
 
 const Label = styled.div`
