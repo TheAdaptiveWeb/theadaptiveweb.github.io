@@ -33,6 +33,8 @@ bottom: 0;
 position: absolute;
 padding: 20px 40px;
 animation: ${introFrames} 2s ease-in-out;
+overscroll-behavior-y: contain;
+height: 100%;
 `;
 
 export default Pager;
