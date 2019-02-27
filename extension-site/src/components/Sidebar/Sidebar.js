@@ -46,6 +46,7 @@ padding: 0;
 background-color: #fff;
 box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.5);
 animation: ${introFrames} 2s ease-in-out;
+z-index: 100;
 `;
 
 export default Sidebar;

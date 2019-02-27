@@ -30,7 +30,8 @@ bottom: 0;
 
 const CardContainer = styled.div`
 max-width: 500px;
-width: 95%;
+width: 100%;
+padding: 20px;
 `;
 
 

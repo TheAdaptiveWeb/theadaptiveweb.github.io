@@ -9,29 +9,31 @@ class MenuItem extends React.Component {
         return (
             <Link to={this.props.path}>
             <MenuItemDiv active={active}>
-                <Image image={this.props.image} active={active} />
-                <Label>{this.props.text}</Label>
+                <Container active={active}>
+                    <Image image={this.props.image} active={active} />
+                    <Label>{this.props.text}</Label>
+                </Container>
             </MenuItemDiv>
             </Link>
         );
     }
 }
 
-const ActiveFrames = keyframes`
+const PassiveFrames = keyframes`
 0% {
-    margin-left: 20px;
+    transform: translate(20px, 0);
 }
 100% {
-    margin-left: 0;
+    margin-left: translate(0, 0);
 }
 `;
 
-const PassiveFrames = keyframes`
+const ActiveFrames = keyframes`
 0% {
-    margin-left: 0;
+    transform: translate(-20px, 0);
 }
 100% {
-    margin-left: 20px;
+    transform: translate(0, 0);
 }
 `;
 
@@ -44,6 +46,10 @@ text-transform: uppercase;
 ${props => (props.active) && 'background: linear-gradient(45deg, #7db9e8 0%, #4a90e2 100%);'}
 `;
 
+const Container = styled.div`
+animation: ${props => (props.active) ? ActiveFrames : PassiveFrames} 0.5s ease;
+`;
+
 const Image = styled.div`
 width: 30px;
 height: 30px;
@@ -53,7 +59,6 @@ background-size: cover;
 display: inline-block;
 background-image: url(${props => props.image});
 ${props => (props.active) && 'filter: invert(100%);'}
-animation: ${props => (props.active) ? PassiveFrames : ActiveFrames} 0.5s ease;
 `;
 
 const Label = styled.div`
