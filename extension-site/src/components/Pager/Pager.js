@@ -12,27 +12,14 @@ class Pager extends React.Component {
     }
 }
 
-const introFrames = keyframes`
-0% {
-  opacity: 0;
-}
-50% {
-  opacity: 0;
-}
-100% {
-  opacity: 1;
-}
-`;
-
 
 const PagerDiv = styled.div`
-left: 400px;
+left: 0;
 top: 0;
 right: 0;
 bottom: 0;
 position: absolute;
 padding: 20px 40px;
-animation: ${introFrames} 2s ease-in-out;
 overscroll-behavior-y: contain;
 height: 100%;
 `;

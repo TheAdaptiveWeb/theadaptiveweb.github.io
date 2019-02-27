@@ -16,7 +16,6 @@ class Page extends React.Component {
 }
 
 const PageDiv = styled.div`
-
 `;
 
 const PageHeader = styled.div`
