@@ -14,10 +14,10 @@ class Sidebar extends React.Component {
             <SidebarDiv>
                 <Masthead />
                 <Menu>
-                    <MenuItem path="/adapters" image={AdapterImage} text="Adapters" active={this.selected === 0} />
-                    <MenuItem path="/help" image={HelpImage} text="Help" active={this.selected === 1} />
-                    <MenuItem path="/settings" image={SettingsImage} text="Settings" active={this.selected === 2} />
-                    <MenuItem path="/info" image={InfoImage} text="Info" active={this.selected === 3} />
+                    <MenuItem path="/adapters" image={AdapterImage} text="Adapters" />
+                    <MenuItem path="/help" image={HelpImage} text="Help" />
+                    <MenuItem path="/settings" image={SettingsImage} text="Settings" />
+                    <MenuItem path="/info" image={InfoImage} text="Info" />
                 </Menu>
             </SidebarDiv>
         );
