@@ -4,16 +4,22 @@ import { keyframes } from 'styled-components';
 import {withRouter, Link} from 'react-router-dom';
 
 class MenuItem extends React.Component {
+    shouldComponentUpdate(newProps) {
+        let currentlyActive = this.props.location.pathname.startsWith(this.props.path);
+        let nowActive = newProps.location.pathname.startsWith(this.props.path);
+        return currentlyActive != nowActive;
+    }
+
     render() {
         let active = this.props.location.pathname.startsWith(this.props.path);
         return (
             <Link to={this.props.path}>
-            <MenuItemDiv active={active}>
-                <Container active={active}>
-                    <Image image={this.props.image} active={active} />
-                    <Label>{this.props.text}</Label>
-                </Container>
-            </MenuItemDiv>
+                <MenuItemDiv active={active}>
+                    <Container active={active}>
+                        <Image image={this.props.image} active={active} />
+                        <Label>{this.props.text}</Label>
+                    </Container>
+                </MenuItemDiv>
             </Link>
         );
     }
