@@ -34,7 +34,7 @@ export const DarkTheme = {
     }
 }
 
-export const HighContrast = {
+export const HighContrastTheme = {
     background: '#1c1c1c',
     paper: '#000',
     accent: {
