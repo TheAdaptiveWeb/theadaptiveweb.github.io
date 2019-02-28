@@ -27,12 +27,12 @@ margin: 10px;
 
 const Title = styled.div` 
 font-size: 20px;
-color: #000;
+color: ${props => props.theme.text.primary};
 `;
 
 const Subtitle = styled.div` 
 font-size: 18px;
-color: #4A4A4A;
+color: ${props => props.theme.text.secondary};
 `;
 
 export default AdapterCard;

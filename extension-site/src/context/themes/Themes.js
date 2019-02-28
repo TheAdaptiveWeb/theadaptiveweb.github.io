@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const DefaultTheme = {
     background: '#fafbfc',
     paper: '#fff',
@@ -14,7 +12,9 @@ export const DefaultTheme = {
     },
     menuItem: {
         active: '#fff',
-        inactive: '#000'
+        inactive: '#000',
+        activeIcon: 'filter: invert(100%)',
+        inactiveIcon: ''
     }
 }
 
@@ -28,8 +28,8 @@ export const DarkTheme = {
     },
     menuItem: {
         active: '#fff',
-        inactive: '#fff'
+        inactive: '#fff',
+        activeIcon: 'filter: invert(100%)',
+        inactiveIcon: 'filter: invert(100%)'
     }
 }
-
-export const ThemeContext = React.createContext();

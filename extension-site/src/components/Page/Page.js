@@ -25,11 +25,12 @@ padding: 20px 0;
 const PageTitle = styled.div`
 text-align: center;
 font-size: 32px;
+color: ${props => props.theme.text.primary};
 `;
 
 const PageSubtitle = styled.div`
 text-align: center;
-color: #4A4A4A;
+color: ${props => props.theme.text.secondary};
 font-size: 20px;
 margin-bottom: 20px;
 `;

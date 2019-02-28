@@ -19,8 +19,9 @@ margin-bottom: 30px;
 `;
 
 const SectionTitle = styled.div`
-    font-size: 21px;
-    margin-bottom: 10px;
+font-size: 21px;
+margin-bottom: 10px;
+color: ${props => props.theme.text.primary};
 `;
 
 export default Section;

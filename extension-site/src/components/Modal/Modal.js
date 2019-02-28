@@ -34,16 +34,18 @@ const ModalBgFrames = keyframes`
     opacity: 0;
 }
 100% {
-    opacity: 1;
+    opacity: 0.77;
+}
 `;
 
 const ModalBackground = styled.div`
-background: linear-gradient(45deg, rgba(119, 188, 238, 0.77) 0%, rgba(74, 144, 226, 0.77) 100%);
+background: linear-gradient(45deg, ${props => props.theme.accent.light} 0%, ${props => props.theme.accent.dark} 100%);
 position: fixed;
 top: 0;
 left: 400px;
 right: 0;
 bottom: 0;
+opacity: 0.77;
 animation: ${ModalBgFrames} 0.5s ease-in-out;
 `;
 
@@ -63,6 +65,5 @@ padding: 20px;
 animation: ${CardKeyFrames} 0.5s ease-in-out;
 z-index: 100;
 `;
-
 
 export default Modal;

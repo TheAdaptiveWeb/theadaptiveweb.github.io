@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Sidebar, Pager, Logo } from './components';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { AdapterPage, HelpPage, SettingsPage, InfoPage } from './views';
 import styled from 'styled-components';
-import { keyframes } from 'styled-components';
+import { keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Context, DarkTheme } from './context';
 
 class App extends Component {
   render() {
     return (
-      <Context.Provider value={{
-        theme: DarkTheme
-      }}>
+      <ThemeProvider theme={DarkTheme}>
+        <>
+        <GlobalStyle />
         <Router>
           <>
             <LogoDiv>
@@ -44,10 +43,43 @@ class App extends Component {
             </PageContainer>
           </>
         </Router>
-      </Context.Provider>
+        </>
+      </ThemeProvider>
     );
   }
 }
+
+const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+
+  background-color: ${props => props.theme.background};
+  overscroll-behavior: none;
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+.fade-exit {
+  opacity: 0;
+  z-index: 1;
+}
+
+a {
+  text-decoration: none;
+}
+`;
 
 let xOffset = (window.innerWidth / 2) - 200;
 let yOffset = (window.innerHeight / 2) - 57;

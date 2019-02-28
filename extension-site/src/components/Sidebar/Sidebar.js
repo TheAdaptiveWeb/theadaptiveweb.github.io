@@ -43,7 +43,7 @@ left: 0;
 bottom: 0;
 width: 400px;
 padding: 0;
-background-color: #fff;
+background-color: ${props => props.theme.paper};
 box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.5);
 animation: ${introFrames} 2s ease-in-out;
 z-index: 100;

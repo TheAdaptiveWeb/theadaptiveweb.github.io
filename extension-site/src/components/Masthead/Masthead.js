@@ -20,11 +20,12 @@ text-align: center;
 const Title = styled.div`
 font-size: 32px;
 margin-top:85px;
+color: ${props => props.theme.text.primary};
 `;
 
 const Subtitle = styled.div`
 font-size: 20px;
-color: #4A4A4A;
+color: ${props => props.theme.text.secondary};
 `;
 
 export default Masthead;

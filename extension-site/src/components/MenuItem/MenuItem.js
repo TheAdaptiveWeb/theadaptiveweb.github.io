@@ -45,7 +45,7 @@ const ActiveFrames = keyframes`
 
 const MenuItemDiv = styled.div`
 font-weight: 200;
-color: ${props => (props.active) ? '#fff' : '#000'};
+color: ${props => (props.active) ? props.theme.menuItem.active : props.theme.menuItem.inactive};
 padding: 20px 50px;
 font-size: 20px;
 text-transform: uppercase;
@@ -64,7 +64,7 @@ margin-right: 18px;
 background-size: cover;
 display: inline-block;
 background-image: url(${props => props.image});
-${props => (props.active) && 'filter: invert(100%);'}
+${props => (props.active) ? props.theme.menuItem.activeIcon : props.theme.menuItem.inactiveIcon}
 `;
 
 const Label = styled.div`
