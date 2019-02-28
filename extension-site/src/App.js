@@ -5,12 +5,12 @@ import { AdapterPage, HelpPage, SettingsPage, InfoPage } from './views';
 import styled from 'styled-components';
 import { keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { Context, DarkTheme } from './context';
+import { Context, DarkTheme, HighContrast, DefaultTheme } from './context';
 
 class App extends Component {
   render() {
     return (
-      <ThemeProvider theme={DarkTheme}>
+      <ThemeProvider theme={HighContrast}>
         <>
         <GlobalStyle />
         <Router>

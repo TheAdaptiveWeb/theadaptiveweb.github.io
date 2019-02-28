@@ -49,7 +49,7 @@ color: ${props => (props.active) ? props.theme.menuItem.active : props.theme.men
 padding: 20px 50px;
 font-size: 20px;
 text-transform: uppercase;
-${props => (props.active) && 'background: linear-gradient(45deg, #7db9e8 0%, #4a90e2 100%);'}
+${props => (props.active) && 'background: linear-gradient(45deg, ' + props.theme.accent.light + ' 0%, ' + props.theme.accent.dark + ' 100%);'}
 `;
 
 const Container = styled.div`

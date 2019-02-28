@@ -33,3 +33,23 @@ export const DarkTheme = {
         inactiveIcon: 'filter: invert(100%)'
     }
 }
+
+export const HighContrast = {
+    background: '#1c1c1c',
+    paper: '#000',
+    accent: {
+        light: '#62A8E8',
+        normal: '#62A8E8',
+        dark: '#62A8E8'
+    },
+    text: {
+        primary: '#fff',
+        secondary: '#fff',
+    },
+    menuItem: {
+        active: '#000',
+        inactive: '#fff',
+        activeIcon: '',
+        inactiveIcon: 'filter: invert(100%)'
+    }
+}
