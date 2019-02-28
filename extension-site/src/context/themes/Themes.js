@@ -30,3 +30,5 @@ export const DarkTheme = {
         inactive: '#fff'
     }
 }
+
+export const ThemeContext = React.createContext();
