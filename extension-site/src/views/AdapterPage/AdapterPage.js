@@ -1,8 +1,7 @@
 import * as React from 'react';
 
-import { Section, AdapterCard, Page, CardList, Modal, AdapterTag } from '../../components';
-import { Route, Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Section, AdapterCard, Page, CardList, AdapterModal } from '../../components';
+import { Route } from 'react-router-dom';
 
 class AdapterPage extends React.Component {
     render() {
@@ -24,14 +23,7 @@ class AdapterPage extends React.Component {
             <Route path="/adapters/:id" render={(props) => {
                 let { title, subtitle, tags } = adapters.find(x => x.id == props.match.params.id);
                 return (
-                    <Modal>
-                        <Link to="/adapters">
-                            <BackLink>Back to Adapters</BackLink>
-                        </Link>
-                        <Title>{title}</Title>
-                        <Subtitle>{subtitle}</Subtitle>
-                        {tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
-                    </Modal>
+                    <AdapterModal title={title} subtitle={subtitle} tags={tags} />
                 );
             }}/>
             <Section title="Installed">
@@ -47,15 +39,5 @@ class AdapterPage extends React.Component {
         </Page>);
     }
 }
-
-const Title = styled.div` 
-font-size: 20px;
-color: ${props => props.theme.text.primary};
-`;
-
-const Subtitle = styled.div` 
-font-size: 18px;
-color: ${props => props.theme.text.secondary};
-`;
 
 export default AdapterPage;

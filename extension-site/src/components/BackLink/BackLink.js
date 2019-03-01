@@ -6,14 +6,14 @@ import BackArrowImage from './backArrow.svg';
 class BackLink extends React.PureComponent {
     render() {
         return (
-            <BackLink>
+            <BackLinkDiv>
                 <BackArrow /> {this.props.children}
-            </BackLink>
+            </BackLinkDiv>
         );
     }
 }
 
-const BackLink = styled.div`
+const BackLinkDiv = styled.div`
 color: #4A90E2;
 margin-bottom: 10px;
 display: inline-block;

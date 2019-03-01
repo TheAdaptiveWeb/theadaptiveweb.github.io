@@ -1,4 +1,5 @@
 export { default as AdapterCard } from './AdapterCard';
+export { default as AdapterModal } from './AdapterModal';
 export { default as AdapterTag } from './AdapterTag';
 export { default as AnimatedLogo } from './AnimatedLogo';
 export { default as BackLink } from './BackLink';
