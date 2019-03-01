@@ -13,7 +13,7 @@ class Routes extends React.Component {
                     <Switch location={location}>
                         <Route path="/adapters" component={() => <Pager><AdapterPage /></Pager>}/>
                         <Route path="/help" component={() => <Pager><HelpPage /></Pager>}/>
-                        <Route path="/settings" component={() => <Pager><SettingsPage /></Pager>}/>
+                        <Route path="/settings" component={props => <Pager><SettingsPage updateGlobalOptions={this.props.updateGlobalOptions} globalOptions={this.props.globalOptions} /></Pager>}/>
                         <Route path="/info" component={() => <Pager><InfoPage /></Pager>}/>
                     </Switch>
                     </CSSTransition>

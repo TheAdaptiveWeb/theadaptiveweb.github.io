@@ -1,4 +1,4 @@
-export const DefaultTheme = {
+const DefaultTheme = {
     background: '#fafbfc',
     paper: '#fff',
     accent: {
@@ -18,7 +18,7 @@ export const DefaultTheme = {
     }
 }
 
-export const DarkTheme = {
+const DarkTheme = {
     background: '#1c1c1c',
     paper: '#292929',
     accent: DefaultTheme.accent,
@@ -34,7 +34,7 @@ export const DarkTheme = {
     }
 }
 
-export const HighContrastTheme = {
+const HighContrastTheme = {
     background: '#1c1c1c',
     paper: '#000',
     accent: {
@@ -53,3 +53,18 @@ export const HighContrastTheme = {
         inactiveIcon: 'filter: invert(100%)'
     }
 }
+
+export const Themes = {
+    light: {
+        name: 'Light (default)',
+        theme: DefaultTheme
+    },
+    dark: {
+        name: 'Dark',
+        theme: DarkTheme
+    },
+    highContrast: {
+        name: 'High Contrast',
+        theme: HighContrastTheme
+    }
+};

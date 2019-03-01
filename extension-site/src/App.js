@@ -3,12 +3,24 @@ import { Sidebar, Routes, AnimatedLogo } from './components';
 import { HashRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
-import { Context, DarkTheme, DefaultTheme, HighContrastTheme } from './context';
+import { Themes } from './context';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      theme: 'light',
+    };
+  }
+
+  updateGlobalOptions(state) {
+    this.setState(state);
+  }
+
   render() {
     return (
-      <ThemeProvider theme={DefaultTheme}>
+      <ThemeProvider theme={Themes[this.state.theme].theme}>
         <>
         <GlobalStyle />
         <Router>
@@ -16,7 +28,7 @@ class App extends Component {
             <AnimatedLogo />
             <Sidebar />
             <PageContainer>
-              <Routes />
+              <Routes updateGlobalOptions={this.updateGlobalOptions.bind(this)} globalOptions={this.state} />
             </PageContainer>
           </>
         </Router>

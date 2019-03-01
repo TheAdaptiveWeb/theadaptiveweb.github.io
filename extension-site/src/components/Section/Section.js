@@ -16,6 +16,7 @@ class Section extends React.Component {
 
 const SectionDiv = styled.div`
 margin-bottom: 30px;
+color: ${props => props.theme.text.primary};
 `;
 
 const SectionTitle = styled.div`

@@ -15,3 +15,4 @@ export { default as Pager } from './Pager';
 export { default as Routes } from './Routes';
 export { default as Section } from './Section';
 export { default as Sidebar } from './Sidebar';
+export { default as ThemeSwitcher } from './ThemeSwitcher';
