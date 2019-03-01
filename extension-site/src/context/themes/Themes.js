@@ -1,7 +1,7 @@
 import defaultThemeImage from './defaultTheme.png';
 import darkThemeImage from './darkTheme.png';
 import highContrastThemeImage from './highContrastTheme.png';
-
+import highContrastInvertedImage from './highContrastInverted.png'
 
 const DefaultTheme = {
     background: '#fafbfc',
@@ -59,6 +59,26 @@ const HighContrastTheme = {
     }
 }
 
+const HighContrastInvertedTheme = {
+    background: '#fafbfc',
+    paper: '#fff',
+    accent: {
+        light: '#000',
+        normal: '#000',
+        dark: '#000'
+    },
+    text: {
+        primary: '#000',
+        secondary: '#000',
+    },
+    link: {
+        active: '#fff',
+        inactive: '#000',
+        activeIcon: 'filter: invert(100%)',
+        inactiveIcon: ''
+    }
+}
+
 export const Themes = {
     light: {
         name: 'Light (default)',
@@ -74,5 +94,10 @@ export const Themes = {
         name: 'High Contrast',
         theme: HighContrastTheme,
         image: highContrastThemeImage
+    },
+    highContrastInverted: {
+        name: 'High Contrast Light',
+        theme: HighContrastInvertedTheme,
+        image: highContrastInvertedImage
     }
 };
