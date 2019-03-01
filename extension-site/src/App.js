@@ -10,7 +10,7 @@ import { Context, DarkTheme, DefaultTheme, HighContrastTheme } from './context';
 class App extends Component {
   render() {
     return (
-      <ThemeProvider theme={HighContrastTheme}>
+      <ThemeProvider theme={DefaultTheme}>
         <>
         <GlobalStyle />
         <Router>
@@ -114,6 +114,7 @@ z-index: 1000;
 position: fixed;
 top: 20px;
 left: 163px;
+display: block;
 `;
 
 const PageContainer = styled.div`

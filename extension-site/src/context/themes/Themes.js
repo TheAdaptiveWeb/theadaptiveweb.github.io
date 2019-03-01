@@ -10,7 +10,7 @@ export const DefaultTheme = {
         primary: '#000',
         secondary: '#4A4A4A',
     },
-    menuItem: {
+    link: {
         active: '#fff',
         inactive: '#000',
         activeIcon: 'filter: invert(100%)',
@@ -26,7 +26,7 @@ export const DarkTheme = {
         primary: '#fff',
         secondary: '#b3b3b3',
     },
-    menuItem: {
+    link: {
         active: '#fff',
         inactive: '#fff',
         activeIcon: 'filter: invert(100%)',
@@ -46,7 +46,7 @@ export const HighContrastTheme = {
         primary: '#fff',
         secondary: '#fff',
     },
-    menuItem: {
+    link: {
         active: '#000',
         inactive: '#fff',
         activeIcon: '',
