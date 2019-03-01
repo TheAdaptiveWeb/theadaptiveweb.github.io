@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeContext } from './themes';
 
 const contexts = {
 }

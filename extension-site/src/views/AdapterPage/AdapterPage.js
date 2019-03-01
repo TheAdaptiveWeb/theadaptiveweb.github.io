@@ -21,19 +21,19 @@ class AdapterPage extends React.Component {
 
         return (<Page title="Adapters" subtitle="Install and configure adapters from this page. Select an adapter for more info.">
             <Route path="/adapters/:id" render={(props) => {
-                let { title, subtitle, tags } = adapters.find(x => x.id == props.match.params.id);
+                let { title, subtitle, tags } = adapters.find(x => x.id === props.match.params.id);
                 return (
                     <AdapterModal title={title} subtitle={subtitle} tags={tags} />
                 );
             }}/>
             <Section title="Installed">
                 <CardList>
-                    {installed.map(adapter => <AdapterCard title={adapter.title} subtitle={adapter.subtitle} tags={adapter.tags} link={"/adapters/" + adapter.id} />)}
+                    {installed.map(adapter => <AdapterCard key={adapter.id} title={adapter.title} subtitle={adapter.subtitle} tags={adapter.tags} link={"/adapters/" + adapter.id} />)}
                 </CardList>
             </Section>
             <Section title="Available">
                 <CardList>
-                    {available.map(adapter => <AdapterCard title={adapter.title} subtitle={adapter.subtitle} tags={adapter.tags} link={"/adapters/" + adapter.id} />)}
+                    {available.map(adapter => <AdapterCard key={adapter.id} title={adapter.title} subtitle={adapter.subtitle} tags={adapter.tags} link={"/adapters/" + adapter.id} />)}
                 </CardList>
             </Section>
         </Page>);

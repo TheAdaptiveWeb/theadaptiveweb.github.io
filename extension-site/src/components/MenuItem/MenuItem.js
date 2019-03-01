@@ -7,7 +7,7 @@ class MenuItem extends React.Component {
     shouldComponentUpdate(newProps) {
         let currentlyActive = this.props.location.pathname.startsWith(this.props.path);
         let nowActive = newProps.location.pathname.startsWith(this.props.path);
-        return currentlyActive != nowActive;
+        return currentlyActive !== nowActive;
     }
 
     render() {
