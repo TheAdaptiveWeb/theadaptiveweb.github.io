@@ -20,6 +20,9 @@ const DefaultTheme = {
         inactive: '#000',
         activeIcon: 'filter: invert(100%)',
         inactiveIcon: ''
+    },
+    button: {
+        normal: '#62A8E8',
     }
 }
 
@@ -36,6 +39,9 @@ const DarkTheme = {
         inactive: '#fff',
         activeIcon: 'filter: invert(100%)',
         inactiveIcon: 'filter: invert(100%)'
+    },
+    button: {
+        normal: '#62A8E8',
     }
 }
 
@@ -56,6 +62,9 @@ const HighContrastTheme = {
         inactive: '#fff',
         activeIcon: '',
         inactiveIcon: 'filter: invert(100%)'
+    },
+    button: {
+        normal: '#fff',
     }
 }
 
@@ -76,6 +85,9 @@ const HighContrastInvertedTheme = {
         inactive: '#000',
         activeIcon: 'filter: invert(100%)',
         inactiveIcon: ''
+    },
+    button: {
+        normal: '#000',
     }
 }
 

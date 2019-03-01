@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import AdapterTag from '../AdapterTag';
 import { Card } from '..';
 import { Link } from 'react-router-dom';
+import CardInner from '../CardInner';
 
 class AdapterCard extends React.Component {
     render() {
@@ -10,9 +11,11 @@ class AdapterCard extends React.Component {
             <CardContainer>
                 <Link to={this.props.link || ""}>
                     <Card>
-                        <Title>{this.props.title}</Title>
-                        <Subtitle>{this.props.subtitle}</Subtitle>
-                        {this.props.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
+                        <div>
+                            <Title>{this.props.title}</Title>
+                            <Subtitle>{this.props.subtitle}</Subtitle>
+                            {this.props.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
+                        </div>
                     </Card>
                 </Link>
             </CardContainer>
