@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { Sidebar, Pager, Logo } from './components';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import { AdapterPage, HelpPage, SettingsPage, InfoPage } from './views';
+import { Sidebar, Routes, AnimatedLogo } from './components';
+import { HashRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Context, DarkTheme, DefaultTheme, HighContrastTheme } from './context';
-import Routes from './components/Routes/Routes';
 
 class App extends Component {
   render() {
@@ -14,7 +11,15 @@ class App extends Component {
       <ThemeProvider theme={DefaultTheme}>
         <>
         <GlobalStyle />
-        <Routes />
+        <Router>
+          <>
+            <AnimatedLogo />
+            <Sidebar />
+            <PageContainer>
+              <Routes />
+            </PageContainer>
+          </>
+        </Router>
         </>
       </ThemeProvider>
     );
@@ -53,21 +58,6 @@ a {
 }
 `;
 
-let xOffset = (window.innerWidth / 2) - 200;
-let yOffset = (window.innerHeight / 2) - 57;
-
-const LogoAnimation = keyframes`
-0% {
-  transform: translate(${xOffset}px, ${yOffset}px) rotate(-360deg) scale(0);
-}
-50% {
-  transform: translate(${xOffset}px, ${yOffset}px) rotate(0) scale(1);
-}
-100% {
-  transform: translate(0, 0);
-}
-`;
-
 const introFrames = keyframes`
 0% {
   opacity: 0;
@@ -78,15 +68,6 @@ const introFrames = keyframes`
 100% {
   opacity: 1;
 }
-`;
-
-const LogoDiv = styled.div`
-animation: ${LogoAnimation} 2s ease-in-out;
-z-index: 1000;
-position: fixed;
-top: 20px;
-left: 163px;
-display: block;
 `;
 
 const PageContainer = styled.div`

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Pager } from '..';
 import { AdapterPage, HelpPage, SettingsPage, InfoPage } from '../../views';
 import { Route, Switch } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class Routes extends React.Component {
     render() {
@@ -10,10 +11,10 @@ class Routes extends React.Component {
                 <TransitionGroup>
                     <CSSTransition key={location.pathname.split('/')[1]} classNames="fade" timeout={550}>
                     <Switch location={location}>
-                        <Route path="/adapters" component={<Pager><AdapterPage /></Pager>}/>
-                        <Route path="/help" component={<Pager><HelpPage /></Pager>}/>
-                        <Route path="/settings" component={<Pager><SettingsPage /></Pager>}/>
-                        <Route path="/info" component={<Pager><InfoPage /></Pager>}/>
+                        <Route path="/adapters" component={() => <Pager><AdapterPage /></Pager>}/>
+                        <Route path="/help" component={() => <Pager><HelpPage /></Pager>}/>
+                        <Route path="/settings" component={() => <Pager><SettingsPage /></Pager>}/>
+                        <Route path="/info" component={() => <Pager><InfoPage /></Pager>}/>
                     </Switch>
                     </CSSTransition>
                 </TransitionGroup>
