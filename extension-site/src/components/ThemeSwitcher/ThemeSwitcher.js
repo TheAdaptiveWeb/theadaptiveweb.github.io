@@ -10,9 +10,8 @@ class ThemeSwitcher extends React.Component {
             <ThemeSwitcherDiv>
                 {Object.keys(Themes).map(key => {
                     let theme = Themes[key];
-                    console.log(theme);
                     return (
-                    <Link to="/settings">
+                    <Link key={key} to="/settings">
                         <Theme onClick={() => this.props.updateGlobalOptions({ theme: key })} active={key === currentTheme}>
                             <ThemeImage image={theme.image} />
                             {theme.name}

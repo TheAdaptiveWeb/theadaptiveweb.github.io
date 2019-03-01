@@ -4,19 +4,24 @@ import { HashRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { css, keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Themes } from './context';
+import { getOptions, saveOptions } from './api/SettingsStorage';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    console.log(getOptions());
+
+    this.state = getOptions() || {
       theme: 'light',
       animations: true,
     };
   }
 
   updateGlobalOptions(state) {
-    this.setState(state);
+    this.setState(state, () => {
+      saveOptions(this.state);
+    });
   }
 
   render() {
