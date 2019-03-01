@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import AdapterTag from '../AdapterTag';
 import { Card } from '..';
 import { Link } from 'react-router-dom';
-import CardInner from '../CardInner';
 
 class AdapterCard extends React.Component {
     render() {

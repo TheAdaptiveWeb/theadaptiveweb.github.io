@@ -2,7 +2,7 @@
 
 
 import * as React from 'react';
-import { Modal, AdapterTag, Button, CardInner } from '..';
+import { Modal, AdapterTag, Button } from '..';
 import { Link } from 'react-router-dom';
 import BackLink from '../BackLink';
 import styled from 'styled-components';
