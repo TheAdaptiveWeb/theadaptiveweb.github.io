@@ -1,12 +1,12 @@
 {
-  "main.js": "/configure/static/js/main.a4b927dc.chunk.js",
-  "main.js.map": "/configure/static/js/main.a4b927dc.chunk.js.map",
+  "main.js": "/configure/static/js/main.cd363626.chunk.js",
+  "main.js.map": "/configure/static/js/main.cd363626.chunk.js.map",
   "runtime~main.js": "/configure/static/js/runtime~main.481fbd57.js",
   "runtime~main.js.map": "/configure/static/js/runtime~main.481fbd57.js.map",
   "static/js/2.590fc5b7.chunk.js": "/configure/static/js/2.590fc5b7.chunk.js",
   "static/js/2.590fc5b7.chunk.js.map": "/configure/static/js/2.590fc5b7.chunk.js.map",
   "index.html": "/configure/index.html",
-  "precache-manifest.a1ae5016191d24007b8cab5b41d2d714.js": "/configure/precache-manifest.a1ae5016191d24007b8cab5b41d2d714.js",
+  "precache-manifest.9f5e4a3625aecf185998fd6ff738dbc9.js": "/configure/precache-manifest.9f5e4a3625aecf185998fd6ff738dbc9.js",
   "service-worker.js": "/configure/service-worker.js",
   "static/media/Logo.png": "/configure/static/media/Logo.7ccf0f1f.png",
   "static/media/adapter.svg": "/configure/static/media/adapter.1562c430.svg",
@@ -15,7 +15,7 @@
   "static/media/defaultTheme.png": "/configure/static/media/defaultTheme.420196cb.png",
   "static/media/help.svg": "/configure/static/media/help.8e2238b8.svg",
   "static/media/highContrastInverted.png": "/configure/static/media/highContrastInverted.d320fbee.png",
-  "static/media/highContrastTheme.png": "/configure/static/media/highContrastTheme.41de5878.png",
+  "static/media/highContrastTheme.png": "/configure/static/media/highContrastTheme.ade8ed9e.png",
   "static/media/info.svg": "/configure/static/media/info.85365e32.svg",
   "static/media/settings.svg": "/configure/static/media/settings.2f023cdf.svg"
 }
