@@ -3,7 +3,7 @@ import { Sidebar, Routes, AnimatedLogo } from './components';
 import { HashRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { css, keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
-import { Themes } from './context';
+import { Themes, AppContext } from './context';
 import { getOptions, saveOptions } from './api/SettingsStorage';
 
 class App extends Component {
@@ -24,20 +24,22 @@ class App extends Component {
 
   render() {
     return (
-      <ThemeProvider theme={Themes[this.state.theme].theme}>
-        <>
-        <GlobalStyle />
-        <Router>
+      <AppContext.Provider value={{ globalOptions: this.state, updateGlobalOptions: this.updateGlobalOptions.bind(this) }}>
+        <ThemeProvider theme={Themes[this.state.theme].theme}>
           <>
-            <AnimatedLogo globalOptions={this.state} />
-            <Sidebar globalOptions={this.state} />
-            <PageContainer globalOptions={this.state}>
-              <Routes updateGlobalOptions={this.updateGlobalOptions.bind(this)} globalOptions={this.state} />
-            </PageContainer>
+          <GlobalStyle />
+          <Router>
+            <>
+              <AnimatedLogo />
+              <Sidebar />
+              <PageContainer globalOptions={this.state}>
+                <Routes />
+              </PageContainer>
+            </>
+          </Router>
           </>
-        </Router>
-        </>
-      </ThemeProvider>
+        </ThemeProvider>
+      </AppContext.Provider>
     );
   }
 }

@@ -11,12 +11,10 @@ class AdapterModal extends React.Component {
     render() {
         return (
             <Modal>
-                <Link to="/adapters">
-                    <BackLink>Back to Adapters</BackLink>
-                </Link>
+                <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
                 <Title>{this.props.title}</Title>
                 <Subtitle>{this.props.subtitle}</Subtitle>
-                {this.props.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={this.props.tag} startColor="#9277EE" endColor="#874AE2" />)}
+                {this.props.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
             </Modal>
         );
     }

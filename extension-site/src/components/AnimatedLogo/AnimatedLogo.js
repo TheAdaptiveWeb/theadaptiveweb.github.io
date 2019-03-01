@@ -2,13 +2,19 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Logo } from '..';
 import { keyframes, css } from 'styled-components';
+import { AppContext } from '../../context';
 
 class AnimatedLogo extends React.PureComponent {
     render() {
         return (
-            <LogoDiv animations={this.props.globalOptions.animations}>
-              <Logo />
-            </LogoDiv>
+          <AppContext.Consumer>
+            {({ globalOptions }) => (
+              <LogoDiv animations={globalOptions.animations}>
+                <Logo />
+              </LogoDiv>
+            )}
+            
+          </AppContext.Consumer>
         );
     }
 }

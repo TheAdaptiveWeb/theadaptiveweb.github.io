@@ -7,19 +7,25 @@ import SettingsImage from './settings.svg';
 import InfoImage from './info.svg';
 import styled from 'styled-components';
 import { keyframes, css } from 'styled-components';
+import { AppContext } from '../../context';
 
 class Sidebar extends React.Component {
     render() {
         return (
-            <SidebarDiv animations={this.props.globalOptions.animations}>
+          <AppContext.Consumer>
+            {({ globalOptions }) => (
+              <SidebarDiv animations={globalOptions.animations}>
                 <Masthead />
                 <Menu>
-                    <MenuItem path="/adapters" image={AdapterImage} text="Adapters" />
-                    <MenuItem path="/help" image={HelpImage} text="Help" />
-                    <MenuItem path="/settings" image={SettingsImage} text="Settings" />
-                    <MenuItem path="/info" image={InfoImage} text="Info" />
+                  <MenuItem path="/adapters" image={AdapterImage} text="Adapters" />
+                  <MenuItem path="/help" image={HelpImage} text="Help" />
+                  <MenuItem path="/settings" image={SettingsImage} text="Settings" />
+                  <MenuItem path="/info" image={InfoImage} text="Info" />
                 </Menu>
-            </SidebarDiv>
+              </SidebarDiv>
+            )}
+            
+          </AppContext.Consumer>
         );
     }
 }

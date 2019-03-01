@@ -1,2 +1,2 @@
 export * from './themes';
-export { default as Context } from './Context';
+export { default as AppContext } from './AppContext';
