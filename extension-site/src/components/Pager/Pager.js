@@ -22,6 +22,7 @@ position: absolute;
 padding: 20px 40px;
 overscroll-behavior-y: contain;
 height: 100%;
+box-sizing: border-box;
 `;
 
 export default Pager;

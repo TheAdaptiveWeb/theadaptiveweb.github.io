@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Sidebar, Routes, AnimatedLogo } from './components';
 import { HashRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
-import { keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
+import { css, keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Themes } from './context';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
 
     this.state = {
       theme: 'light',
-      animations: false,
+      animations: true,
     };
   }
 
@@ -89,7 +89,7 @@ top: 0;
 left: 400px;
 right: 0;
 bottom: 0;
-${props => props.globalOptions.animations && 'animation: ${introFrames} 2s ease-in-out;'}
+${props => props.globalOptions.animations && css`animation: ${introFrames} 2s ease-in-out;`} 
 `;
 
 export default App;

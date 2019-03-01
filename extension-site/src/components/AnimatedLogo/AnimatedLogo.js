@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Logo } from '..';
-import { keyframes } from 'styled-components';
+import { keyframes, css } from 'styled-components';
 
 class AnimatedLogo extends React.PureComponent {
     render() {
@@ -29,7 +29,7 @@ const LogoAnimation = keyframes`
 `;
 
 const LogoDiv = styled.div`
-${props => props.animations && 'animation: ${LogoAnimation} 2s ease-in-out;'}
+${props => props.animations && css`animation: ${LogoAnimation} 2s ease-in-out;`} 
 z-index: 1000;
 position: fixed;
 top: 20px;

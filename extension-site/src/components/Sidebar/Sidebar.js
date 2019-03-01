@@ -6,7 +6,7 @@ import HelpImage from './help.svg';
 import SettingsImage from './settings.svg';
 import InfoImage from './info.svg';
 import styled from 'styled-components';
-import { keyframes } from 'styled-components';
+import { keyframes, css } from 'styled-components';
 
 class Sidebar extends React.Component {
     render() {
@@ -45,7 +45,7 @@ width: 400px;
 padding: 0;
 background-color: ${props => props.theme.paper};
 box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.5);
-${props => props.animations && 'animation: ${introFrames} 2s ease-in-out;'}
+${props => props.animations && css`animation: ${introFrames} 2s ease-in-out;`}
 z-index: 100;
 `;
 
