@@ -19,7 +19,7 @@ border-radius: 3px;
 
 const InnerDiv = styled.div`
 padding: 15px;
-${props => props.border && `border-top: 1px solid #D8D8D8;`};
+${props => props.border && `border-top: 1px solid ${props.theme.separatorColor};`};
 `;
 
 export default Card;

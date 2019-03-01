@@ -23,7 +23,8 @@ const DefaultTheme = {
     },
     button: {
         normal: '#62A8E8',
-    }
+    },
+    separatorColor: '#D8D8D8'
 }
 
 const DarkTheme = {
@@ -42,16 +43,17 @@ const DarkTheme = {
     },
     button: {
         normal: '#62A8E8',
-    }
+    },
+    separatorColor: '#555'
 }
 
 const HighContrastTheme = {
     background: '#1c1c1c',
     paper: '#000',
     accent: {
-        light: '#62A8E8',
-        normal: '#62A8E8',
-        dark: '#62A8E8'
+        light: '#fff',
+        normal: '#fff',
+        dark: '#fff'
     },
     text: {
         primary: '#fff',
@@ -65,7 +67,8 @@ const HighContrastTheme = {
     },
     button: {
         normal: '#fff',
-    }
+    },
+    separatorColor: '#fff'
 }
 
 const HighContrastInvertedTheme = {
@@ -88,7 +91,8 @@ const HighContrastInvertedTheme = {
     },
     button: {
         normal: '#000',
-    }
+    },
+    separatorColor: '#000'
 }
 
 export const Themes = {
