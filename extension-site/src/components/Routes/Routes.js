@@ -9,12 +9,12 @@ class Routes extends React.Component {
         return (
             <Route render={({location}) => (
                 <TransitionGroup>
-                    <CSSTransition key={location.pathname.split('/')[1]} classNames="fade" timeout={550}>
+                    <CSSTransition key={this.props.globalOptions.animations && location.pathname.split('/')[1]} classNames="fade" timeout={550}>
                     <Switch location={location}>
-                        <Route path="/adapters" component={() => <Pager><AdapterPage /></Pager>}/>
-                        <Route path="/help" component={() => <Pager><HelpPage /></Pager>}/>
+                        <Route path="/adapters" component={() => <Pager><AdapterPage globalOptions={this.props.globalOptions} /></Pager>}/>
+                        <Route path="/help" component={() => <Pager><HelpPage globalOptions={this.props.globalOptions} /></Pager>}/>
                         <Route path="/settings" component={props => <Pager><SettingsPage updateGlobalOptions={this.props.updateGlobalOptions} globalOptions={this.props.globalOptions} /></Pager>}/>
-                        <Route path="/info" component={() => <Pager><InfoPage /></Pager>}/>
+                        <Route path="/info" component={() => <Pager><InfoPage globalOptions={this.props.globalOptions} /></Pager>}/>
                     </Switch>
                     </CSSTransition>
                 </TransitionGroup>

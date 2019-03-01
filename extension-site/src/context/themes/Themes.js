@@ -1,3 +1,8 @@
+import defaultThemeImage from './defaultTheme.png';
+import darkThemeImage from './darkTheme.png';
+import highContrastThemeImage from './highContrastTheme.png';
+
+
 const DefaultTheme = {
     background: '#fafbfc',
     paper: '#fff',
@@ -57,14 +62,17 @@ const HighContrastTheme = {
 export const Themes = {
     light: {
         name: 'Light (default)',
-        theme: DefaultTheme
+        theme: DefaultTheme,
+        image: defaultThemeImage
     },
     dark: {
         name: 'Dark',
-        theme: DarkTheme
+        theme: DarkTheme,
+        image: darkThemeImage
     },
     highContrast: {
         name: 'High Contrast',
-        theme: HighContrastTheme
+        theme: HighContrastTheme,
+        image: highContrastThemeImage
     }
 };

@@ -11,7 +11,7 @@ import { keyframes } from 'styled-components';
 class Sidebar extends React.Component {
     render() {
         return (
-            <SidebarDiv>
+            <SidebarDiv animations={this.props.globalOptions.animations}>
                 <Masthead />
                 <Menu>
                     <MenuItem path="/adapters" image={AdapterImage} text="Adapters" />
@@ -45,7 +45,7 @@ width: 400px;
 padding: 0;
 background-color: ${props => props.theme.paper};
 box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.5);
-animation: ${introFrames} 2s ease-in-out;
+${props => props.animations && 'animation: ${introFrames} 2s ease-in-out;'}
 z-index: 100;
 `;
 

@@ -11,6 +11,7 @@ class App extends Component {
 
     this.state = {
       theme: 'light',
+      animations: false,
     };
   }
 
@@ -25,9 +26,9 @@ class App extends Component {
         <GlobalStyle />
         <Router>
           <>
-            <AnimatedLogo />
-            <Sidebar />
-            <PageContainer>
+            <AnimatedLogo globalOptions={this.state} />
+            <Sidebar globalOptions={this.state} />
+            <PageContainer globalOptions={this.state}>
               <Routes updateGlobalOptions={this.updateGlobalOptions.bind(this)} globalOptions={this.state} />
             </PageContainer>
           </>
@@ -88,7 +89,7 @@ top: 0;
 left: 400px;
 right: 0;
 bottom: 0;
-animation: ${introFrames} 2s ease-in-out;
+${props => props.globalOptions.animations && 'animation: ${introFrames} 2s ease-in-out;'}
 `;
 
 export default App;
