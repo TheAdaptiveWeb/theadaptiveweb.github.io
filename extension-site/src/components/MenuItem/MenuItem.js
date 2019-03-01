@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { keyframes } from 'styled-components';
+import { keyframes, css } from 'styled-components';
 import {withRouter, Link} from 'react-router-dom';
+import { AppContext } from '../../context';
 
 class MenuItem extends React.Component {
     shouldComponentUpdate(newProps) {
@@ -13,14 +14,19 @@ class MenuItem extends React.Component {
     render() {
         let active = this.props.location.pathname.startsWith(this.props.path);
         return (
-            <Link to={this.props.path}>
-                <MenuItemDiv active={active}>
-                    <Container active={active}>
-                        <Image image={this.props.image} active={active} />
-                        <Label>{this.props.text}</Label>
-                    </Container>
-                </MenuItemDiv>
-            </Link>
+            <AppContext.Consumer>
+                {({ globalOptions }) => (
+                    <Link to={this.props.path}>
+                        <MenuItemDiv active={active}>
+                            <Container animations={globalOptions.animations} active={active}>
+                                <Image image={this.props.image} active={active} />
+                                <Label>{this.props.text}</Label>
+                            </Container>
+                        </MenuItemDiv>
+                    </Link>
+                )}
+            </AppContext.Consumer>
+            
         );
     }
 }
@@ -53,7 +59,7 @@ ${props => (props.active) && 'background: linear-gradient(45deg, ' + props.theme
 `;
 
 const Container = styled.div`
-animation: ${props => (props.active) ? ActiveFrames : PassiveFrames} 0.5s ease;
+${props => props.animations && css`animation: ${props => (props.active) ? ActiveFrames : PassiveFrames} 0.5s ease;`}
 `;
 
 const Image = styled.div`

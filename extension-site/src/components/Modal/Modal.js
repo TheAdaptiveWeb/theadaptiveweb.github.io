@@ -1,19 +1,25 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { keyframes } from 'styled-components';
+import { keyframes, css } from 'styled-components';
 import { Card } from '..';
+import { AppContext } from '../../context';
 
 class Modal extends React.Component {
     render() {
         return (
-            <ModalContainer>
-                <CardContainer>
-                    <Card>
-                        {this.props.children}
-                    </Card>
-                </CardContainer>
-                <ModalBackground />
-            </ModalContainer>
+            <AppContext.Consumer>
+                {({ globalOptions }) => (
+                    <ModalContainer>
+                        <CardContainer animations={globalOptions.animations}>
+                            <Card>
+                                {this.props.children}
+                            </Card>
+                        </CardContainer>
+                        <ModalBackground animations={globalOptions.animations} />
+                    </ModalContainer>
+                )}
+            </AppContext.Consumer>
+            
         );
     }
 }
@@ -46,7 +52,7 @@ left: 400px;
 right: 0;
 bottom: 0;
 opacity: 0.77;
-animation: ${ModalBgFrames} 0.5s ease-in-out;
+${props => props.animations && css`animation: ${ModalBgFrames} 0.5s ease-in-out;`}
 `;
 
 const CardKeyFrames = keyframes`
@@ -62,7 +68,7 @@ const CardContainer = styled.div`
 max-width: 500px;
 width: 100%;
 padding: 20px;
-animation: ${CardKeyFrames} 0.5s ease-in-out;
+${props => props.animations && css`animation: ${CardKeyFrames} 0.5s ease-in-out;`}
 z-index: 100;
 `;
 
