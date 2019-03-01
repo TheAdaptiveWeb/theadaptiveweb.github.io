@@ -65,6 +65,7 @@ color: ${props => props.theme.text.secondary};
 const BackLink = styled.div`
 color: #4A90E2;
 margin-bottom: 10px;
+display: inline-block;
 `;
 
 const BackArrow = styled.span`
