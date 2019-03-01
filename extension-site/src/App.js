@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Context, DarkTheme, DefaultTheme, HighContrastTheme } from './context';
+import Routes from './components/Routes/Routes';
 
 class App extends Component {
   render() {
@@ -13,36 +14,7 @@ class App extends Component {
       <ThemeProvider theme={DefaultTheme}>
         <>
         <GlobalStyle />
-        <Router>
-          <>
-            <LogoDiv>
-              <Logo />
-            </LogoDiv>
-            <Sidebar />
-            <PageContainer>
-              <Route render={({location}) => (
-                <TransitionGroup>
-                  <CSSTransition key={location.pathname.split('/')[1]} classNames="fade" timeout={550}>
-                    <Switch location={location}>
-                      <Route path="/adapters" component={(props) => {
-                        return <Pager><AdapterPage /></Pager>
-                      }}/>
-                      <Route path="/help" component={(props) => {
-                        return <Pager><HelpPage /></Pager>
-                      }}/>
-                      <Route path="/settings" component={(props) => {
-                        return <Pager><SettingsPage /></Pager>
-                      }}/>
-                      <Route path="/info" component={(props) => {
-                        return <Pager><InfoPage /></Pager>
-                      }}/>
-                    </Switch>
-                  </CSSTransition>
-                </TransitionGroup>
-              )} />
-            </PageContainer>
-          </>
-        </Router>
+        <Routes />
         </>
       </ThemeProvider>
     );
