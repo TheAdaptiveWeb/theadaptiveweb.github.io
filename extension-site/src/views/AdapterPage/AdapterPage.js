@@ -4,8 +4,6 @@ import { Section, AdapterCard, Page, CardList, Modal, AdapterTag } from '../../c
 import { Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import BackArrowImage from './backArrow.svg';
-
 class AdapterPage extends React.Component {
     render() {
         // Mocking only - should occur in constructor
@@ -28,9 +26,7 @@ class AdapterPage extends React.Component {
                 return (
                     <Modal>
                         <Link to="/adapters">
-                            <BackLink>
-                                <BackArrow /> Back to Adapters
-                            </BackLink>
+                            <BackLink>Back to Adapters</BackLink>
                         </Link>
                         <Title>{title}</Title>
                         <Subtitle>{subtitle}</Subtitle>
@@ -60,21 +56,6 @@ color: ${props => props.theme.text.primary};
 const Subtitle = styled.div` 
 font-size: 18px;
 color: ${props => props.theme.text.secondary};
-`;
-
-const BackLink = styled.div`
-color: #4A90E2;
-margin-bottom: 10px;
-display: inline-block;
-`;
-
-const BackArrow = styled.span`
-background-image: url(${BackArrowImage});
-background-size: cover;
-width: 10px;
-height: 11px;
-display: inline-block;
-${props => props.theme.link.inactiveIcon}
 `;
 
 export default AdapterPage;

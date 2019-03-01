@@ -1,6 +1,7 @@
 export { default as AdapterCard } from './AdapterCard';
 export { default as AdapterTag } from './AdapterTag';
 export { default as AnimatedLogo } from './AnimatedLogo';
+export { default as BackLink } from './BackLink';
 export { default as Card } from './Card';
 export { default as CardList } from './CardList';
 export { default as Logo } from './Logo';
