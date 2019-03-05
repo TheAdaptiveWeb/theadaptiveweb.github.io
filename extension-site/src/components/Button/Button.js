@@ -4,7 +4,7 @@ import styled from 'styled-components';
 class Button extends React.Component {
     render() {
         return (
-            <StyledButton type={this.props.type || 'normal'}>
+            <StyledButton onClick={this.props.onClick} type={this.props.type || 'normal'}>
                 {this.props.children}
             </StyledButton>
         );
@@ -21,6 +21,7 @@ color: ${props => props.theme.link.active};
 text-transform: uppercase;
 padding: 8px 20px;
 font-family: 'Nunito', sans-serif;
+margin-left: 10px;
 `;
 
 export default Button;

@@ -23,6 +23,8 @@ const DefaultTheme = {
     },
     button: {
         normal: '#62A8E8',
+        danger: '#E86262',
+        success: '#66B163'
     },
     separatorColor: '#D8D8D8'
 }
@@ -43,6 +45,8 @@ const DarkTheme = {
     },
     button: {
         normal: '#62A8E8',
+        danger: '#E86262',
+        success: '#66B163'
     },
     separatorColor: '#555'
 }
@@ -67,6 +71,8 @@ const HighContrastTheme = {
     },
     button: {
         normal: '#fff',
+        danger: '#E86262',
+        success: '#66B163'
     },
     separatorColor: '#fff'
 }
@@ -91,6 +97,8 @@ const HighContrastInvertedTheme = {
     },
     button: {
         normal: '#000',
+        danger: '#E86262',
+        success: '#66B163'
     },
     separatorColor: '#000'
 }
