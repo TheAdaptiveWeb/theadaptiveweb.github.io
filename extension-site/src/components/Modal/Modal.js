@@ -19,7 +19,6 @@ class Modal extends React.Component {
                     </ModalContainer>
                 )}
             </AppContext.Consumer>
-            
         );
     }
 }

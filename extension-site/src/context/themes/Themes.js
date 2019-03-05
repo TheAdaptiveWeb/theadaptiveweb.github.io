@@ -71,8 +71,8 @@ const HighContrastTheme = {
     },
     button: {
         normal: '#fff',
-        danger: '#E86262',
-        success: '#66B163'
+        danger: '#fff',
+        success: '#fff'
     },
     separatorColor: '#fff'
 }
@@ -97,8 +97,8 @@ const HighContrastInvertedTheme = {
     },
     button: {
         normal: '#000',
-        danger: '#E86262',
-        success: '#66B163'
+        danger: '#000',
+        success: '#000'
     },
     separatorColor: '#000'
 }

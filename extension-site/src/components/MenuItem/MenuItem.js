@@ -26,7 +26,6 @@ class MenuItem extends React.Component {
                     </Link>
                 )}
             </AppContext.Consumer>
-            
         );
     }
 }
