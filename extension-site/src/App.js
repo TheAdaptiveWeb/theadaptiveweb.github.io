@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { css, keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Themes, AppContext } from './context';
 import { getOptions, saveOptions } from './api/SettingsStorage';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { default as PluginCommunicator } from './api/PluginCommunicator';
 
 class App extends Component {
@@ -54,26 +53,22 @@ class App extends Component {
 
   render() {
     return (
-      <TransitionGroup>
-        <CSSTransition key={this.state.theme} classNames="fade" timeout={550}>
-          <AppContext.Provider value={{ globalOptions: this.state, updateGlobalOptions: this.updateGlobalOptions.bind(this) }}>
-            <ThemeProvider theme={Themes[this.state.theme].theme}>
-              <>
-              <GlobalStyle />
-              <Router>
-                <>
-                  <AnimatedLogo />
-                  <Sidebar />
-                  <PageContainer globalOptions={this.state}>
-                    <Routes />
-                  </PageContainer>
-                </>
-              </Router>
-              </>
-            </ThemeProvider>
-          </AppContext.Provider>
-        </CSSTransition>
-      </TransitionGroup>
+      <AppContext.Provider value={{ globalOptions: this.state, updateGlobalOptions: this.updateGlobalOptions.bind(this) }}>
+        <ThemeProvider theme={Themes[this.state.theme].theme}>
+          <>
+          <GlobalStyle />
+          <Router>
+            <>
+              <AnimatedLogo />
+              <Sidebar />
+              <PageContainer globalOptions={this.state}>
+                <Routes />
+              </PageContainer>
+            </>
+          </Router>
+          </>
+        </ThemeProvider>
+      </AppContext.Provider>
     );
   }
 }
