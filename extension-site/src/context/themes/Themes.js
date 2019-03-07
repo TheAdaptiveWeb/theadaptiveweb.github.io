@@ -26,6 +26,9 @@ const DefaultTheme = {
         danger: '#E86262',
         success: '#66B163'
     },
+    field: {
+        bg: '#ddd',
+    },
     separatorColor: '#D8D8D8'
 }
 
@@ -47,6 +50,9 @@ const DarkTheme = {
         normal: '#62A8E8',
         danger: '#E86262',
         success: '#66B163'
+    },
+    field: {
+        bg: '#101010',
     },
     separatorColor: '#555'
 }
@@ -74,6 +80,10 @@ const HighContrastTheme = {
         danger: '#fff',
         success: '#fff'
     },
+    field: {
+        bg: '#000',
+        border: '#fff',
+    },
     separatorColor: '#fff'
 }
 
@@ -99,6 +109,10 @@ const HighContrastInvertedTheme = {
         normal: '#000',
         danger: '#000',
         success: '#000'
+    },
+    field: {
+        bg: '#fff',
+        border: '#000',
     },
     separatorColor: '#000'
 }

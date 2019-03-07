@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Page, Section, Card, ThemeSwitcher } from '../../components';
 import { AppContext } from '../../context';
 import styled from 'styled-components';
+import Switch from '../../components/Switch/Switch';
 
 class SettingsPage extends React.Component {
     render() {
@@ -28,6 +29,7 @@ class SettingsPage extends React.Component {
                             <p>Enable developer mode</p>
                             <p>Allow adapter installation from awcli</p>
                             <p>Allow localhost</p>
+                            <Switch />
                         </Subsection>
                     </Card>
                 </Section>
