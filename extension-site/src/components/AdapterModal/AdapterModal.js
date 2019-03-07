@@ -64,8 +64,8 @@ const PageContainer = styled.div`
 max-height: 300px;
 overflow-y: scroll;
 overscroll-behavior: none;
-margin: 0 -15px;
-padding: 0 15px;
+margin: -15px;
+padding: 15px;
 color: ${props => props.theme.text.primary};
 `;
 
