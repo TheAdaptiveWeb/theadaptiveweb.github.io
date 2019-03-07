@@ -20,6 +20,17 @@ class SettingsPage extends React.Component {
                         </Subsection>
                     </Card>
                 </Section>
+                <Section title="Developers">
+                    <Card>
+                        <Subsection>
+                            <SubsectionTitle>Developer mode</SubsectionTitle>
+                            <p>Developer mode provides tools for developers to build and test adapters before publishing them.</p>
+                            <p>Enable developer mode</p>
+                            <p>Allow adapter installation from awcli</p>
+                            <p>Allow localhost</p>
+                        </Subsection>
+                    </Card>
+                </Section>
             </Page>
         );
     }
