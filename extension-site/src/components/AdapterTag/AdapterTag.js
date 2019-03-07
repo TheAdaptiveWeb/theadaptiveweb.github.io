@@ -13,7 +13,6 @@ class AdapterTag extends React.Component {
 
 const Card = styled.div`
 box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.5);
-background: linear-gradient(135deg, ${props => props.startColor} 0%, ${props => props.endColor} 100%);
 border-radius: 3px;
 height: 25px;
 color: #fff;
@@ -22,11 +21,24 @@ margin-top: 10px;
 display: inline-block;
 padding: 0px 10px;
 margin-right: 5px;
+position: relative;
+overflow: hidden;
+
+&:before {
+    content: ' ';
+    position: absolute;
+    background: linear-gradient(135deg, ${props => props.startColor} 0%, ${props => props.endColor} 100%);
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+}
 `;
 
 const Label = styled.div`
 margin-top: 2px;
 font-size: 16px;
+position: relative;
 `;
 
 export default AdapterTag;
