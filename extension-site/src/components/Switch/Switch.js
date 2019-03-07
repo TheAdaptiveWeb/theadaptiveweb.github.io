@@ -13,7 +13,10 @@ class Switch extends React.Component {
     render() {
         return (
             <SwitchLabel>
-                <LabelDiv>Test label</LabelDiv> 
+                <LabelDiv>
+                    <LabelTitle>{this.props.title}</LabelTitle>
+                    <LabelSubtitle>{this.props.subtitle}</LabelSubtitle>
+                </LabelDiv> 
                 <SwitchDiv>
                     <input type="checkbox" />
                     <span>
@@ -28,10 +31,19 @@ class Switch extends React.Component {
 const SwitchLabel = styled.label`
 position: relative;
 display: flex;
+margin-bottom: 20px;
 `;
 
 const LabelDiv = styled.div`
 flex-grow: 1;
+`;
+
+const LabelTitle = styled.div`
+font-weight: bold;
+font-size: 17px;
+`;
+
+const LabelSubtitle = styled.div`
 `;
 
 const SwitchDiv = styled.div`

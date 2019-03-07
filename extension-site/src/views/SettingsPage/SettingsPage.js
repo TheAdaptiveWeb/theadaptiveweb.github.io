@@ -25,11 +25,9 @@ class SettingsPage extends React.Component {
                     <Card>
                         <Subsection>
                             <SubsectionTitle>Developer mode</SubsectionTitle>
-                            <p>Developer mode provides tools for developers to build and test adapters before publishing them.</p>
-                            <p>Enable developer mode</p>
-                            <p>Allow adapter installation from awcli</p>
-                            <p>Allow localhost</p>
-                            <Switch />
+                            <Switch title="Enable developer mode" subtitle="Developer mode provides tools for developers to build and test adapters before publishing them." />
+                            <Switch title="Allow adapter installation/testing from awcli" subtitle="Allows for adapters to be installed from awcli. This feature requires awcli to be installed (install with `npm install awcli`)." />
+                            <Switch title="Allow localhost" subtitle="Allows for configuration changes to be made from localhost origins." />
                         </Subsection>
                     </Card>
                 </Section>
