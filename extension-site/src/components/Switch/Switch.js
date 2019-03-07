@@ -14,7 +14,7 @@ class Switch extends React.Component {
         return (
             <SwitchLabel>
                 <SwitchDiv>
-                    <input type="checkbox" checked={this.props.checked} onChange={(event) => { this.props.onChange(event.target.checked) }} />
+                    <input type="checkbox" checked={this.props.checked} disabled={this.props.disabled} onChange={(event) => { this.props.onChange(event.target.checked) }} />
                     <span>
                         <div />
                     </span>
@@ -92,53 +92,25 @@ flex-shrink: 0;
     position: absolute;
     height: 26px;
     width: 26px;
-    background-color: ${props => props.theme.button.danger};
+    background: ${props => props.theme.gradient.red};
 }
 
 > input:checked + span > div:before {
-    background-color: ${props => props.theme.button.normal};
+    background: ${props => props.theme.gradient.primary};
 }
 
 > input:checked + span > div {
     transform: translateX(26px);
 }
 
+> input:disabled + span {
+    background: ${props => props.theme.field.disabledBg};
+}
 
+> input:disabled + span > div:before {
+    background: ${props => props.theme.gradient.gray};
+}
 
 `;
-
-// const SwitchInput = styled.input.attrs({ type: 'checkbox' })`
-// opacity: 0;
-// width: 0;
-// height: 0;
-
-// /* &:checked + ${SwitchSlider} {
-    
-// }
-
-// &:checked + ${SwitchSliderInnerInner} {
-//     transform: translateX(26px);
-// } */
-// `;
-
-// const SwitchSliderInner = styled.div`
-// position: absolute;
-// height: 25px;
-// width: 25px;
-// left: 0;
-// top: -3px;
-// -webkit-transition: .4s;
-// transition: .4s;
-// border-radius: 50%;
-// overflow: hidden;
-// box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.5);
-// `;
-
-// const SwitchSliderInnerInner = styled.div`
-// height: 26px;
-// width: 26px;
-// background: linear-gradient(45deg, ${props => props.theme.accent.light} 0%, ${props => props.theme.accent.dark} 100%);
-// `;
-
 
 export default Switch;

@@ -29,9 +29,11 @@ class SettingsPage extends React.Component {
                                     <SubsectionTitle>Developer mode</SubsectionTitle>
                                     <Switch title="Enable developer mode" subtitle="Developer mode provides tools for developers to build and test adapters before publishing them." checked={globalOptions.developerMode} onChange={(newState) => { updateGlobalOptions({ developerMode: newState }) }} />
                                     <Separator />
-                                    <Switch title="Allow adapter installation/testing from awcli" subtitle="Allows for adapters to be installed from awcli. This feature requires awcli to be installed (install with `npm install awcli`)." checked={globalOptions.installFromCli} onChange={(newState) => { updateGlobalOptions({ installFromCli: newState }) }} />
-                                    <Separator />
-                                    <Switch title="Allow localhost" subtitle="Allows for configuration changes to be made from localhost origins." checked={globalOptions.allowLocalhost} onChange={(newState) => { updateGlobalOptions({ allowLocalhost: newState }) }} />
+                                    <TogglableDiv disabled={!globalOptions.developerMode}>
+                                        <Switch title="Allow adapter installation/testing from awcli" subtitle="Allows for adapters to be installed from awcli. This feature requires awcli to be installed (install with `npm install awcli`)." checked={globalOptions.installFromCli} onChange={(newState) => { updateGlobalOptions({ installFromCli: newState }) }} disabled={!globalOptions.developerMode} />
+                                        <Separator />
+                                        <Switch title="Allow localhost" subtitle="Allows for configuration changes to be made from localhost origins." checked={globalOptions.allowLocalhost} onChange={(newState) => { updateGlobalOptions({ allowLocalhost: newState }) }} disabled={!globalOptions.developerMode} />
+                                    </TogglableDiv>
                                 </Subsection>
                             </Card>
                         </Section>
@@ -50,6 +52,10 @@ const SubsectionTitle = styled.div`
 font-size: 21px;
 margin-bottom: 10px;
 color: ${props => props.theme.text.primary};
+`;
+
+const TogglableDiv = styled.div`
+${props => props.disabled && 'opacity: 0.5;'}
 `;
 
 export default SettingsPage;
