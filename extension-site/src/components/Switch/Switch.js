@@ -13,16 +13,16 @@ class Switch extends React.Component {
     render() {
         return (
             <SwitchLabel>
-                <LabelDiv>
-                    <LabelTitle>{this.props.title}</LabelTitle>
-                    <LabelSubtitle>{this.props.subtitle}</LabelSubtitle>
-                </LabelDiv> 
                 <SwitchDiv>
-                    <input type="checkbox" />
+                    <input type="checkbox" checked={this.props.checked} onChange={(event) => { this.props.onChange(event.target.checked) }} />
                     <span>
                         <div />
                     </span>
                 </SwitchDiv>
+                <LabelDiv>
+                    <LabelTitle>{this.props.title}</LabelTitle>
+                    <LabelSubtitle>{this.props.subtitle}</LabelSubtitle>
+                </LabelDiv> 
             </SwitchLabel>
         );
     }
@@ -31,12 +31,11 @@ class Switch extends React.Component {
 const SwitchLabel = styled.label`
 position: relative;
 display: flex;
-align-items: center;
 `;
 
 const LabelDiv = styled.div`
 flex-grow: 1;
-margin-right: 20px;
+margin-left: 20px;
 `;
 
 const LabelTitle = styled.div`
@@ -53,6 +52,7 @@ display: inline-block;
 width: 50px;
 height: 20px;
 flex-basis: 50px;
+margin-top: 10px;
 flex-grow: 0;
 flex-shrink: 0;
 

@@ -6,23 +6,18 @@ import { Link } from 'react-router-dom';
 class ThemeSwitcher extends React.Component {
     render() {
         return (
-            <AppContext.Consumer>
-                {({ globalOptions, updateGlobalOptions }) => (
-                    <ThemeSwitcherDiv>
-                        {Object.keys(Themes).map(key => {
-                            let theme = Themes[key];
-                            return (
-                            <Link key={key} to="/settings">
-                                <Theme onClick={() => updateGlobalOptions({ theme: key })} active={key === globalOptions.theme}>
-                                    <ThemeImage image={theme.image} />
-                                    {theme.name}
-                                </Theme>
-                            </Link>);
-                        })}
-                    </ThemeSwitcherDiv>
-                )}
-            
-            </AppContext.Consumer>
+            <ThemeSwitcherDiv>
+                {Object.keys(Themes).map(key => {
+                    let theme = Themes[key];
+                    return (
+                    <Link key={key} to="/settings">
+                        <Theme onClick={() => this.props.updateGlobalOptions({ theme: key })} active={key === this.props.globalOptions.theme}>
+                            <ThemeImage image={theme.image} />
+                            {theme.name}
+                        </Theme>
+                    </Link>);
+                })}
+            </ThemeSwitcherDiv>
         );
     }
 }

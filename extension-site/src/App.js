@@ -14,6 +14,9 @@ class App extends Component {
     this.state = getOptions() || {
       theme: 'light',
       animations: true,
+      developerMode: false,
+      installFromCli: false,
+      allowLocalhost: false,
     };
 
     let conn = new PluginCommunicator();
