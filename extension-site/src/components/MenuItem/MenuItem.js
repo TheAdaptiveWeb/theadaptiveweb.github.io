@@ -54,7 +54,7 @@ color: ${props => (props.active) ? props.theme.link.active : props.theme.link.in
 padding: 20px 50px;
 font-size: 20px;
 text-transform: uppercase;
-${props => (props.active) && 'background: ' + props.theme.gradient.primary}
+${props => (props.active) && 'background: linear-gradient(45deg, ' + props.theme.accent.light + ' 0%, ' + props.theme.accent.dark + ' 100%);'}
 `;
 
 const Container = styled.div`

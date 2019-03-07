@@ -10,7 +10,7 @@ class AnimatedLogo extends React.PureComponent {
           <AppContext.Consumer>
             {({ globalOptions }) => (
               <LogoDiv animations={globalOptions.animations}>
-                <Logo />
+                <Logo animate={globalOptions.animations} />
               </LogoDiv>
             )}
             
@@ -40,6 +40,8 @@ z-index: 1000;
 position: fixed;
 top: 20px;
 left: 163px;
+width: 75px;
+height: 75px;
 display: block;
 `;
 
