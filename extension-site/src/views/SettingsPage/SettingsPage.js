@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { Page, Section, Card, ThemeSwitcher } from '../../components';
+import { Page, Section, Card, ThemeSwitcher, Switch, Separator } from '../../components';
 import { AppContext } from '../../context';
 import styled from 'styled-components';
-import Switch from '../../components/Switch/Switch';
 
 class SettingsPage extends React.Component {
     render() {
@@ -18,6 +17,7 @@ class SettingsPage extends React.Component {
                         
                         <Subsection>
                             <SubsectionTitle>Animations</SubsectionTitle>
+                            <Switch title="Enable animations" subtitle="Enable/disable animations on this configuration site (enabled by default)." />
                         </Subsection>
                     </Card>
                 </Section>
@@ -26,7 +26,9 @@ class SettingsPage extends React.Component {
                         <Subsection>
                             <SubsectionTitle>Developer mode</SubsectionTitle>
                             <Switch title="Enable developer mode" subtitle="Developer mode provides tools for developers to build and test adapters before publishing them." />
+                            <Separator />
                             <Switch title="Allow adapter installation/testing from awcli" subtitle="Allows for adapters to be installed from awcli. This feature requires awcli to be installed (install with `npm install awcli`)." />
+                            <Separator />
                             <Switch title="Allow localhost" subtitle="Allows for configuration changes to be made from localhost origins." />
                         </Subsection>
                     </Card>

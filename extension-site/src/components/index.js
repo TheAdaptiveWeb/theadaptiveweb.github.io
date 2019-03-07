@@ -15,5 +15,7 @@ export { default as Page } from './Page';
 export { default as Pager } from './Pager';
 export { default as Routes } from './Routes';
 export { default as Section } from './Section';
+export { default as Separator } from './Separator';
 export { default as Sidebar } from './Sidebar';
+export { default as Switch } from './Switch';
 export { default as ThemeSwitcher } from './ThemeSwitcher';

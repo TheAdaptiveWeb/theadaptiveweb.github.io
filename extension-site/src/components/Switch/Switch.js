@@ -31,11 +31,12 @@ class Switch extends React.Component {
 const SwitchLabel = styled.label`
 position: relative;
 display: flex;
-margin-bottom: 20px;
+align-items: center;
 `;
 
 const LabelDiv = styled.div`
 flex-grow: 1;
+margin-right: 20px;
 `;
 
 const LabelTitle = styled.div`
@@ -51,6 +52,9 @@ position: relative;
 display: inline-block;
 width: 50px;
 height: 20px;
+flex-basis: 50px;
+flex-grow: 0;
+flex-shrink: 0;
 
 > input {
     opacity: 0;
