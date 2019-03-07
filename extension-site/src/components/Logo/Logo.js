@@ -1,5 +1,5 @@
 import * as React from 'react';
-import RawLogo from './Logo.png';
+import RawLogo from './Logo.svg';
 import styled from 'styled-components';
 
 class Logo extends React.PureComponent {
