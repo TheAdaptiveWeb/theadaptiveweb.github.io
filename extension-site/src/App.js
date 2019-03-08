@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = getOptions() || {
+    const defaultOptions = {
       theme: 'light',
       animations: true,
       developerMode: false,
@@ -19,38 +19,29 @@ class App extends Component {
       allowLocalhost: false,
     };
 
-    let conn = new PluginCommunicator();
-    conn.sendMessage('requestAdapters')
+    this.state = getOptions() || defaultOptions;
+
+    this.conn = new PluginCommunicator();
+
+    this.conn.sendMessage('getGlobalOptions').then(state => {
+      if (state === undefined) {
+        this.conn.sendMessage('setGlobalOptions', defaultOptions);
+        return;
+      } else this.setState(state);
+    });
+
+    this.conn.sendMessage('requestAdapters')
       .then(response => {
         console.log(response);
       }, err => {
         console.error(err);
       });
-
-    conn.sendMessage('installAdapter', {
-        "uuid": "test-adapter",
-        "name": "Test adapter",
-        "description": "Test adapter.",
-        "version": "0.1.4",
-        "script": "aw.request('http://localhost:3000').then(prefs => console.log(prefs), err => console.error(err));",
-        "preferenceSchema": {
-            "console_text": {
-                "friendlyName": "Console Log",
-                "description": "Text displayed",
-                "type": "text",
-                "default": "Hello, World!"
-            }
-        }
-    }).then(response => {
-      console.log(response);
-    }, err => {
-      console.error(err);
-    });;
   }
 
   updateGlobalOptions(state) {
     this.setState(state, () => {
       saveOptions(this.state);
+      this.conn.sendMessage('setGlobalOptions', this.state);
     });
   }
 

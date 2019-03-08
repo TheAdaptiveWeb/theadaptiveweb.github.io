@@ -35,6 +35,10 @@ const pathKeyframes = keyframes`
     stroke-dashoffset: 900;
     stroke-dasharray: 1000;
 }
+50% {
+    stroke-dashoffset: 900;
+    stroke-dasharray: 1000;
+}
 100% {
     stroke-dashoffset: -90;
     stroke-dasharray: 1000;
@@ -43,6 +47,9 @@ const pathKeyframes = keyframes`
 
 const opacityKeyframes = keyframes`
 0% {
+    opacity: 0;
+}
+50% {
     opacity: 0;
 }
 100% {
