@@ -27,10 +27,10 @@ const LogoAnimation = keyframes`
   transform: translate(${xOffset}px, ${yOffset}px) rotate(-360deg) scale(0);
 }
 50% {
-  transform: translate(${xOffset}px, ${yOffset}px) rotate(0) scale(1);
+  transform: translate(${xOffset}px, ${yOffset}px) rotate(0) scale(1.3);
 }
 100% {
-  transform: translate(0, 0);
+  transform: translate(0, 0) scale(1);
 }
 `;
 
