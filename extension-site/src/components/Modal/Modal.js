@@ -32,6 +32,7 @@ position: fixed;
 display: flex;
 justify-content: center;
 align-items: center;
+z-index: 10;
 `;
 
 const ModalBgFrames = keyframes`
