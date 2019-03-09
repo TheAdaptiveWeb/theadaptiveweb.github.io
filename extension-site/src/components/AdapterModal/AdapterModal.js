@@ -26,14 +26,20 @@ class AdapterModal extends React.Component {
     }
 
     render() {
+        let head = [
+            (<div>
+                <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
+                <Title>{this.props.title}</Title>
+                <Subtitle>{this.props.subtitle}</Subtitle>
+                {this.props.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
+            </div>),
+        ];
+        
+        if (this.props.developer) head.push(<DevContainer>Developer mode: Detach this adapter using `awcli detach`</DevContainer>);
+
         return (
             <Modal>
-                <div>
-                    <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
-                    <Title>{this.props.title}</Title>
-                    <Subtitle>{this.props.subtitle}</Subtitle>
-                    {this.props.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
-                </div>
+                {head}
                 <PageContainer>
                     {this.state.pages[this.state.page]}
                 </PageContainer>
@@ -67,6 +73,14 @@ overscroll-behavior: none;
 margin: -15px;
 padding: 15px;
 color: ${props => props.theme.text.primary};
+`;
+
+const DevContainer = styled.div`
+background: ${props => props.theme.gradient.green};
+color: #fff;
+text-align: center;
+padding: 15px;
+margin: -15px;
 `;
 
 const ActionsContainer = styled.div`
