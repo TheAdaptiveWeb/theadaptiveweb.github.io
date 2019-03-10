@@ -19,7 +19,10 @@ class App extends Component {
       allowLocalhost: false,
     };
 
-    this.state = getOptions() || defaultOptions;
+    this.state = {
+      config: getOptions() || defaultOptions,
+      installedAdapters: []
+    }
 
     this.conn = new PluginCommunicator();
 
@@ -27,35 +30,38 @@ class App extends Component {
       if (state === undefined) {
         this.conn.sendMessage('setGlobalOptions', defaultOptions);
         return;
-      } else this.setState(state);
+      } else this.setState({ config: state });
     });
 
     this.conn.sendMessage('requestAdapters')
       .then(response => {
-        console.log(response);
+        console.log('response', response);
+        this.setState({
+          installedAdapters: response
+        });
       }, err => {
         console.error(err);
       });
   }
 
   updateGlobalOptions(state) {
-    this.setState(state, () => {
-      saveOptions(this.state);
-      this.conn.sendMessage('setGlobalOptions', this.state);
+    this.setState({ config: state }, () => {
+      saveOptions(this.state.config);
+      this.conn.sendMessage('setGlobalOptions', this.state.config);
     });
   }
 
   render() {
     return (
-      <AppContext.Provider value={{ globalOptions: this.state, updateGlobalOptions: this.updateGlobalOptions.bind(this) }}>
-        <ThemeProvider theme={Themes[this.state.theme].theme}>
+      <AppContext.Provider value={{ globalOptions: this.state.config, updateGlobalOptions: this.updateGlobalOptions.bind(this), installedAdapters: this.state.installedAdapters }}>
+        <ThemeProvider theme={Themes[this.state.config.theme].theme}>
           <>
           <GlobalStyle />
           <Router>
             <>
               <AnimatedLogo />
               <Sidebar />
-              <PageContainer globalOptions={this.state}>
+              <PageContainer globalOptions={this.state.config}>
                 <Routes />
               </PageContainer>
             </>
