@@ -21,7 +21,6 @@ class AdapterPage extends React.Component {
 
         return (<AppContext.Consumer>
             {({ installedAdapters, globalOptions }) => {
-                console.log(globalOptions);
                 return (
             <Page title="Adapters" subtile="Install and configure adapters from this page. Select an adapter for more info.">
                 <Route path="/adapters/:id" render={(props) => {
@@ -47,7 +46,7 @@ class AdapterPage extends React.Component {
                 </Section>
                 <Section title="Available">
                     <CardList>
-                        {available.map(adapter => <AdapterCard adapter={adapter} />)}
+                        {available.map(adapter => <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} />)}
                     </CardList>
                 </Section>
             </Page>

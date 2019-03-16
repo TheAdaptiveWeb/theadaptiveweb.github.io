@@ -7,26 +7,30 @@ import { Themes, AppContext } from './context';
 import { getOptions, saveOptions } from './api/SettingsStorage';
 import { default as PluginCommunicator } from './api/PluginCommunicator';
 
+const defaultOptions = {
+  theme: 'light',
+  animations: true,
+  developerMode: false,
+  installFromCli: false,
+  allowLocalhost: false,
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
 
-    const defaultOptions = {
-      theme: 'light',
-      animations: true,
-      developerMode: false,
-      installFromCli: false,
-      allowLocalhost: false,
-    };
+    
 
     this.state = {
       config: defaultOptions,
       installedAdapters: []
     };
 
-    this.updateGlobalOptions(getOptions());
-
     this.conn = new PluginCommunicator();
+  }
+
+  componentDidMount() {
+    this.updateGlobalOptions(getOptions());
 
     this.conn.sendMessage('getGlobalOptions').then(state => {
       if (state === undefined) {
@@ -38,7 +42,6 @@ class App extends Component {
 
     this.conn.sendMessage('requestAdapters')
       .then(response => {
-        console.log(response);
         this.setState({
           installedAdapters: response
         });
@@ -49,7 +52,7 @@ class App extends Component {
 
   updateGlobalOptions(state) {
     if (state === undefined || state === null) return;
-    let newState = this.state;
+    let newState = this.state.config;
     Object.keys(state).forEach(k => { newState[k] = state[k]; });
     this.setState({ config: newState }, () => {
       saveOptions(this.state.config);

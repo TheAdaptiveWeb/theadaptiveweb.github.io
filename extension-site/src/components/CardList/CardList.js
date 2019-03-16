@@ -5,8 +5,8 @@ class CardList extends React.Component {
     render() {
         return (
             <CardListDiv>
-                {this.props.children.map(child => {
-                    return <CardDiv>{child}</CardDiv>
+                {this.props.children.map((child, index) => {
+                    return <CardDiv key={'cl-' + index}>{child}</CardDiv>
                 })}
             </CardListDiv>
         );
