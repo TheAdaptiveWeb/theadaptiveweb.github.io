@@ -20,22 +20,25 @@ class App extends Component {
     };
 
     this.state = {
-      config: getOptions() || defaultOptions,
+      config: defaultOptions,
       installedAdapters: []
-    }
+    };
+
+    this.updateGlobalOptions(getOptions());
 
     this.conn = new PluginCommunicator();
 
     this.conn.sendMessage('getGlobalOptions').then(state => {
       if (state === undefined) {
         this.conn.sendMessage('setGlobalOptions', defaultOptions);
+        this.updateGlobalOptions(state);
         return;
-      } else this.setState({ config: state });
+      } else this.updateGlobalOptions(state);
     });
 
     this.conn.sendMessage('requestAdapters')
       .then(response => {
-        console.log('response', response);
+        console.log(response);
         this.setState({
           installedAdapters: response
         });
@@ -45,7 +48,10 @@ class App extends Component {
   }
 
   updateGlobalOptions(state) {
-    this.setState({ config: state }, () => {
+    if (state === undefined || state === null) return;
+    let newState = this.state;
+    Object.keys(state).forEach(k => { newState[k] = state[k]; });
+    this.setState({ config: newState }, () => {
       saveOptions(this.state.config);
       this.conn.sendMessage('setGlobalOptions', this.state.config);
     });

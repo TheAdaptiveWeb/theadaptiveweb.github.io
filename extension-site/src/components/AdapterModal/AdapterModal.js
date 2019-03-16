@@ -1,13 +1,8 @@
-
-
-
 import * as React from 'react';
 import { Modal, AdapterTag, Button } from '..';
 import { Link } from 'react-router-dom';
 import BackLink from '../BackLink';
 import styled from 'styled-components';
-import withRouter from 'react-router-dom/withRouter';
-import { AppContext } from '../../context';
 
 class AdapterModal extends React.Component {
     constructor(props) {
@@ -19,7 +14,6 @@ class AdapterModal extends React.Component {
                 settings: 'Settings',
             }
         };
-        let id = props.match.params.id;
     }
 
     setPage(newPage) {
@@ -29,40 +23,32 @@ class AdapterModal extends React.Component {
     }
 
     render() {
-        return (
-            <AppContext.Consumer>
-                {({ installedAdapters }) => {
-                    let adapter = installedAdapters.find(x => x.uuid === this.props.match.params.id);
-                    if (adapter === undefined) return (<></>)
-                    let { name, description, tags, developer } = adapter;
+        let head = [
+            (<div>
+                <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
+                <Title>{this.props.adapter.name}</Title>
+                <Subtitle>{this.props.adapter.subtitle}</Subtitle>
+                {this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
+            </div>),
+        ];
+        
+        if (this.props.adapter.developer) head.push(<DevContainer>Developer mode: Detach this adapter using `awcli detach`</DevContainer>);
 
-                    let head = [
-                        (<div>
-                            <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
-                            <Title>{name}</Title>
-                            <Subtitle>{description}</Subtitle>
-                            {tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
-                        </div>),
-                    ];
-                    
-                    if (developer) head.push(<DevContainer>Developer mode: Detach this adapter using `awcli detach`</DevContainer>);
-                    
-                    return (<Modal>
-                        {head}
-                        <PageContainer>
-                            {this.state.pages[this.state.page]}
-                        </PageContainer>
-                        <ActionsContainer>
-                            <Actions>
-                            <Button onClick={() => this.setPage(this.state.page === 'description' ? 'settings' : 'description')}>
-                                {this.state.page === 'description' ? 'settings' : 'description'}
-                            </Button>
-                            <Button type="danger">Uninstall</Button>
-                            </Actions>
-                        </ActionsContainer>
-                    </Modal>);
-                }}
-            </AppContext.Consumer>
+        return (
+            <Modal>
+                {head}
+                <PageContainer>
+                    {this.state.pages[this.state.page]}
+                </PageContainer>
+                <ActionsContainer>
+                    <Actions>
+                    <Button onClick={() => this.setPage(this.state.page === 'description' ? 'settings' : 'description')}>
+                        {this.state.page === 'description' ? 'settings' : 'description'}
+                    </Button>
+                    <Button type="danger">Uninstall</Button>
+                    </Actions>
+                </ActionsContainer>
+            </Modal>
         );
     }
 }
@@ -104,4 +90,4 @@ position: absolute;
 right: 0;
 `;
 
-export default withRouter(AdapterModal);
+export default AdapterModal;
