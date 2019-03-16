@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Themes, AppContext } from '../../context';
+import { Themes } from '../../context';
 import { Link } from 'react-router-dom';
 
 class ThemeSwitcher extends React.Component {
