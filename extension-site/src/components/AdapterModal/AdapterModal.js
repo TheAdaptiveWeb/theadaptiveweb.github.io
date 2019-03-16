@@ -3,16 +3,13 @@ import { Modal, AdapterTag, Button } from '..';
 import { Link } from 'react-router-dom';
 import BackLink from '../BackLink';
 import styled from 'styled-components';
+import AdapterSettings from '../AdapterSettings';
 
 class AdapterModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 'description',
-            pages: {
-                description: 'Description',
-                settings: 'Settings',
-            }
+            page: 'description'
         };
     }
 
@@ -38,14 +35,16 @@ class AdapterModal extends React.Component {
             <Modal>
                 {head}
                 <PageContainer>
-                    {this.state.pages[this.state.page]}
+                    { this.state.page == 'description'
+                      ? this.props.adapter.description
+                      : <AdapterSettings schema={this.props.adapter.preferenceSchema} /> }
                 </PageContainer>
                 <ActionsContainer>
                     <Actions>
                     <Button onClick={() => this.setPage(this.state.page === 'description' ? 'settings' : 'description')}>
                         {this.state.page === 'description' ? 'settings' : 'description'}
                     </Button>
-                    <Button type="danger">Uninstall</Button>
+                    <Button type="danger">Disable</Button>
                     </Actions>
                 </ActionsContainer>
             </Modal>
