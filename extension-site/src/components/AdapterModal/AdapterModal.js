@@ -35,7 +35,7 @@ class AdapterModal extends React.Component {
             <Modal>
                 {head}
                 <PageContainer>
-                    { this.state.page == 'description'
+                    { this.state.page === 'description'
                       ? this.props.adapter.description
                       : <AdapterSettings schema={this.props.adapter.preferenceSchema} /> }
                 </PageContainer>

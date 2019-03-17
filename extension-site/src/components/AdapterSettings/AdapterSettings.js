@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import Separator from '../Separator';
 import { AppContext } from '../../context';
 import Switch from '../Switch';
@@ -18,6 +17,8 @@ class AdapterSettings extends React.Component {
 
                     case 'switch':
                     return <Switch title={pref.friendlyName} subtitle={pref.description} />
+
+                    default: return <></>;
                 }
             });
         

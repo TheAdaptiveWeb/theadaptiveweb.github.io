@@ -18,13 +18,13 @@ class AdapterPage extends React.Component {
         for (let i = 1; i < 7; i++) installedAdapters.push(`adapter${i}`);
 
         let available = adapters.filter(x => installedAdapters.indexOf(x.id) === -1);
-
         return (<AppContext.Consumer>
             {({ installedAdapters, globalOptions }) => {
                 return (
             <Page title="Adapters" subtile="Install and configure adapters from this page. Select an adapter for more info.">
                 <Route path="/adapters/:id" render={(props) => {
-                    let adapter = installedAdapters.find(x => x.uuid === props.match.params.id);
+                    console.log(installedAdapters);
+                    let adapter = installedAdapters.find(x => x.id === props.match.params.id);
                     if (adapter === undefined) return (<div></div>);
                     return (
                         <AdapterModal adapter={adapter} />
@@ -34,7 +34,6 @@ class AdapterPage extends React.Component {
                     <Section title="Developer adapters">
                         <CardList>
                             {installedAdapters.filter(adapter => adapter.developer).map(adapter => {
-                                adapter.id = adapter.uuid;  
                                 return <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} /> })}
                         </CardList>
                     </Section>
