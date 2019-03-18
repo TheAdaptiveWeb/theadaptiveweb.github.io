@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import BackLink from '../BackLink';
 import styled from 'styled-components';
 import AdapterSettings from '../AdapterSettings';
+import ReactMarkdown from 'react-markdown';
 
 class AdapterModal extends React.Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class AdapterModal extends React.Component {
                 {head}
                 <PageContainer>
                     { this.state.page === 'description'
-                      ? this.props.adapter.description
+                      ? <ReactMarkdown source={this.props.adapter.about} />
                       : <AdapterSettings schema={this.props.adapter.preferenceSchema} /> }
                 </PageContainer>
                 <ActionsContainer>
@@ -67,7 +68,7 @@ max-height: 300px;
 overflow-y: scroll;
 overscroll-behavior: none;
 margin: -15px;
-padding: 15px;
+padding: 0 15px;
 color: ${props => props.theme.text.primary};
 `;
 
