@@ -46,7 +46,11 @@ const DefaultTheme = {
 const DarkTheme = {
     background: '#1c1c1c',
     paper: '#292929',
-    accent: DefaultTheme.accent,
+    accent: {
+        light: '#4a6f8c',
+        normal: '#62A8E8',
+        dark: '#1c66bd'
+    },
     gradient: {
         primary: gradient('#7db9e8', '#4a90e2'),
         red: gradient('#EE7777', '#E24A4A'),
