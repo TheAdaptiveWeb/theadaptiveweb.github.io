@@ -38,9 +38,7 @@ color: ${props => props.theme.text.secondary};
 `;
 
 const AdapterTags = styled.div`
-display: flex;
 overflow: hidden;
-flex-wrap: wrap;
 height: 38px;
 `;
 
