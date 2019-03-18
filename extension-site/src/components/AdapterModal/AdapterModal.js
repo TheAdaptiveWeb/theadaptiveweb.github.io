@@ -25,19 +25,19 @@ class AdapterModal extends React.Component {
             (<div>
                 <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
                 <Title>{this.props.adapter.name}</Title>
-                <Subtitle>{this.props.adapter.subtitle}</Subtitle>
-                {this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
+                <Subtitle>{this.props.adapter.description}</Subtitle>
+                <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}</AdapterTags>
             </div>),
         ];
         
-        if (this.props.adapter.developer) head.push(<DevContainer>Developer mode: Detach this adapter using `awcli detach`</DevContainer>);
+        if (this.props.adapter.developer) head.push(<DevContainer>Developer mode: Run `awcli publish` to publish</DevContainer>);
 
         return (
             <Modal>
                 {head}
                 <PageContainer>
                     { this.state.page === 'description'
-                      ? <ReactMarkdown source={this.props.adapter.about} />
+                      ? <ReactMarkdown source={this.props.adapter.about} escapeHtml={false} />
                       : <AdapterSettings schema={this.props.adapter.preferenceSchema} /> }
                 </PageContainer>
                 <ActionsContainer>
@@ -64,6 +64,8 @@ color: ${props => props.theme.text.secondary};
 `;
 
 const PageContainer = styled.div`
+height: 100%;
+position: relative;
 max-height: 300px;
 overflow-y: scroll;
 overscroll-behavior: none;
@@ -83,6 +85,12 @@ margin: -15px;
 const ActionsContainer = styled.div`
 position: relative;
 height: 40px;
+`;
+
+const AdapterTags = styled.div`
+display: flex;
+overflow: hidden;
+flex-wrap: wrap;
 `;
 
 const Actions = styled.div`

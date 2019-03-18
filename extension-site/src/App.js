@@ -60,7 +60,11 @@ class App extends Component {
 
   render() {
     return (
-      <AppContext.Provider value={{ globalOptions: this.state.config, updateGlobalOptions: this.updateGlobalOptions.bind(this), installedAdapters: this.state.installedAdapters }}>
+      <AppContext.Provider value={{ 
+        globalOptions: this.state.config, 
+        updateGlobalOptions: this.updateGlobalOptions.bind(this), 
+        installedAdapters: this.state.installedAdapters }}>
+        
         <ThemeProvider theme={Themes[this.state.config.theme].theme}>
           <>
           <GlobalStyle />

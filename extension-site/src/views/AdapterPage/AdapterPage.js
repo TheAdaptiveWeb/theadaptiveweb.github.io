@@ -17,7 +17,6 @@ class AdapterPage extends React.Component {
         let installedAdapters = [];
         for (let i = 1; i < 7; i++) installedAdapters.push(`adapter${i}`);
 
-        let available = adapters.filter(x => installedAdapters.indexOf(x.id) === -1);
         return (<AppContext.Consumer>
             {({ installedAdapters, globalOptions }) => {
                 return (
@@ -45,7 +44,7 @@ class AdapterPage extends React.Component {
                 </Section>
                 <Section title="Available">
                     <CardList>
-                        {available.map(adapter => <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} />)}
+                        {installedAdapters.map(adapter => <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} />)}
                     </CardList>
                 </Section>
             </Page>

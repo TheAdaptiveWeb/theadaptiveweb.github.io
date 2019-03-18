@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import Label from '../Label';
 
 class Switch extends React.Component {
     constructor(props) {
@@ -20,9 +21,8 @@ class Switch extends React.Component {
                     </span>
                 </SwitchDiv>
                 <LabelDiv>
-                    <LabelTitle>{this.props.title}</LabelTitle>
-                    <LabelSubtitle>{this.props.subtitle}</LabelSubtitle>
-                </LabelDiv> 
+                    <Label title={this.props.title} subtitle={this.props.subtitle} />
+                </LabelDiv>
             </SwitchLabel>
         );
     }
@@ -36,14 +36,6 @@ display: flex;
 const LabelDiv = styled.div`
 flex-grow: 1;
 margin-left: 20px;
-`;
-
-const LabelTitle = styled.div`
-font-weight: bold;
-font-size: 17px;
-`;
-
-const LabelSubtitle = styled.div`
 `;
 
 const SwitchDiv = styled.div`

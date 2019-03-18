@@ -13,7 +13,7 @@ class AdapterCard extends React.Component {
                         <div>
                             <Title>{this.props.adapter.name}</Title>
                             <Subtitle>{this.props.adapter.description}</Subtitle>
-                            {this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}
+                            <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}</AdapterTags>
                         </div>
                     </Card>
                 </Link>
@@ -35,6 +35,13 @@ color: ${props => props.theme.text.primary};
 const Subtitle = styled.div` 
 font-size: 18px;
 color: ${props => props.theme.text.secondary};
+`;
+
+const AdapterTags = styled.div`
+display: flex;
+overflow: hidden;
+flex-wrap: wrap;
+height: 38px;
 `;
 
 export default AdapterCard;

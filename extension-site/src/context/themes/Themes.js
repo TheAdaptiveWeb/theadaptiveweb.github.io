@@ -37,8 +37,9 @@ const DefaultTheme = {
         success: '#66B163'
     },
     field: {
-        bg: '#ddd',
+        bg: '#EFEFEF',
         disabledBg: '#737373',
+        text: '#000',
     },
     separatorColor: '#D8D8D8'
 }
@@ -73,8 +74,9 @@ const DarkTheme = {
         success: '#66B163'
     },
     field: {
-        bg: '#101010',
+        bg: '#474747',
         disabledBg: '#737373',
+        text: '#FFF',
     },
     separatorColor: '#555'
 }
@@ -109,8 +111,9 @@ const HighContrastTheme = {
         success: '#fff'
     },
     field: {
-        bg: '#000',
+        bg: '#EFEFEF',
         border: '#fff',
+        text: '#000',
         disabledBg: '#737373',
     },
     separatorColor: '#fff'
@@ -146,7 +149,8 @@ const HighContrastInvertedTheme = {
         success: '#000'
     },
     field: {
-        bg: '#fff',
+        bg: '#EFEFEF',
+        text: '#000',
         border: '#000',
         disabledBg: '#737373',
     },
