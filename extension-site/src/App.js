@@ -11,8 +11,7 @@ const defaultOptions = {
   theme: 'light',
   animations: true,
   developerMode: false,
-  installFromCli: false,
-  allowLocalhost: false,
+  autoReload: true,
 };
 
 class App extends Component {
@@ -43,6 +42,7 @@ class App extends Component {
         this.setState({
           installedAdapters: response
         });
+        console.log(this.state.installedAdapters);
       }, err => {
         console.error(err);
       });
