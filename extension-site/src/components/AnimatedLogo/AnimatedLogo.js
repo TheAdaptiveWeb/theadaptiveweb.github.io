@@ -34,7 +34,7 @@ class AnimatedLogo extends React.PureComponent {
 }
 
 let xOffset = (window.innerWidth / 2) - 200;
-let yOffset = (window.innerHeight / 2) - 57;
+let yOffset = (window.innerHeight / 2) - 77;
 
 const LogoAnimation = keyframes`
 0% {
@@ -52,7 +52,7 @@ const LogoDiv = styled.div`
 ${props => props.animations && css`animation: ${LogoAnimation} 2s ease-in-out;`} 
 z-index: 1000;
 position: fixed;
-top: 20px;
+top: 40px;
 left: 163px;
 width: 75px;
 height: 75px;

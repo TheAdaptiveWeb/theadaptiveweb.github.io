@@ -29,11 +29,12 @@ class Masthead extends React.PureComponent {
 const MastheadDiv = styled.div`
 padding: 20px;
 text-align: center;
+margin-bottom: 20px;
 `;
 
 const Title = styled.div`
 font-size: 32px;
-margin-top:85px;
+margin-top:105px;
 color: ${props => props.theme.text.primary};
 `;
 
