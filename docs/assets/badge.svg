@@ -1,0 +1,46 @@
+
+<svg width="280px" height="42px" viewBox="0 0 280 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="278" height="40" rx="3"></rect>
+        <filter x="-0.7%" y="-2.5%" width="101.4%" height="110.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.337873635   0 0 0 0 0.343866818   0 0 0 0 0.352439991  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <circle id="path-3" cx="13.5" cy="13.5" r="13.5"></circle>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#77BCEE" offset="0%"></stop>
+            <stop stop-color="#4A90E2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-1028.000000, -1044.000000)">
+            <g id="Group-4" transform="translate(1029.000000, 1044.000000)">
+                <g id="Rectangle">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <rect stroke="#D3DCE4" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="277" height="39" rx="3"></rect>
+                </g>
+                <g id="Logo" transform="translate(22.000000, 6.000000)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Mask" fill-rule="nonzero"></g>
+                    <g id="Group-2" mask="url(#mask-4)">
+                        <g transform="translate(-3.000000, 0.000000)">
+                            <ellipse id="Oval" stroke="none" fill="url(#linearGradient-5)" fill-rule="nonzero" cx="16.5" cy="13.5" rx="13.7476354" ry="13.5"></ellipse>
+                            <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(0.000000, 8.442724)">
+                                <path d="M0.0057590328,2.12398701 L2.66108842,5.26625387 C3.6226819,6.34788485 4.61151348,6.87190188 5.62758313,6.83830496 C7.15168762,6.78790957 11.4683464,0.00122295279 16.4006879,0.00122295279 C19.6889155,0.00122295279 22.3195447,1.64078537 24.2925755,4.91991021" id="Path-2" stroke="#FFFFFF" stroke-width="1.3" fill-rule="nonzero"></path>
+                                <path d="M8.711092,5.42439057 L11.3664214,8.56665743 C12.3280149,9.64828841 13.3168464,10.1723054 14.3329161,10.1387085 C15.8570206,10.0883131 20.3759712,3.00928793 25.3083126,3.00928793 C28.5965403,3.00928793 31.1597389,4.74629654 32.9979085,8.22031377" id="Path-2" stroke="#FFFFFF" stroke-width="1.3" fill-rule="nonzero" transform="translate(20.854500, 6.574757) scale(-1, -1) translate(-20.854500, -6.574757) "></path>
+                            </g>
+                            <ellipse id="Oval-2" stroke="#FFFFFF" stroke-width="1.3" fill="#95C6FF" fill-rule="nonzero" cx="16.5141874" cy="13.5139319" rx="2.12811694" ry="2.08978328"></ellipse>
+                        </g>
+                    </g>
+                </g>
+                <text id="Install-on-the-Adapt" font-family="Nunito-Regular, Nunito" font-size="16" font-weight="normal" fill="#000000">
+                    <tspan x="58.536" y="21">Install on the Adaptive Web</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
