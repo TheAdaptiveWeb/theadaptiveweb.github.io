@@ -3,7 +3,7 @@
 <div align="center"><i>New to AdaptiveWeb? Check out our <a href="#">introduction for developers</a>.</i></div>
 <br>
 
-[![FOSSA Status](https://app.fossa.io/api/projects/custom%2B9051%2Fgit%40github.com%3ATheAdaptiveWeb%2FAdaptiveWeb.io.git.svg?type=shield)](https://app.fossa.io/projects/custom%2B9051%2Fgit%40github.com%3ATheAdaptiveWeb%2FAdaptiveWeb.io.git?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.io/api/projects/custom%2B9051%2Fgit%40github.com%3ATheAdaptiveWeb%2FAdaptiveWeb.io.git.svg?type=shield)](https://app.fossa.io/projects/custom%2B9051%2Fgit%40github.com%3ATheAdaptiveWeb%2FAdaptiveWeb.io.git?ref=badge_shield) [![Gitter](https://badges.gitter.im/TheAdaptiveWeb/community.svg)](https://gitter.im/TheAdaptiveWeb/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 AdaptiveWeb.io hosts end-user information and plugin configuration for The Adaptive Web. The configuration site is built with React.
 
