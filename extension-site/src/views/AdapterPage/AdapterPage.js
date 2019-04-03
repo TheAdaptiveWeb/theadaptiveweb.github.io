@@ -34,7 +34,7 @@ class AdapterPage extends React.Component {
         return (<AppContext.Consumer>
             {({ installedAdapters, globalOptions }) => {
                 return (
-            <Page title="Adapters" subtile="Install and configure adapters from this page. Select an adapter for more info.">
+            <Page title="Adapters" subtitle="Install and configure adapters from this page. Select an adapter for more info.">
                 <Route path="/adapters/:id" render={(props) => {
                     console.log(installedAdapters);
                     let adapter = installedAdapters.find(x => x.id === props.match.params.id);
