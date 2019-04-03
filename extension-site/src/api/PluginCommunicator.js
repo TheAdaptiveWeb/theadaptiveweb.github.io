@@ -66,8 +66,6 @@ export default class PluginCommunicator {
             if (isError) reject(data);
             else         resolve(data);
         }
-
-        console.log('mesageee', event, this.pluginLoaded, backlog);
     }
 
 }

@@ -19,7 +19,8 @@ class Card extends React.Component {
     render() {
         return (
             <CardDiv>
-                {React.Children.map(this.props.children, (child, index) => (<InnerDiv border={index !== 0}>{child}</InnerDiv>))}
+                {React.Children.map(this.props.children, (child, index) => (
+                child && <InnerDiv border={index !== 0}>{child}</InnerDiv>))}
             </CardDiv>
         );
     }

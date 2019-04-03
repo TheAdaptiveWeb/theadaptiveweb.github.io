@@ -24,7 +24,9 @@ class AdapterModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 'description'
+            page: 'description',
+            displayDescription: !!this.props.adapter.about,
+            displaySettings: Object.keys(this.props.adapter.preferenceSchema).length !== 0
         };
     }
 
@@ -35,30 +37,31 @@ class AdapterModal extends React.Component {
     }
 
     render() {
-        let head = [
-            (<div>
-                <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
-                <Title>{this.props.adapter.name}</Title>
-                <Subtitle>{this.props.adapter.description}</Subtitle>
-                <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} />)}</AdapterTags>
-            </div>),
-        ];
-        
-        if (this.props.adapter.developer) head.push(<DevContainer>Developer mode: Run `awcli publish` to publish</DevContainer>);
-
         return (
             <Modal>
-                {head}
+                <div>
+                    <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
+                    <Title>{this.props.adapter.name}</Title>
+                    <Subtitle>{this.props.adapter.description}</Subtitle>
+                    <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} />)}</AdapterTags>
+                </div>
+
+                { this.props.adapter.developer 
+                    && <DevContainer>Developer mode: Run `awcli publish` to publish</DevContainer>}
+
+                { (this.state.displayDescription || this.state.displaySettings) && 
                 <PageContainer>
-                    { this.state.page === 'description'
-                      ? <ReactMarkdown source={this.props.adapter.about} escapeHtml={false} />
-                      : <AdapterSettings schema={this.props.adapter.preferenceSchema} /> }
-                </PageContainer>
+                    { (this.state.page === 'description' && this.state.displayDescription)
+                    ? <ReactMarkdown source={this.props.adapter.about} escapeHtml={false} />
+                    : <AdapterSettings schema={this.props.adapter.preferenceSchema} /> }
+                </PageContainer>}
+
                 <ActionsContainer>
                     <Actions>
-                    <Button onClick={() => this.setPage(this.state.page === 'description' ? 'settings' : 'description')}>
-                        {this.state.page === 'description' ? 'settings' : 'description'}
-                    </Button>
+                    { this.state.displayDescription && this.state.displaySettings
+                    && <Button onClick={() => this.setPage(this.state.page === 'description' ?       'settings' : 'description')}>
+                            {this.state.page === 'description' ? 'settings' : 'description'}
+                        </Button> }
                     <Button type="danger">Disable</Button>
                     </Actions>
                 </ActionsContainer>
