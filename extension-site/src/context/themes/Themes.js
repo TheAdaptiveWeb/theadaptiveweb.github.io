@@ -18,7 +18,7 @@ import highContrastThemeImage from './highContrastTheme.png';
 import highContrastInvertedImage from './highContrastInverted.png'
 
 function gradient(from, to) {
-    return `linear-gradient(45deg, ${from} 0%, ${to} 100%);`;
+    return `linear-gradient(45deg, ${from} 0%, ${to} 100%)`;
 }
 
 const DefaultTheme = {
@@ -33,7 +33,8 @@ const DefaultTheme = {
         primary: gradient('#7db9e8', '#4a90e2'),
         red: gradient('#EE7777', '#E24A4A'),
         gray: gradient('#737373', '#343434'),
-        green: gradient('#6ABF69', '#388E3C')
+        green: gradient('#6ABF69', '#388E3C'),
+        purple: gradient('#674bc5', '#783fce'),
     },
     text: {
         primary: '#000',
@@ -70,7 +71,8 @@ const DarkTheme = {
         primary: gradient('#7db9e8', '#4a90e2'),
         red: gradient('#EE7777', '#E24A4A'),
         gray: gradient('#737373', '#343434'),
-        green: gradient('#6ABF69', '#388E3C')
+        green: gradient('#6ABF69', '#388E3C'),
+        purple: gradient('#674bc5', '#783fce'),
     },
     text: {
         primary: '#fff',
@@ -107,7 +109,8 @@ const HighContrastTheme = {
         primary: gradient('#7db9e8', '#4a90e2'),
         red: gradient('#EE7777', '#E24A4A'),
         gray: gradient('#737373', '#343434'),
-        green: gradient('#6ABF69', '#388E3C')
+        green: gradient('#6ABF69', '#388E3C'),
+        purple: gradient('#674bc5', '#783fce'),
     },
     text: {
         primary: '#fff',
@@ -145,7 +148,8 @@ const HighContrastInvertedTheme = {
         primary: gradient('#7db9e8', '#4a90e2'),
         red: gradient('#EE7777', '#E24A4A'),
         gray: gradient('#737373', '#343434'),
-        green: gradient('#6ABF69', '#388E3C')
+        green: gradient('#6ABF69', '#388E3C'),
+        purple: gradient('#674bc5', '#783fce'),
     },
     text: {
         primary: '#000',

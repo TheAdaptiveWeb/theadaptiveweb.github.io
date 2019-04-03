@@ -40,7 +40,7 @@ class AdapterModal extends React.Component {
                 <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
                 <Title>{this.props.adapter.name}</Title>
                 <Subtitle>{this.props.adapter.description}</Subtitle>
-                <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}</AdapterTags>
+                <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} />)}</AdapterTags>
             </div>),
         ];
         

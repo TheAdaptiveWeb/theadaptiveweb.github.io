@@ -18,7 +18,7 @@ import styled from 'styled-components';
 class AdapterTag extends React.Component {
     render() {
         return (
-            <Card startColor={this.props.startColor} endColor={this.props.endColor}>
+            <Card>
                 <Label>{this.props.label}</Label>
             </Card>
         );
@@ -41,7 +41,7 @@ overflow: hidden;
 &:before {
     content: ' ';
     position: absolute;
-    background: linear-gradient(135deg, ${props => props.startColor} 0%, ${props => props.endColor} 100%);
+    background: ${props => props.theme.gradient.purple};
     top: -1px;
     left: -1px;
     bottom: -1px;
