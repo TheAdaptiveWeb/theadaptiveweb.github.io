@@ -19,10 +19,6 @@ import Label from '../Label';
 class Switch extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            checked: false
-        }
     }
 
     render() {
@@ -87,7 +83,7 @@ flex-shrink: 0;
     height: 25px;
     width: 25px;
     ${props => props.theme.field.border ? 'left: -2px; top: -5px;' : 'left: 0; top: -3px;'}
-    transition: .4s, background-color .4s;
+    transition: transform .4s, background-color .4s;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.5);

@@ -28,9 +28,9 @@ export default class PluginCommunicator {
         return new Promise((resolve, reject) => {
             let messageId = ++this.messageIterator;
             if (!this.pluginLoaded) {
-                this.loadBacklog.push({ messageId, bundle: { message, data } });
+                this.loadBacklog.push({ messageId, type: message, data });
             } else {
-                window.postMessage({ messageId, bundle: { message, data }, outbound: true }, '*');
+                window.postMessage({ messageId, type: message, data, outbound: true }, '*');
             }
 
             this.resolveBacklog[messageId] = { resolve, reject };
@@ -49,23 +49,25 @@ export default class PluginCommunicator {
         if (event.data.message === 'initAdaptiveWebPlugin') {
             this.pluginLoaded = true;
             this.loadBacklog.forEach(message => {
-                let { messageId, bundle } = message;
-                window.postMessage({ messageId, bundle, outbound: true }, '*');
+                let { messageId, type, data } = message;
+                window.postMessage({ messageId, type, data, outbound: true }, '*');
             });
         }
 
         if (!this.pluginLoaded) return;
         if (event.data.outbound) return;
 
-        let { messageId, bundle, isError } = event.data;
+        let { messageId, data, isError } = event.data;
         let backlog = this.resolveBacklog[messageId];
         if (backlog !== undefined) {
             let { resolve, reject } = backlog;
             this.resolveBacklog[messageId] = undefined;
 
-            if (isError) reject(bundle);
-            else         resolve(bundle);
+            if (isError) reject(data);
+            else         resolve(data);
         }
+
+        console.log('mesageee', event, this.pluginLoaded, backlog);
     }
 
 }

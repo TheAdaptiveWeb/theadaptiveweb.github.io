@@ -48,6 +48,8 @@ color: ${props => props.theme.text.primary};
 
 const Subtitle = styled.div` 
 font-size: 18px;
+height: 48px;
+overflow: hidden;
 color: ${props => props.theme.text.secondary};
 `;
 

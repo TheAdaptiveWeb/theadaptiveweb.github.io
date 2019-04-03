@@ -28,10 +28,12 @@ class Routes extends React.Component {
                         <TransitionGroup>
                             <CSSTransition key={globalOptions.animations && location.pathname.split('/')[1]} classNames="fade" timeout={550}>
                             <Switch location={location}>
-                                <Route path="/adapters" component={() => <Pager><AdapterPage /></Pager>}/>
-                                <Route path="/help" component={() => <Pager><HelpPage /></Pager>}/>
-                                <Route path="/settings" component={props => <Pager><SettingsPage /></Pager>}/>
-                                <Route path="/info" component={() => <Pager><InfoPage /></Pager>}/>
+                                <Pager>
+                                    <Route path="/adapters" component={AdapterPage}/>
+                                    <Route path="/help" component={HelpPage}/>
+                                    <Route path="/settings" component={SettingsPage}/>
+                                    <Route path="/info" component={InfoPage}/>
+                                </Pager>
                             </Switch>
                             </CSSTransition>
                         </TransitionGroup>

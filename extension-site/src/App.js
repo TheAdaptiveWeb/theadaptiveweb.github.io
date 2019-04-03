@@ -52,6 +52,7 @@ class App extends Component {
     });
 
     this.conn.sendMessage('requestAdapters')
+      .then(response => Object.keys(response).map(key => response[key]))
       .then(response => {
         this.setState({
           installedAdapters: response
