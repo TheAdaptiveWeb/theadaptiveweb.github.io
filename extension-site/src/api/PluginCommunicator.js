@@ -24,6 +24,10 @@ export default class PluginCommunicator {
         this.adapterUpdateCallback = adapterUpdateCallback;
         // register
         window.addEventListener('message', this.handleMessage.bind(this));
+
+        window.setTimeout(() => {
+            if (!this.pluginLoaded) window.location.href = 'https://adaptiveweb.io/';
+        }, 1000);
     }
 
     requestAdapters() {
