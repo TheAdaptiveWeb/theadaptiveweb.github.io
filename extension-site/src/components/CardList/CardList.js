@@ -19,7 +19,7 @@ class CardList extends React.Component {
     render() {
         return (
             <CardListDiv>
-                {this.props.children.map((child, index) => {
+                {React.Children.map(this.props.children, (child, index) => {
                     return <CardDiv key={'cl-' + index}>{child}</CardDiv>
                 })}
             </CardListDiv>

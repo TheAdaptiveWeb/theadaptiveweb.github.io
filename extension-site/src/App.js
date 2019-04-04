@@ -20,6 +20,8 @@ import { css, keyframes, ThemeProvider, createGlobalStyle } from 'styled-compone
 import { Themes, AppContext } from './context';
 import { getOptions, saveOptions } from './api/SettingsStorage';
 import { default as PluginCommunicator } from './api/PluginCommunicator';
+import * as adapterRegistry from '@adaptiveweb/registry';
+import * as semver from 'semver';
 
 const defaultOptions = {
   theme: 'light',
@@ -32,12 +34,21 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    let adapters = {};
+    adapterRegistry.forEach(a => {
+      adapters[a.id] = a;
+    });
+
     this.state = {
       config: defaultOptions,
-      installedAdapters: []
+      adapters,
+      installedAdapters: [],
+      developerAdapters: [],
     };
 
-    this.conn = new PluginCommunicator();
+    this.conn = new PluginCommunicator((developerAdapters) => {
+      this.setState({ developerAdapters })
+    });
   }
 
   componentDidMount() {
@@ -51,13 +62,26 @@ class App extends Component {
       } else this.updateGlobalOptions(state);
     });
 
-    this.conn.sendMessage('requestAdapters')
-      .then(response => Object.keys(response).map(key => response[key]))
+    this.conn.requestAdapters()
+      .then(response => Object.keys(response).map(k => response[k]))
       .then(response => {
-        this.setState({
-          installedAdapters: response
+        let adapters = [];
+
+        // Check for and install updates
+        response.forEach(adapter => {
+          console.log(adapter.id);
+          if (semver.gt(this.state.adapters[adapter.id].version, adapter.version)) {
+            this.conn.installAdapter(this.state.adapters[adapter.id]);
+            adapters.push(this.state.adapters[adapter.id]);
+          } else {
+            adapters.push(adapter);
+          }
         });
-        console.log(this.state.installedAdapters);
+        
+        // Set the adapters
+        this.setState({
+          installedAdapters: adapters
+        });
       }, err => {
         console.error(err);
       });
@@ -69,7 +93,7 @@ class App extends Component {
     Object.keys(state).forEach(k => { newState[k] = state[k]; });
     this.setState({ config: newState }, () => {
       saveOptions(this.state.config);
-      this.conn.sendMessage('setGlobalOptions', this.state.config);
+      this.conn.setGlobalOptions(this.state.config);
     });
   }
 
@@ -78,7 +102,13 @@ class App extends Component {
       <AppContext.Provider value={{ 
         globalOptions: this.state.config, 
         updateGlobalOptions: this.updateGlobalOptions.bind(this), 
-        installedAdapters: this.state.installedAdapters }}>
+        installedAdapters: this.state.installedAdapters,
+        getAdapterPreferences: this.conn.getAdapterPreferences.bind(this.conn),
+        updateAdapterPreferences: this.conn.updateAdapterPreferences.bind(this.conn),
+        adapters: this.state.adapters,
+        installedAdapters: this.state.installedAdapters,
+        developerAdapters: this.state.developerAdapters,
+         }}>
 
         <ThemeProvider theme={Themes[this.state.config.theme].theme}>
           <>

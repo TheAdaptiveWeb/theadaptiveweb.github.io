@@ -14,14 +14,43 @@
  */
 export default class PluginCommunicator {
 
-    constructor() {
+    constructor(devAdapterCallback) {
         this.messageIterator = 0;
         this.resolveBacklog = {};
         this.loadBacklog = [];
         this.pluginLoaded = false;
         this.timeout = 1000;
+        this.devAdapterCallback = devAdapterCallback;
         // register
         window.addEventListener('message', this.handleMessage.bind(this));
+    }
+
+    requestAdapters() {
+        return this.sendMessage('requestAdapters')
+    }
+
+    installAdapter(adapter, replace = false) {
+        this.sendMessage('installAdapter', { adapter, replace });
+    }
+
+    removeAdapter(adapterId) {
+        this.sendMessage('removeAdapter', { adapterId });
+    }
+
+    updateAdapterPreferences(adapterId, preferences) {
+        this.sendMessage('updatePreferences', { adapterId, preferences });
+    }
+
+    getAdapterPreferences(adapterId) {
+        this.sendMessage('getAdapterPreferences', { adapterId });
+    }
+
+    setGlobalOptions(data) {
+        this.sendMessage('setGlobalOptions', data);
+    }
+
+    getGlobalOptions() {
+        return this.sendMessage('getGlobalOptions');
     }
 
     sendMessage(message, data) {
@@ -52,6 +81,11 @@ export default class PluginCommunicator {
                 let { messageId, type, data } = message;
                 window.postMessage({ messageId, type, data, outbound: true }, '*');
             });
+            return;
+        }
+        if (event.data.message === 'incomingDeveloperAdapters') {
+            this.devAdapterCallback(event.data.adapters);
+            return;
         }
 
         if (!this.pluginLoaded) return;

@@ -20,24 +20,12 @@ import { AppContext } from '../../context';
 
 class AdapterPage extends React.Component {
     render() {
-        // Mocking only - should occur in constructor
-        let subtitle = 'Spoken audio description for web videos.';
-        let adapters = [];
-        for (let i = 1; i < 22; i++) adapters.push({ 
-            id: `adapter${i}`, 
-            name: `Adapter ${i}`, 
-            description: subtitle, 
-            tags: [ `tag${i}`, `tag${i+1}`, `tag${i+2}` ] });
-        let installedAdapters = [];
-        for (let i = 1; i < 7; i++) installedAdapters.push(`adapter${i}`);
-
         return (<AppContext.Consumer>
-            {({ installedAdapters, globalOptions }) => {
+            {({ installedAdapters, adapters, developerAdapters, globalOptions }) => {
                 return (
             <Page title="Adapters" subtitle="Install and configure adapters from this page. Select an adapter for more info.">
                 <Route path="/adapters/:id" render={(props) => {
-                    console.log(installedAdapters);
-                    let adapter = installedAdapters.find(x => x.id === props.match.params.id);
+                    let adapter = [...installedAdapters, ...adapters, ...developerAdapters].find(x => x.id === props.match.params.id);
                     if (adapter === undefined) return (<div></div>);
                     return (
                         <AdapterModal adapter={adapter} />
@@ -46,19 +34,24 @@ class AdapterPage extends React.Component {
                 {globalOptions.developerMode && (
                     <Section title="Developer adapters">
                         <CardList>
-                            {installedAdapters.filter(adapter => adapter.developer).map(adapter => {
+                            {developerAdapters.length === 0
+                            ? <div>No developer adapters installed</div>
+                            : developerAdapters.map(adapter => {
                                 return <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} /> })}
                         </CardList>
                     </Section>
                 )}
                 <Section title="Installed">
                     <CardList>
-                        {installedAdapters.filter(adapter => adapter.developer).map(adapter => <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} />)}
+                        {installedAdapters.length === 0
+                            ? <div>No adapters installed</div>
+                            : installedAdapters.map(adapter => {
+                                return <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} /> })}
                     </CardList>
                 </Section>
                 <Section title="Available">
                     <CardList>
-                        {installedAdapters.map(adapter => <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} />)}
+                        {Object.keys(adapters).map(k => adapters[k]).map(adapter => <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} />)}
                     </CardList>
                 </Section>
             </Page>
