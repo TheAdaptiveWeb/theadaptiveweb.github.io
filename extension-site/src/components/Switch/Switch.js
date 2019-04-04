@@ -17,10 +17,6 @@ import styled from 'styled-components';
 import Label from '../Label';
 
 class Switch extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <SwitchLabel>

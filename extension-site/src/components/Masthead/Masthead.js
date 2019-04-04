@@ -20,7 +20,7 @@ class Masthead extends React.PureComponent {
         return (
             <MastheadDiv>
                 <Title>The Adaptive Web</Title>
-                <Subtitle>Adaptive Web Accessibility Toolkit</Subtitle>
+                <Subtitle>Adaptive Web Accessibility Platform</Subtitle>
             </MastheadDiv>
         );
     }
