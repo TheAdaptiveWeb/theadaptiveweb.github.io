@@ -14,11 +14,11 @@
  */
 import * as React from 'react';
 import { Modal, AdapterTag, Button } from '..';
-import { Link } from 'react-router-dom';
 import BackLink from '../BackLink';
 import styled from 'styled-components';
 import AdapterSettings from '../AdapterSettings';
 import ReactMarkdown from 'react-markdown';
+import UnstyledLink from '../UnstyledLink';
 
 class AdapterModal extends React.Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class AdapterModal extends React.Component {
         this.state = {
             page: 'description',
             displayDescription: !!this.props.adapter.about,
-            displaySettings: Object.keys(this.props.adapter.preferenceSchema).length !== 0
+            displaySettings: Object.keys(this.props.adapter.preferenceSchema).length !== 0,
         };
     }
 
@@ -40,7 +40,7 @@ class AdapterModal extends React.Component {
         return (
             <Modal>
                 <div>
-                    <Link to="/adapters"><BackLink>Back to Adapters</BackLink></Link>
+                    <UnstyledLink to="/adapters"><BackLink>Back to Adapters</BackLink></UnstyledLink>
                     <Title>{this.props.adapter.name}</Title>
                     <Subtitle>{this.props.adapter.description}</Subtitle>
                     <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} />)}</AdapterTags>
@@ -49,20 +49,24 @@ class AdapterModal extends React.Component {
                 { this.props.adapter.developer 
                     && <DevContainer>Developer mode: Run `awcli publish` to publish</DevContainer>}
 
-                { (this.state.displayDescription || this.state.displaySettings) && 
+                { (this.state.displayDescription || (this.state.displaySettings && this.props.installed)) && 
                 <PageContainer>
                     { (this.state.page === 'description' && this.state.displayDescription)
                     ? <ReactMarkdown source={this.props.adapter.about} escapeHtml={false} />
-                    : <AdapterSettings schema={this.props.adapter.preferenceSchema} /> }
+                    : <AdapterSettings schema={this.props.adapter.preferenceSchema} values={this.props.preferences} onChange={(key, value) => {
+                        this.props.updateAdapterPreferences(this.props.adapter.id, { [ key ]: value });
+                    }} /> }
                 </PageContainer>}
 
                 <ActionsContainer>
                     <Actions>
-                    { this.state.displayDescription && this.state.displaySettings
-                    && <Button onClick={() => this.setPage(this.state.page === 'description' ?       'settings' : 'description')}>
-                            {this.state.page === 'description' ? 'settings' : 'description'}
-                        </Button> }
-                    <Button type="danger">Disable</Button>
+                        { this.state.displayDescription && this.state.displaySettings
+                        && <Button onClick={() => this.setPage(this.state.page === 'description' ? 'settings' : 'description')}>
+                                {this.state.page === 'description' ? 'settings' : 'description'}
+                            </Button> }
+                        {this.props.installed
+                        ? <Button onClick={() => this.props.removeAdapter(this.props.adapter.id)} type="danger">Disable</Button>
+                        : <Button onClick={() => this.props.installAdapter(this.props.adapter)}>Enable</Button>}
                     </Actions>
                 </ActionsContainer>
             </Modal>

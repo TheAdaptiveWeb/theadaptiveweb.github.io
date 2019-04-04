@@ -46,7 +46,26 @@ class App extends Component {
       developerAdapters: [],
     };
 
-    this.conn = new PluginCommunicator((developerAdapters) => {
+    this.conn = new PluginCommunicator((installedAdapters) => {
+        let filteredAdapters = [];
+
+        // Check for and install updates
+        installedAdapters.forEach(adapter => {
+          console.log(adapter.id);
+          if (semver.gt(this.state.adapters[adapter.id].version, adapter.version)) {
+            this.conn.installAdapter(this.state.adapters[adapter.id]);
+            filteredAdapters.push(this.state.adapters[adapter.id]);
+          } else {
+            filteredAdapters.push(adapter);
+          }
+        });
+        
+        // Set the adapters
+        this.setState({
+          installedAdapters: filteredAdapters
+        });
+      this.setState({ installedAdapters })
+    }, (developerAdapters) => {
       this.setState({ developerAdapters })
     });
   }
@@ -62,29 +81,7 @@ class App extends Component {
       } else this.updateGlobalOptions(state);
     });
 
-    this.conn.requestAdapters()
-      .then(response => Object.keys(response).map(k => response[k]))
-      .then(response => {
-        let adapters = [];
-
-        // Check for and install updates
-        response.forEach(adapter => {
-          console.log(adapter.id);
-          if (semver.gt(this.state.adapters[adapter.id].version, adapter.version)) {
-            this.conn.installAdapter(this.state.adapters[adapter.id]);
-            adapters.push(this.state.adapters[adapter.id]);
-          } else {
-            adapters.push(adapter);
-          }
-        });
-        
-        // Set the adapters
-        this.setState({
-          installedAdapters: adapters
-        });
-      }, err => {
-        console.error(err);
-      });
+    this.conn.requestAdapters();
   }
 
   updateGlobalOptions(state) {
@@ -103,11 +100,12 @@ class App extends Component {
         globalOptions: this.state.config, 
         updateGlobalOptions: this.updateGlobalOptions.bind(this), 
         installedAdapters: this.state.installedAdapters,
-        getAdapterPreferences: this.conn.getAdapterPreferences.bind(this.conn),
-        updateAdapterPreferences: this.conn.updateAdapterPreferences.bind(this.conn),
-        adapters: this.state.adapters,
-        installedAdapters: this.state.installedAdapters,
         developerAdapters: this.state.developerAdapters,
+        adapters: this.state.adapters,
+        installAdapter: this.conn.installAdapter.bind(this.conn), 
+        removeAdapter: this.conn.removeAdapter.bind(this.conn),
+        getAdapterPreferences: this.conn.getAdapterPreferences.bind(this.conn), 
+        updateAdapterPreferences: this.conn.updateAdapterPreferences.bind(this.conn),
          }}>
 
         <ThemeProvider theme={Themes[this.state.config.theme].theme}>
@@ -157,7 +155,11 @@ body {
 }
 
 a {
-  text-decoration: none;
+  color: ${props => props.theme.link.default}
+}
+
+a:visited {
+  color: ${props => props.theme.link.visited}
 }
 `;
 

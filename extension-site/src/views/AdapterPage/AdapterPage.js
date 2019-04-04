@@ -17,37 +17,53 @@ import * as React from 'react';
 import { Section, AdapterCard, Page, CardList, AdapterModal } from '../../components';
 import { Route } from 'react-router-dom';
 import { AppContext } from '../../context';
+import InfoCard from '../../components/InfoCard';
+import PreferenceProvider from '../../components/PreferenceProvider';
 
 class AdapterPage extends React.Component {
     render() {
         return (<AppContext.Consumer>
-            {({ installedAdapters, adapters, developerAdapters, globalOptions }) => {
+            {({ installedAdapters, adapters, developerAdapters, globalOptions, installAdapter, removeAdapter, getAdapterPreferences, updateAdapterPreferences }) => {
                 return (
             <Page title="Adapters" subtitle="Install and configure adapters from this page. Select an adapter for more info.">
                 <Route path="/adapters/:id" render={(props) => {
-                    let adapter = [...installedAdapters, ...adapters, ...developerAdapters].find(x => x.id === props.match.params.id);
+                    let adapter = adapters[props.match.params.id] || developerAdapters.find(x => x.id = props.match.params.id);
                     if (adapter === undefined) return (<div></div>);
+
+                    let installed = installedAdapters.find(x => x.id === adapter.id) !== undefined;
+
                     return (
-                        <AdapterModal adapter={adapter} />
+                        <PreferenceProvider
+                            getAdapterPreferences={getAdapterPreferences}
+                            adapterId={adapter.id}>
+                            <AdapterModal 
+                                installed={installed} 
+                                adapter={adapter}
+                                installAdapter={installAdapter}
+                                removeAdapter={removeAdapter}
+                                updateAdapterPreferences={updateAdapterPreferences} />
+                        </PreferenceProvider>
                     );
                 }}/>
                 {globalOptions.developerMode && (
                     <Section title="Developer adapters">
-                        <CardList>
-                            {developerAdapters.length === 0
-                            ? <div>No developer adapters installed</div>
-                            : developerAdapters.map(adapter => {
+                        {developerAdapters.length === 0
+                            ? <InfoCard>No developer adapters are active. Use awcli to debug adapters. <a href="https://docs.adaptiveweb.io/developing/getting-started">Visit the developer documentation for more info</a></InfoCard>
+                            : <CardList>
+                                {developerAdapters.map(adapter => {
                                 return <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} /> })}
-                        </CardList>
+                              </CardList>}
                     </Section>
                 )}
                 <Section title="Installed">
-                    <CardList>
                         {installedAdapters.length === 0
-                            ? <div>No adapters installed</div>
-                            : installedAdapters.map(adapter => {
+                            ? <InfoCard>No adapters are installed. Install them from the list of available adapters below.</InfoCard>
+                            : <CardList>
+                                {installedAdapters.map(adapter => {
                                 return <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} /> })}
-                    </CardList>
+                              </CardList>}
+                    
+                    
                 </Section>
                 <Section title="Available">
                     <CardList>

@@ -15,8 +15,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { keyframes, css } from 'styled-components';
-import {withRouter, Link} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { AppContext } from '../../context';
+import UnstyledLink from '../UnstyledLink';
 
 class MenuItem extends React.Component {
     shouldComponentUpdate(newProps) {
@@ -30,14 +31,14 @@ class MenuItem extends React.Component {
         return (
             <AppContext.Consumer>
                 {({ globalOptions }) => (
-                    <Link to={this.props.path}>
+                    <UnstyledLink to={this.props.path}>
                         <MenuItemDiv active={active}>
                             <Container animations={globalOptions.animations} active={active}>
                                 <Image image={this.props.image} active={active} />
                                 <Label>{this.props.text}</Label>
                             </Container>
                         </MenuItemDiv>
-                    </Link>
+                    </UnstyledLink>
                 )}
             </AppContext.Consumer>
         );

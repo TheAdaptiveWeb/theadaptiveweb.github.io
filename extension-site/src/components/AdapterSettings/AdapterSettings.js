@@ -22,36 +22,32 @@ import { TextField } from '..';
 class AdapterSettings extends React.Component {
     render() {
         let preferenceSchema = this.props.schema;
-        console.log(preferenceSchema);
         let preferences = Object.keys(preferenceSchema);
+        let preferenceValues = this.props.values;
 
         let items = preferences
             .map(key => { return { key, ...preferenceSchema[key] } })
             .map(pref => {
                 switch(pref.type) {
                     case 'text':
-                    return <TextField key={pref.key} title={pref.friendlyName} subtitle={pref.description} />
+                    return <TextField key={pref.key} title={pref.friendlyName} subtitle={pref.description} onChange={(newValue) => this.props.onChange(pref.key, newValue)} value={preferenceValues[pref.key]}  />
 
                     case 'switch':
-                    return <Switch key={pref.key} title={pref.friendlyName} subtitle={pref.description} />
+                    return <Switch key={pref.key} title={pref.friendlyName} subtitle={pref.description} onChange={(newValue) => this.props.onChange(pref.key, newValue)} checked={preferenceValues[pref.key]} />
 
                     default: return <></>;
                 }
             });
 
         return (
-            <AppContext.Consumer>
-                { ({ setGlobal }) => {
-                    return <AdapterSettingsDiv>
-                    {items.map((item, index) => {
-                        return (<>
-                            { item }
-                            { index !== (items.length - 1) && <Separator /> }
-                        </>);
-                    })}
-                    </AdapterSettingsDiv>;
-                } }
-            </AppContext.Consumer>
+            <AdapterSettingsDiv>
+                {items.map((item, index) => {
+                    return (<>
+                        { item }
+                        { index !== (items.length - 1) && <Separator /> }
+                    </>);
+                })}
+            </AdapterSettingsDiv>
         );
     }
 }

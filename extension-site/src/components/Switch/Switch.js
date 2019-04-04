@@ -17,11 +17,25 @@ import styled from 'styled-components';
 import Label from '../Label';
 
 class Switch extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            checked: props.checked
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.checked !== this.state.checked) {
+          this.setState({ checked: nextProps.checked });
+        }
+    }
+
     render() {
         return (
             <SwitchLabel>
                 <SwitchDiv>
-                    <input type="checkbox" checked={this.props.checked} disabled={this.props.disabled} onChange={(event) => { this.props.onChange(event.target.checked) }} />
+                    <input type="checkbox" checked={this.state.checked} disabled={this.props.disabled} onChange={(event) => { this.props.onChange(event.target.checked) }} />
                     <span>
                         <div />
                     </span>

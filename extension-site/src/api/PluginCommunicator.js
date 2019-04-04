@@ -14,35 +14,45 @@
  */
 export default class PluginCommunicator {
 
-    constructor(devAdapterCallback) {
+    constructor(adapterUpdateCallback, devAdapterCallback) {
         this.messageIterator = 0;
         this.resolveBacklog = {};
         this.loadBacklog = [];
         this.pluginLoaded = false;
         this.timeout = 1000;
         this.devAdapterCallback = devAdapterCallback;
+        this.adapterUpdateCallback = adapterUpdateCallback;
         // register
         window.addEventListener('message', this.handleMessage.bind(this));
     }
 
     requestAdapters() {
-        return this.sendMessage('requestAdapters')
+        this.sendMessage('requestAdapters')
+            .then(response => Object.keys(response).map(k => response[k]))
+            .then(adapters => {
+                this.adapterUpdateCallback(adapters);
+                return adapters;
+            });
     }
 
     installAdapter(adapter, replace = false) {
+        console.log('Installing adapter!', adapter);
         this.sendMessage('installAdapter', { adapter, replace });
+        this.requestAdapters();
     }
 
     removeAdapter(adapterId) {
         this.sendMessage('removeAdapter', { adapterId });
+        this.requestAdapters();
     }
 
     updateAdapterPreferences(adapterId, preferences) {
+        console.log('Updating adapter prefs!', adapterId, preferences);
         this.sendMessage('updatePreferences', { adapterId, preferences });
     }
 
     getAdapterPreferences(adapterId) {
-        this.sendMessage('getAdapterPreferences', { adapterId });
+        return this.sendMessage('getAdapterPreferences', { adapterId });
     }
 
     setGlobalOptions(data) {

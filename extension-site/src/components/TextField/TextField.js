@@ -20,16 +20,27 @@ class TextField extends React.Component {
     constructor(props) {
         super(props);
 
+        console.log('props', props);
+
         this.state = {
-            value: ''
+            value: props.value
+        }
+
+        console.log('state', this.state)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.value !== this.state.value) {
+          this.setState({ value: nextProps.value });
         }
     }
+      
 
     render() {
         return (
             <TextFieldDiv>
                 <Label title={this.props.title} subtitle={this.props.subtitle}  />
-                <Field />
+                <Field value={this.state.value} onChange={event => this.props.onChange(event.target.value)} />
             </TextFieldDiv>
         );
     }

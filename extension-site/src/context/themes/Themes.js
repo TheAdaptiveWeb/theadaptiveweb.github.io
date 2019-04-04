@@ -44,7 +44,9 @@ const DefaultTheme = {
         active: '#fff',
         inactive: '#000',
         activeIcon: 'filter: invert(100%)',
-        inactiveIcon: ''
+        inactiveIcon: '',
+        default: '#4A90E2',
+        visited: '#185AA8'
     },
     button: {
         normal: '#62A8E8',
@@ -82,7 +84,9 @@ const DarkTheme = {
         active: '#fff',
         inactive: '#fff',
         activeIcon: 'filter: invert(100%)',
-        inactiveIcon: 'filter: invert(100%)'
+        inactiveIcon: 'filter: invert(100%)',
+        default: '#77BCEE',
+        visited: '#97C8EC'
     },
     button: {
         normal: '#62A8E8',
@@ -120,7 +124,9 @@ const HighContrastTheme = {
         active: '#000',
         inactive: '#fff',
         activeIcon: '',
-        inactiveIcon: 'filter: invert(100%)'
+        inactiveIcon: 'filter: invert(100%)',
+        default: '#fff',
+        visited: '#fff'
     },
     button: {
         normal: '#fff',
@@ -159,7 +165,9 @@ const HighContrastInvertedTheme = {
         active: '#fff',
         inactive: '#000',
         activeIcon: 'filter: invert(100%)',
-        inactiveIcon: ''
+        inactiveIcon: '',
+        default: '#000',
+        visited: '#000'
     },
     button: {
         normal: '#000',

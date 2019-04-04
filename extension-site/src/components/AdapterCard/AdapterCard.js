@@ -17,12 +17,13 @@ import styled from 'styled-components';
 import AdapterTag from '../AdapterTag';
 import { Card } from '..';
 import { Link } from 'react-router-dom';
+import UnstyledLink from '../UnstyledLink';
 
 class AdapterCard extends React.Component {
     render() {
         return (
             <CardContainer>
-                <Link to={'/adapters/' + this.props.adapter.id || ""}>
+                <UnstyledLink to={'/adapters/' + this.props.adapter.id || ""}>
                     <Card>
                         <div>
                             <Title>{this.props.adapter.name}</Title>
@@ -30,7 +31,7 @@ class AdapterCard extends React.Component {
                             <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}</AdapterTags>
                         </div>
                     </Card>
-                </Link>
+                </UnstyledLink>
             </CardContainer>
         );
     }
