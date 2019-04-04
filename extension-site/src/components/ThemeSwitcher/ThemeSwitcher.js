@@ -16,6 +16,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Themes } from '../../context';
 import { Link } from 'react-router-dom';
+import UnstyledLink from '../UnstyledLink';
 
 class ThemeSwitcher extends React.Component {
     render() {
@@ -24,12 +25,12 @@ class ThemeSwitcher extends React.Component {
                 {Object.keys(Themes).map(key => {
                     let theme = Themes[key];
                     return (
-                    <Link key={key} to="/settings">
+                    <UnstyledLink key={key} to="/settings">
                         <Theme onClick={() => this.props.updateGlobalOptions({ theme: key })} active={key === this.props.globalOptions.theme}>
                             <ThemeImage image={theme.image} />
                             {theme.name}
                         </Theme>
-                    </Link>);
+                    </UnstyledLink>);
                 })}
             </ThemeSwitcherDiv>
         );
