@@ -49,7 +49,7 @@ const pathKeyframes = keyframes`
     stroke-dashoffset: 900;
     stroke-dasharray: 1000;
 }
-50% {
+40% {
     stroke-dashoffset: 900;
     stroke-dasharray: 1000;
 }
