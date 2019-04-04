@@ -11,8 +11,8 @@
     <style>
         html, body {
             font-family: 'Nunito', sans-serif;
-            height: 100%;
             background-color: #FAFBFC;
+            box-sizing: border-box;
         }
         .flex-container {
             display: flex;
@@ -23,6 +23,7 @@
             left: 0;
             right: 0;
             bottom: 0;
+            box-sizing: border-box;
         }
 
         .header {
@@ -67,6 +68,21 @@
 
         p {
             margin: 0;
+        }
+
+        .footnote {
+            margin-top: 30px;
+            background-color: #fff;
+            box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
+            border-radius: 3px;
+            border-left: 5px solid #62A8E8;
+            padding: 15px;
+            display: flex;
+            align-items: top;
+        }
+
+        .footnote-icon {
+            margin-right: 15px;
         }
 
     </style>
@@ -116,7 +132,7 @@
                     </svg>
                 </div>
                 <div class="nav-content">
-                    <a href="https://docs.adaptiveweb.io"><h3>Install the Adaptive Web</h3></a>
+                    <a href="https://docs.adaptiveweb.io/installing-the-adaptive-web"><h3>Install the Adaptive Web</h3></a>
                     <p>Find out how to install the Adaptive Web for your browser.</p>
                 </div>
             </div>
@@ -136,8 +152,17 @@
                     </svg>
                 </div>
                 <div class="nav-content">
-                    <a href="https://docs.adaptiveweb.io"><h3>Contribute</h3></a>
+                    <a href="https://github.com/TheAdaptiveWeb"><h3>Contribute</h3></a>
                     <p>Help us build a more accessible web: contribute on GitHub.</p>
+                </div>
+            </div>
+
+            <div class="footnote">
+                <div class="footnote-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="#62A8E8" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                </div>
+                <div>
+                    We're in the process of building a better landing page. For now please <a href="https://docs.adaptiveweb.io">consult the docs</a> for an overview of the project and <a href="https://github.com/TheAdaptiveWeb">head over to GitHub</a> to help contribute.
                 </div>
             </div>
         </div>
