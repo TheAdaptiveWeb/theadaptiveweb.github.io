@@ -62,7 +62,7 @@ class AdapterPage extends React.Component {
                     </Section>
                 )}
                 <Section title="Installed">
-                        {installedAdapters.filter(x => adapters[x] !== undefined && developerAdapters.map(y=>y.id).indexOf(x.id) === -1).length === 0
+                        {installedAdapters.filter(x => adapters[x.id] !== undefined && developerAdapters.map(y=>y.id).indexOf(x.id) === -1).length === 0
                             ? <InfoCard>No adapters are installed. Install them from the list of available adapters below.</InfoCard>
                             : <CardList>
                                 {installedAdapters.filter(x => developerAdapters.map(y=>y.id).indexOf(x.id) === -1).map(adapter => {

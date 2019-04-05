@@ -41,10 +41,10 @@ class AdapterSettings extends React.Component {
         return (
             <AdapterSettingsDiv>
                 {items.map((item, index) => {
-                    return (<>
+                    return (<div key={"settings-container-"+index}>
                         { item }
                         { index !== (items.length - 1) && <Separator /> }
-                    </>);
+                    </div>);
                 })}
             </AdapterSettingsDiv>
         );

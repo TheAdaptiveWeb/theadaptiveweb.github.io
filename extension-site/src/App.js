@@ -18,7 +18,6 @@ import { HashRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { css, keyframes, ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Themes, AppContext } from './context';
-import { getOptions, saveOptions } from './api/SettingsStorage';
 import { default as PluginCommunicator } from './api/PluginCommunicator';
 import * as adapterRegistry from '@adaptiveweb/registry';
 import * as semver from 'semver';
@@ -70,12 +69,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.updateGlobalOptions(getOptions());
-
     this.conn.sendMessage('getGlobalOptions').then(state => {
       if (state === undefined) {
-        this.conn.sendMessage('setGlobalOptions', defaultOptions);
-        this.updateGlobalOptions(state);
+        this.conn.setGlobalOptions(defaultOptions);
         return;
       } else this.updateGlobalOptions(state);
     });
@@ -88,7 +84,6 @@ class App extends Component {
     let newState = this.state.config;
     Object.keys(state).forEach(k => { newState[k] = state[k]; });
     this.setState({ config: newState }, () => {
-      saveOptions(this.state.config);
       this.conn.setGlobalOptions(this.state.config);
     });
   }

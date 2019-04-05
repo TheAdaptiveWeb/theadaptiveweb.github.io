@@ -21,13 +21,17 @@ class Switch extends React.Component {
         super(props);
 
         this.state = {
-            checked: props.checked
+            checked: (props.checked) ? props.checked : false,
+            disabled: (props.disabled) ? props.disabled : false
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.checked !== this.state.checked) {
-          this.setState({ checked: nextProps.checked });
+            this.setState({ checked: nextProps.checked });
+        }
+        if (nextProps.disabled !== this.state.disabled) {
+            this.setState({ disabled: nextProps.disabled });
         }
     }
 
@@ -35,7 +39,7 @@ class Switch extends React.Component {
         return (
             <SwitchLabel>
                 <SwitchDiv>
-                    <input type="checkbox" checked={this.state.checked} disabled={this.props.disabled} onChange={(event) => { this.props.onChange(event.target.checked) }} />
+                    <input type="checkbox" checked={this.state.checked} disabled={this.state.disabled} onChange={(event) => { this.props.onChange(event.target.checked) }} />
                     <span>
                         <div />
                     </span>
