@@ -46,7 +46,7 @@ class AdapterModal extends React.Component {
                     <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} />)}</AdapterTags>
                 </div>
 
-                { this.props.adapter.developer 
+                { this.props.developer 
                     && <DevContainer>Developer mode: Run `awcli publish` to publish</DevContainer>}
 
                 { (this.state.displayDescription || (this.state.displaySettings && this.props.installed)) && 
@@ -64,7 +64,7 @@ class AdapterModal extends React.Component {
                         && <Button onClick={() => this.setPage(this.state.page === 'description' ? 'settings' : 'description')}>
                                 {this.state.page === 'description' ? 'settings' : 'description'}
                             </Button> }
-                        {this.props.installed
+                        {this.props.developer || this.props.installed
                         ? <Button onClick={() => this.props.removeAdapter(this.props.adapter.id)} type="danger">Disable</Button>
                         : <Button onClick={() => this.props.installAdapter(this.props.adapter)}>Enable</Button>}
                     </Actions>

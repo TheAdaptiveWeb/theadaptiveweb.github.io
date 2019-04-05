@@ -24,7 +24,7 @@ class PreferenceProvider extends React.Component {
         }
 
         this.props.getAdapterPreferences(this.props.adapterId)
-            .then(preferences => { this.setState({ preferences })});
+            .then(preferences => { this.setState({ preferences: preferences || {} })});
     }
 
     render() {

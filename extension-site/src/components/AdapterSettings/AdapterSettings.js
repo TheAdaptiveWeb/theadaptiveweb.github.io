@@ -15,7 +15,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Separator from '../Separator';
-import { AppContext } from '../../context';
 import Switch from '../Switch';
 import { TextField } from '..';
 

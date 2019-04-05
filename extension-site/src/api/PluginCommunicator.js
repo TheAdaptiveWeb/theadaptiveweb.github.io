@@ -70,6 +70,7 @@ export default class PluginCommunicator {
     sendMessage(message, data) {
         return new Promise((resolve, reject) => {
             let messageId = ++this.messageIterator;
+            console.log('sendMessage', messageId, message, data);
             if (!this.pluginLoaded) {
                 this.loadBacklog.push({ messageId, type: message, data });
             } else {
@@ -82,6 +83,7 @@ export default class PluginCommunicator {
                 if (this.resolveBacklog[messageId] !== undefined) {
                     this.resolveBacklog[messageId] = undefined;
                     reject('Message sending timeout'); 
+                    console.log('timeout', messageId, message, data);
                 }
             }, this.timeout);
         });
@@ -98,7 +100,7 @@ export default class PluginCommunicator {
             return;
         }
         if (event.data.message === 'incomingDeveloperAdapters') {
-            this.devAdapterCallback(event.data.adapters);
+            this.devAdapterCallback(event.data.data);
             return;
         }
 

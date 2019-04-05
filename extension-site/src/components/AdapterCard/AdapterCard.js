@@ -16,7 +16,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 import AdapterTag from '../AdapterTag';
 import { Card } from '..';
-import { Link } from 'react-router-dom';
 import UnstyledLink from '../UnstyledLink';
 
 class AdapterCard extends React.Component {

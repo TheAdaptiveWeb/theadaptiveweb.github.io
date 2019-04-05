@@ -27,10 +27,15 @@ class AdapterPage extends React.Component {
                 return (
             <Page title="Adapters" subtitle="Install and configure adapters from this page. Select an adapter for more info.">
                 <Route path="/adapters/:id" render={(props) => {
-                    let adapter = adapters[props.match.params.id] || developerAdapters.find(x => x.id = props.match.params.id);
+                    let developer = false;
+                    let adapter = adapters[props.match.params.id];
+                    if (adapter === undefined) {
+                        adapter = developerAdapters.find(x => x.id = props.match.params.id);
+                        developer = true;
+                    } 
                     if (adapter === undefined) return (<div></div>);
 
-                    let installed = installedAdapters.find(x => x.id === adapter.id) !== undefined;
+                    let installed = developer || installedAdapters.find(x => x.id === adapter.id) !== undefined;
 
                     return (
                         <PreferenceProvider
@@ -41,7 +46,8 @@ class AdapterPage extends React.Component {
                                 adapter={adapter}
                                 installAdapter={installAdapter}
                                 removeAdapter={removeAdapter}
-                                updateAdapterPreferences={updateAdapterPreferences} />
+                                updateAdapterPreferences={updateAdapterPreferences}
+                                developer={developer} />
                         </PreferenceProvider>
                     );
                 }}/>
@@ -56,10 +62,10 @@ class AdapterPage extends React.Component {
                     </Section>
                 )}
                 <Section title="Installed">
-                        {installedAdapters.length === 0
+                        {installedAdapters.filter(x => adapters[x] !== undefined && developerAdapters.map(y=>y.id).indexOf(x.id) === -1).length === 0
                             ? <InfoCard>No adapters are installed. Install them from the list of available adapters below.</InfoCard>
                             : <CardList>
-                                {installedAdapters.map(adapter => {
+                                {installedAdapters.filter(x => developerAdapters.map(y=>y.id).indexOf(x.id) === -1).map(adapter => {
                                 return <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} /> })}
                               </CardList>}
                     

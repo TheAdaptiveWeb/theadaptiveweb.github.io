@@ -15,7 +15,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Themes } from '../../context';
-import { Link } from 'react-router-dom';
 import UnstyledLink from '../UnstyledLink';
 
 class ThemeSwitcher extends React.Component {

@@ -51,8 +51,7 @@ class App extends Component {
 
         // Check for and install updates
         installedAdapters.forEach(adapter => {
-          console.log(adapter.id);
-          if (semver.gt(this.state.adapters[adapter.id].version, adapter.version)) {
+          if (this.state.adapters[adapter.id] !== undefined && semver.gt(this.state.adapters[adapter.id].version, adapter.version)) {
             this.conn.installAdapter(this.state.adapters[adapter.id]);
             filteredAdapters.push(this.state.adapters[adapter.id]);
           } else {
@@ -66,7 +65,7 @@ class App extends Component {
         });
       this.setState({ installedAdapters })
     }, (developerAdapters) => {
-      this.setState({ developerAdapters })
+      this.setState({ developerAdapters: developerAdapters || [] });
     });
   }
 
