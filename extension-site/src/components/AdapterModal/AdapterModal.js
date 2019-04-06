@@ -38,11 +38,11 @@ class AdapterModal extends React.Component {
 
     render() {
         return (
-            <Modal>
+            <Modal role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
                 <div>
                     <UnstyledLink to="/adapters"><BackLink>Back to Adapters</BackLink></UnstyledLink>
-                    <Title>{this.props.adapter.name}</Title>
-                    <Subtitle>{this.props.adapter.description}</Subtitle>
+                    <Title id="dialog-title">{this.props.adapter.name}</Title>
+                    <Subtitle id="dialog-description">{this.props.adapter.description}</Subtitle>
                     <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} />)}</AdapterTags>
                 </div>
 
