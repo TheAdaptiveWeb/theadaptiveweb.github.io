@@ -27,10 +27,20 @@ class PreferenceProvider extends React.Component {
             .then(preferences => { this.setState({ preferences: preferences || {} })});
     }
 
+    updatePreference(key, value) {
+        this.props.updateAdapterPreferences(this.props.adapterId, { [ key ]: value });
+        let prefs = this.state.preferences;
+        prefs[key] = value;
+        this.setState({ preferences: prefs });
+    }
+
     render() {
         return (
             <>
-            {React.cloneElement(this.props.children, { preferences: this.state.preferences })}
+            {React.cloneElement(this.props.children, {
+                preferences: this.state.preferences, 
+                updatePreference: (key, value) => this.updatePreference(key, value)
+            })}
             </>
         );
     }

@@ -20,13 +20,9 @@ class TextField extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log('props', props);
-
         this.state = {
             value: props.value
         }
-
-        console.log('state', this.state)
     }
 
     componentWillReceiveProps(nextProps) {

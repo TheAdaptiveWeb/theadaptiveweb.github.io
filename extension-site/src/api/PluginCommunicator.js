@@ -40,19 +40,17 @@ export default class PluginCommunicator {
     }
 
     installAdapter(adapter, replace = false) {
-        console.log('Installing adapter!', adapter);
-        this.sendMessage('installAdapter', { adapter, replace });
+        this.sendMessage('installAdapter', { adapter, replace }, false);
         this.requestAdapters();
     }
 
     removeAdapter(adapterId) {
-        this.sendMessage('removeAdapter', { adapterId });
+        this.sendMessage('removeAdapter', { adapterId }, false);
         this.requestAdapters();
     }
 
     updateAdapterPreferences(adapterId, preferences) {
-        console.log('Updating adapter prefs!', adapterId, preferences);
-        this.sendMessage('updatePreferences', { adapterId, preferences });
+        this.sendMessage('updatePreferences', { adapterId, preferences }, false);
     }
 
     getAdapterPreferences(adapterId) {
@@ -60,32 +58,32 @@ export default class PluginCommunicator {
     }
 
     setGlobalOptions(data) {
-        this.sendMessage('setGlobalOptions', data);
+        this.sendMessage('setGlobalOptions', data, false);
     }
 
     getGlobalOptions() {
         return this.sendMessage('getGlobalOptions');
     }
 
-    sendMessage(message, data) {
+    sendMessage(message, data, expectReply = true) {
         return new Promise((resolve, reject) => {
             let messageId = ++this.messageIterator;
-            console.log('sendMessage', messageId, message, data);
             if (!this.pluginLoaded) {
                 this.loadBacklog.push({ messageId, type: message, data });
             } else {
                 window.postMessage({ messageId, type: message, data, outbound: true }, '*');
             }
 
-            this.resolveBacklog[messageId] = { resolve, reject };
+            if (expectReply) {
+                this.resolveBacklog[messageId] = { resolve, reject };
 
-            setTimeout(() => { 
-                if (this.resolveBacklog[messageId] !== undefined) {
-                    this.resolveBacklog[messageId] = undefined;
-                    reject('Message sending timeout'); 
-                    console.log('timeout', messageId, message, data);
-                }
-            }, this.timeout);
+                setTimeout(() => { 
+                    if (this.resolveBacklog[messageId] !== undefined) {
+                        this.resolveBacklog[messageId] = undefined;
+                        reject('Message sending timeout'); 
+                    }
+                }, this.timeout);
+            }
         });
     }
 

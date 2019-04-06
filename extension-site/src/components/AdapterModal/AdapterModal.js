@@ -54,7 +54,7 @@ class AdapterModal extends React.Component {
                     { (this.state.page === 'description' && this.state.displayDescription)
                     ? <ReactMarkdown source={this.props.adapter.about} escapeHtml={false} />
                     : <AdapterSettings schema={this.props.adapter.preferenceSchema} values={this.props.preferences} onChange={(key, value) => {
-                        this.props.updateAdapterPreferences(this.props.adapter.id, { [ key ]: value });
+                        this.props.updatePreference(key, value);
                     }} /> }
                 </PageContainer>}
 

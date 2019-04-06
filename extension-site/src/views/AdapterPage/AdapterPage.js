@@ -40,13 +40,13 @@ class AdapterPage extends React.Component {
                     return (
                         <PreferenceProvider
                             getAdapterPreferences={getAdapterPreferences}
-                            adapterId={adapter.id}>
+                            adapterId={adapter.id}
+                            updateAdapterPreferences={updateAdapterPreferences}>
                             <AdapterModal 
                                 installed={installed} 
                                 adapter={adapter}
                                 installAdapter={installAdapter}
                                 removeAdapter={removeAdapter}
-                                updateAdapterPreferences={updateAdapterPreferences}
                                 developer={developer} />
                         </PreferenceProvider>
                     );
