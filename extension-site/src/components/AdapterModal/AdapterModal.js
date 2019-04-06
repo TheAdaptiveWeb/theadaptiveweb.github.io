@@ -26,7 +26,7 @@ class AdapterModal extends React.Component {
         this.state = {
             page: 'description',
             displayDescription: !!this.props.adapter.about,
-            displaySettings: Object.keys(this.props.adapter.preferenceSchema).length !== 0,
+            displaySettings: this.props.adapter.preferenceSchema && Object.keys(this.props.adapter.preferenceSchema).length !== 0,
         };
     }
 
