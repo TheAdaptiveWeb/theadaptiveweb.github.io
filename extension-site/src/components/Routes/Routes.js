@@ -14,8 +14,8 @@
  */
 import * as React from 'react';
 import { Pager } from '..';
-import { AdapterPage, HelpPage, SettingsPage, InfoPage } from '../../views';
-import { Route, Switch } from 'react-router-dom';
+import { AdapterPage, SettingsPage, InfoPage } from '../../views';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { AppContext } from '../../context';
 
@@ -29,8 +29,10 @@ class Routes extends React.Component {
                             <CSSTransition key={globalOptions.animations && location.pathname.split('/')[1]} classNames="fade" timeout={550}>
                             <Switch location={location}>
                                 <Pager>
+                                    <Route exact path="/" render={() => (
+                                        <Redirect to="/adapters" />
+                                    )} />
                                     <Route path="/adapters" component={AdapterPage}/>
-                                    <Route path="/help" component={HelpPage}/>
                                     <Route path="/settings" component={SettingsPage}/>
                                     <Route path="/info" component={InfoPage}/>
                                 </Pager>

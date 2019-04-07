@@ -30,8 +30,18 @@ class MenuItem extends React.Component {
         let active = this.props.location.pathname.startsWith(this.props.path);
         return (
             <AppContext.Consumer>
-                {({ globalOptions }) => (
-                    <UnstyledLink to={this.props.path}>
+                {({ globalOptions }) => {
+                    if (this.props.path.startsWith('https://')) {
+                    return <a href={this.props.path}>
+                        <MenuItemDiv active={active}>
+                            <Container animations={globalOptions.animations} active={active}>
+                                <Image image={this.props.image} active={active} />
+                                <Label>{this.props.text}</Label>
+                            </Container>
+                        </MenuItemDiv>
+                    </a>
+                    } else {
+                    return <UnstyledLink to={this.props.path}>
                         <MenuItemDiv active={active}>
                             <Container animations={globalOptions.animations} active={active}>
                                 <Image image={this.props.image} active={active} />
@@ -39,7 +49,8 @@ class MenuItem extends React.Component {
                             </Container>
                         </MenuItemDiv>
                     </UnstyledLink>
-                )}
+                    }
+                }}
             </AppContext.Consumer>
         );
     }

@@ -32,7 +32,7 @@ class Sidebar extends React.Component {
                 <Masthead />
                 <Menu>
                   <MenuItem path="/adapters" image={AdapterImage} text="Adapters" />
-                  <MenuItem path="/help" image={HelpImage} text="Help" />
+                  <MenuItem path="https://docs.adaptiveweb.io" image={HelpImage} text="Help" />
                   <MenuItem path="/settings" image={SettingsImage} text="Settings" />
                   <MenuItem path="/info" image={InfoImage} text="Info" />
                 </Menu>
