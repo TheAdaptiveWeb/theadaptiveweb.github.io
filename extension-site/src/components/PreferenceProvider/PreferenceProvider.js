@@ -20,7 +20,7 @@ class PreferenceProvider extends React.Component {
         super(props);
 
         let defaultPreferences = {}
-        Object.keys(this.props.adapter.preferenceSchema)
+        this.props.adapter.preferenceSchema && Object.keys(this.props.adapter.preferenceSchema)
             .forEach(k => {
                 defaultPreferences[k] = this.props.adapter.preferenceSchema[k].default;
             });
