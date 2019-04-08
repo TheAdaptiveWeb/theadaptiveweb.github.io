@@ -27,15 +27,10 @@ class AdapterPage extends React.Component {
                 return (
             <Page title="Adapters" subtitle="Install and configure adapters from this page. Select an adapter for more info.">
                 <Route path="/adapters/:id" render={(props) => {
-                    let developer = false;
-                    let adapter = adapters[props.match.params.id];
-                    if (adapter === undefined) {
-                        adapter = developerAdapters.find(x => x.id = props.match.params.id);
-                        developer = true;
-                    } 
+                    let adapter = adapters[props.match.params.id] || developerAdapters.find(x => x.id === props.match.params.id);
                     if (adapter === undefined) return (<div></div>);
 
-                    let installed = developer || installedAdapters.find(x => x.id === adapter.id) !== undefined;
+                    let installed = adapter.developer || installedAdapters.find(x => x.id === adapter.id) !== undefined;
 
                     return (
                         <PreferenceProvider
@@ -46,8 +41,7 @@ class AdapterPage extends React.Component {
                                 installed={installed} 
                                 adapter={adapter}
                                 installAdapter={installAdapter}
-                                removeAdapter={removeAdapter}
-                                developer={developer} />
+                                removeAdapter={removeAdapter} />
                         </PreferenceProvider>
                     );
                 }}/>
@@ -62,10 +56,10 @@ class AdapterPage extends React.Component {
                     </Section>
                 )}
                 <Section title="Installed">
-                        {installedAdapters.filter(x => adapters[x.id] !== undefined && developerAdapters.map(y=>y.id).indexOf(x.id) === -1).length === 0
+                        {installedAdapters.filter(x => adapters[x.id] !== undefined && !x.developer).length === 0
                             ? <InfoCard>No adapters are installed. Install them from the list of available adapters below.</InfoCard>
                             : <CardList>
-                                {installedAdapters.filter(x => developerAdapters.map(y=>y.id).indexOf(x.id) === -1).map(adapter => {
+                                {installedAdapters.filter(x => adapters[x.id] !== undefined && !x.developer).map(adapter => {
                                 return <AdapterCard key={'adapter-' + adapter.id} adapter={adapter} /> })}
                               </CardList>}
                     

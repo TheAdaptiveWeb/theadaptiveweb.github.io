@@ -88,6 +88,15 @@ class App extends Component {
     });
   }
 
+  removeAdapter(adapterId, developer = false) {
+    this.conn.removeAdapter(adapterId);
+    if (developer) {
+      this.setState({
+        developerAdapters: this.state.developerAdapters.filter(x => x.id !== adapterId)
+      })
+    }
+  }
+
   render() {
     return (
       <AppContext.Provider value={{ 
@@ -97,7 +106,7 @@ class App extends Component {
         developerAdapters: this.state.developerAdapters,
         adapters: this.state.adapters,
         installAdapter: this.conn.installAdapter.bind(this.conn), 
-        removeAdapter: this.conn.removeAdapter.bind(this.conn),
+        removeAdapter: this.removeAdapter.bind(this),
         getAdapterPreferences: this.conn.getAdapterPreferences.bind(this.conn), 
         updateAdapterPreferences: this.conn.updateAdapterPreferences.bind(this.conn),
          }}>
