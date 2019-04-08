@@ -19,16 +19,22 @@ class PreferenceProvider extends React.Component {
     constructor(props) {
         super(props);
 
+        let defaultPreferences = {}
+        Object.keys(this.props.adapter.preferenceSchema)
+            .forEach(k => {
+                defaultPreferences[k] = this.props.adapter.preferenceSchema[k].default;
+            });
+
         this.state = {
-            preferences: {}
+            preferences: defaultPreferences,
         }
 
-        this.props.getAdapterPreferences(this.props.adapterId)
-            .then(preferences => { this.setState({ preferences: preferences || {} })});
+        this.props.getAdapterPreferences(this.props.adapter.id)
+            .then(preferences => { this.setState({ preferences: preferences || defaultPreferences })});
     }
 
     updatePreference(key, value) {
-        this.props.updateAdapterPreferences(this.props.adapterId, { [ key ]: value });
+        this.props.updateAdapterPreferences(this.props.adapter.id, { [ key ]: value });
         let prefs = this.state.preferences;
         prefs[key] = value;
         this.setState({ preferences: prefs });

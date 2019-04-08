@@ -35,7 +35,7 @@ class AdapterPage extends React.Component {
                     return (
                         <PreferenceProvider
                             getAdapterPreferences={getAdapterPreferences}
-                            adapterId={adapter.id}
+                            adapter={adapter}
                             updateAdapterPreferences={updateAdapterPreferences}>
                             <AdapterModal 
                                 installed={installed} 
