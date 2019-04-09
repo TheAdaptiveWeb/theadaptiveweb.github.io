@@ -17,15 +17,15 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 class UnstyledLink extends React.Component {
-    render() {
-        return (
-            <UnstyledLinkDiv {...this.props}></UnstyledLinkDiv>
-        );
-    }
+	render() {
+		return (
+			<UnstyledLinkDiv {...this.props}></UnstyledLinkDiv>
+		);
+	}
 }
 
 const UnstyledLinkDiv = styled(Link)`
 text-decoration: none;
-`
+`;
 
 export default UnstyledLink;

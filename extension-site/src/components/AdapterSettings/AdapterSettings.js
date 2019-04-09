@@ -19,36 +19,36 @@ import Switch from '../Switch';
 import { TextField } from '..';
 
 class AdapterSettings extends React.Component {
-    render() {
-        let preferenceSchema = this.props.schema;
-        let preferences = Object.keys(preferenceSchema);
-        let preferenceValues = this.props.values;
+	render() {
+		let preferenceSchema = this.props.schema;
+		let preferences = Object.keys(preferenceSchema);
+		let preferenceValues = this.props.values;
 
-        let items = preferences
-            .map(key => { return { key, ...preferenceSchema[key] } })
-            .map(pref => {
-                switch(pref.type) {
-                    case 'text':
-                    return <TextField key={pref.key} title={pref.friendlyName} subtitle={pref.description} onChange={(newValue) => this.props.onChange(pref.key, newValue)} value={preferenceValues[pref.key]}  />
+		let items = preferences
+			.map(key => { return { key, ...preferenceSchema[key] }; })
+			.map(pref => {
+				switch(pref.type) {
+				case 'text':
+					return <TextField key={pref.key} title={pref.friendlyName} subtitle={pref.description} onChange={(newValue) => this.props.onChange(pref.key, newValue)} value={preferenceValues[pref.key]}  />;
 
-                    case 'switch':
-                    return <Switch key={pref.key} title={pref.friendlyName} subtitle={pref.description} onChange={(newValue) => this.props.onChange(pref.key, newValue)} checked={preferenceValues[pref.key]} />
+				case 'switch':
+					return <Switch key={pref.key} title={pref.friendlyName} subtitle={pref.description} onChange={(newValue) => this.props.onChange(pref.key, newValue)} checked={preferenceValues[pref.key]} />;
 
-                    default: return <></>;
-                }
-            });
+				default: return <></>;
+				}
+			});
 
-        return (
-            <AdapterSettingsDiv>
-                {items.map((item, index) => {
-                    return (<div key={"settings-container-"+index}>
-                        { item }
-                        { index !== (items.length - 1) && <Separator /> }
-                    </div>);
-                })}
-            </AdapterSettingsDiv>
-        );
-    }
+		return (
+			<AdapterSettingsDiv>
+				{items.map((item, index) => {
+					return (<div key={'settings-container-'+index}>
+						{ item }
+						{ index !== (items.length - 1) && <Separator /> }
+					</div>);
+				})}
+			</AdapterSettingsDiv>
+		);
+	}
 }
 
 const AdapterSettingsDiv = styled.div`

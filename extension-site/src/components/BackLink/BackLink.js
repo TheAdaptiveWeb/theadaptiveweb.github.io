@@ -18,13 +18,13 @@ import BackArrowImage from './backArrow.svg';
 
 
 class BackLink extends React.PureComponent {
-    render() {
-        return (
-            <BackLinkDiv>
-                <BackArrow /> {this.props.children}
-            </BackLinkDiv>
-        );
-    }
+	render() {
+		return (
+			<BackLinkDiv>
+				<BackArrow /> {this.props.children}
+			</BackLinkDiv>
+		);
+	}
 }
 
 const BackLinkDiv = styled.div`

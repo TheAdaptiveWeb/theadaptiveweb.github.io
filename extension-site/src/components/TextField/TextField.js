@@ -17,29 +17,29 @@ import styled from 'styled-components';
 import Label from '../Label';
 
 class TextField extends React.Component {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.state = {
-            value: props.value
-        }
-    }
+		this.state = {
+			value: props.value
+		};
+	}
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.value !== this.state.value) {
-          this.setState({ value: nextProps.value });
-        }
-    }
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.value !== this.state.value) {
+			this.setState({ value: nextProps.value });
+		}
+	}
       
 
-    render() {
-        return (
-            <TextFieldDiv>
-                <Label title={this.props.title} subtitle={this.props.subtitle}  />
-                <Field value={this.state.value} onChange={event => this.props.onChange(event.target.value)} />
-            </TextFieldDiv>
-        );
-    }
+	render() {
+		return (
+			<TextFieldDiv>
+				<Label title={this.props.title} subtitle={this.props.subtitle}  />
+				<Field value={this.state.value} onChange={event => this.props.onChange(event.target.value)} />
+			</TextFieldDiv>
+		);
+	}
 }
 
 const TextFieldDiv = styled.label`

@@ -19,21 +19,21 @@ import { Card } from '..';
 import UnstyledLink from '../UnstyledLink';
 
 class AdapterCard extends React.Component {
-    render() {
-        return (
-            <CardContainer>
-                <UnstyledLink to={'/adapters/' + this.props.adapter.id || ""}>
-                    <Card>
-                        <div>
-                            <Title>{this.props.adapter.name}</Title>
-                            <Subtitle>{this.props.adapter.description}</Subtitle>
-                            <AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}</AdapterTags>
-                        </div>
-                    </Card>
-                </UnstyledLink>
-            </CardContainer>
-        );
-    }
+	render() {
+		return (
+			<CardContainer>
+				<UnstyledLink to={'/adapters/' + this.props.adapter.id || ''}>
+					<Card>
+						<div>
+							<Title>{this.props.adapter.name}</Title>
+							<Subtitle>{this.props.adapter.description}</Subtitle>
+							<AdapterTags>{this.props.adapter.tags.map((tag, index) => <AdapterTag key={`label-${index}`} label={tag} startColor="#9277EE" endColor="#874AE2" />)}</AdapterTags>
+						</div>
+					</Card>
+				</UnstyledLink>
+			</CardContainer>
+		);
+	}
 }
 
 const CardContainer = styled.div`

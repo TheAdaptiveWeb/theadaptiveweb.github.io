@@ -16,13 +16,13 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 class Button extends React.Component {
-    render() {
-        return (
-            <StyledButton onClick={this.props.onClick} type={this.props.type || 'normal'}>
-                {this.props.children}
-            </StyledButton>
-        );
-    }
+	render() {
+		return (
+			<StyledButton onClick={this.props.onClick} type={this.props.type || 'normal'}>
+				{this.props.children}
+			</StyledButton>
+		);
+	}
 }
 
 const StyledButton = styled.button`

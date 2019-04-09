@@ -19,18 +19,18 @@ import { keyframes, css } from 'styled-components';
 import { AppContext } from '../../context';
 
 class AnimatedLogo extends React.PureComponent {
-    render() {
-        return (
-          <AppContext.Consumer>
-            {({ globalOptions }) => (
-              <LogoDiv animations={globalOptions.animations}>
-                <Logo animate={globalOptions.animations} />
-              </LogoDiv>
-            )}
+	render() {
+		return (
+			<AppContext.Consumer>
+				{({ globalOptions }) => (
+					<LogoDiv animations={globalOptions.animations}>
+						<Logo animate={globalOptions.animations} />
+					</LogoDiv>
+				)}
             
-          </AppContext.Consumer>
-        );
-    }
+			</AppContext.Consumer>
+		);
+	}
 }
 
 let xOffset = (window.innerWidth / 2) - 200;

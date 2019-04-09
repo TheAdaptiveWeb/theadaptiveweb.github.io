@@ -16,13 +16,13 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 class Pager extends React.Component {
-    render() {
-        return (
-            <PagerDiv>
-                {this.props.children}
-            </PagerDiv>
-        );
-    }
+	render() {
+		return (
+			<PagerDiv>
+				{this.props.children}
+			</PagerDiv>
+		);
+	}
 }
 
 

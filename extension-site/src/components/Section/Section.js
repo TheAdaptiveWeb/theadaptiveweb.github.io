@@ -16,16 +16,16 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 class Section extends React.Component {
-    render() {
-        return (
-            <SectionDiv>
-                <SectionTitle>
-                    {this.props.title}
-                </SectionTitle>
-                {this.props.children}
-            </SectionDiv>
-        );
-    }
+	render() {
+		return (
+			<SectionDiv>
+				<SectionTitle>
+					{this.props.title}
+				</SectionTitle>
+				{this.props.children}
+			</SectionDiv>
+		);
+	}
 }
 
 const SectionDiv = styled.div`

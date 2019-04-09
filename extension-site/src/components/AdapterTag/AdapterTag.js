@@ -16,13 +16,13 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 class AdapterTag extends React.Component {
-    render() {
-        return (
-            <Card>
-                <Label>{this.props.label}</Label>
-            </Card>
-        );
-    }
+	render() {
+		return (
+			<Card>
+				<Label>{this.props.label}</Label>
+			</Card>
+		);
+	}
 }
 
 const Card = styled.div`

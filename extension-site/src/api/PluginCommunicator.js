@@ -14,106 +14,106 @@
  */
 export default class PluginCommunicator {
 
-    constructor(adapterUpdateCallback, devAdapterCallback) {
-        this.messageIterator = 0;
-        this.resolveBacklog = {};
-        this.loadBacklog = [];
-        this.pluginLoaded = false;
-        this.timeout = 1000;
-        this.devAdapterCallback = devAdapterCallback;
-        this.adapterUpdateCallback = adapterUpdateCallback;
-        // register
-        window.addEventListener('message', this.handleMessage.bind(this));
+	constructor(adapterUpdateCallback, devAdapterCallback) {
+		this.messageIterator = 0;
+		this.resolveBacklog = {};
+		this.loadBacklog = [];
+		this.pluginLoaded = false;
+		this.timeout = 1000;
+		this.devAdapterCallback = devAdapterCallback;
+		this.adapterUpdateCallback = adapterUpdateCallback;
+		// register
+		window.addEventListener('message', this.handleMessage.bind(this));
 
-        window.setTimeout(() => {
-            if (!this.pluginLoaded) window.location.href = 'https://adaptiveweb.io/';
-        }, 1000);
-    }
+		window.setTimeout(() => {
+			if (!this.pluginLoaded) window.location.href = 'https://adaptiveweb.io/';
+		}, 1000);
+	}
 
-    requestAdapters() {
-        this.sendMessage('requestAdapters')
-            .then(response => Object.keys(response).map(k => response[k]))
-            .then(adapters => {
-                this.adapterUpdateCallback(adapters);
-                return adapters;
-            });
-    }
+	requestAdapters() {
+		this.sendMessage('requestAdapters')
+			.then(response => Object.keys(response).map(k => response[k]))
+			.then(adapters => {
+				this.adapterUpdateCallback(adapters);
+				return adapters;
+			});
+	}
 
-    installAdapter(adapter, replace = false) {
-        this.sendMessage('installAdapter', { adapter, replace }, false);
-        this.requestAdapters();
-    }
+	installAdapter(adapter, replace = false) {
+		this.sendMessage('installAdapter', { adapter, replace }, false);
+		this.requestAdapters();
+	}
 
-    removeAdapter(adapterId) {
-        this.sendMessage('removeAdapter', { adapterId }, false);
-        this.requestAdapters();
-    }
+	removeAdapter(adapterId) {
+		this.sendMessage('removeAdapter', { adapterId }, false);
+		this.requestAdapters();
+	}
 
-    updateAdapterPreferences(adapterId, preferences) {
-        this.sendMessage('updatePreferences', { adapterId, preferences }, false);
-    }
+	updateAdapterPreferences(adapterId, preferences) {
+		this.sendMessage('updatePreferences', { adapterId, preferences }, false);
+	}
 
-    getAdapterPreferences(adapterId) {
-        return this.sendMessage('getAdapterPreferences', { adapterId });
-    }
+	getAdapterPreferences(adapterId) {
+		return this.sendMessage('getAdapterPreferences', { adapterId });
+	}
 
-    setGlobalOptions(data) {
-        this.sendMessage('setGlobalOptions', data, false);
-    }
+	setGlobalOptions(data) {
+		this.sendMessage('setGlobalOptions', data, false);
+	}
 
-    getGlobalOptions() {
-        return this.sendMessage('getGlobalOptions');
-    }
+	getGlobalOptions() {
+		return this.sendMessage('getGlobalOptions');
+	}
 
-    sendMessage(message, data, expectReply = true) {
-        return new Promise((resolve, reject) => {
-            let messageId = ++this.messageIterator;
-            if (!this.pluginLoaded) {
-                this.loadBacklog.push({ messageId, type: message, data });
-            } else {
-                window.postMessage({ messageId, type: message, data, outbound: true }, '*');
-            }
+	sendMessage(message, data, expectReply = true) {
+		return new Promise((resolve, reject) => {
+			let messageId = ++this.messageIterator;
+			if (!this.pluginLoaded) {
+				this.loadBacklog.push({ messageId, type: message, data });
+			} else {
+				window.postMessage({ messageId, type: message, data, outbound: true }, '*');
+			}
 
-            if (expectReply) {
-                this.resolveBacklog[messageId] = { resolve, reject };
+			if (expectReply) {
+				this.resolveBacklog[messageId] = { resolve, reject };
 
-                setTimeout(() => { 
-                    if (this.resolveBacklog[messageId] !== undefined) {
-                        this.resolveBacklog[messageId] = undefined;
-                        reject('Message sending timeout'); 
-                    }
-                }, this.timeout);
-            }
-        });
-    }
+				setTimeout(() => { 
+					if (this.resolveBacklog[messageId] !== undefined) {
+						this.resolveBacklog[messageId] = undefined;
+						reject('Message sending timeout'); 
+					}
+				}, this.timeout);
+			}
+		});
+	}
 
-    handleMessage(event) {
-        // Is this message initiating the plugin?
-        if (event.data.message === 'initAdaptiveWebPlugin') {
-            this.pluginLoaded = true;
-            this.loadBacklog.forEach(message => {
-                let { messageId, type, data } = message;
-                window.postMessage({ messageId, type, data, outbound: true }, '*');
-            });
-            return;
-        }
-        if (event.data.message === 'incomingDeveloperAdapters') {
-            this.devAdapterCallback(event.data.data);
-            return;
-        }
+	handleMessage(event) {
+		// Is this message initiating the plugin?
+		if (event.data.message === 'initAdaptiveWebPlugin') {
+			this.pluginLoaded = true;
+			this.loadBacklog.forEach(message => {
+				let { messageId, type, data } = message;
+				window.postMessage({ messageId, type, data, outbound: true }, '*');
+			});
+			return;
+		}
+		if (event.data.message === 'incomingDeveloperAdapters') {
+			this.devAdapterCallback(event.data.data);
+			return;
+		}
 
-        if (!this.pluginLoaded) return;
-        if (event.data.outbound) return;
+		if (!this.pluginLoaded) return;
+		if (event.data.outbound) return;
 
-        let { messageId, data, isError } = event.data;
-        let backlog = this.resolveBacklog[messageId];
-        if (backlog !== undefined) {
-            let { resolve, reject } = backlog;
-            this.resolveBacklog[messageId] = undefined;
+		let { messageId, data, isError } = event.data;
+		let backlog = this.resolveBacklog[messageId];
+		if (backlog !== undefined) {
+			let { resolve, reject } = backlog;
+			this.resolveBacklog[messageId] = undefined;
 
-            if (isError) reject(data);
-            else         resolve(data);
-        }
-    }
+			if (isError) reject(data);
+			else         resolve(data);
+		}
+	}
 
 }

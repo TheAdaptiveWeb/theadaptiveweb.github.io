@@ -16,17 +16,17 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 class Page extends React.Component {
-    render() {
-        return (
-            <PageDiv>
-                <PageHeader>
-                    <PageTitle>{this.props.title}</PageTitle>
-                    <PageSubtitle>{this.props.subtitle}</PageSubtitle>
-                </PageHeader>
-                {this.props.children}
-            </PageDiv>
-        );
-    }
+	render() {
+		return (
+			<PageDiv>
+				<PageHeader>
+					<PageTitle>{this.props.title}</PageTitle>
+					<PageSubtitle>{this.props.subtitle}</PageSubtitle>
+				</PageHeader>
+				{this.props.children}
+			</PageDiv>
+		);
+	}
 }
 
 const PageDiv = styled.div`

@@ -17,29 +17,29 @@ import * as React from 'react';
 import { Page, Section, Card } from '../../components';
 
 class InfoPage extends React.Component {
-    render() {
-        return (<Page title="Info">
-            <Section>
-                <Card>
-                    <div>The Adaptive Web is a plugin that adds enhancements and fixes problems with web pages. This makes websites more accessible, and adapts them to suit your needs.
+	render() {
+		return (<Page title="Info">
+			<Section>
+				<Card>
+					<div>The Adaptive Web is a plugin that adds enhancements and fixes problems with web pages. This makes websites more accessible, and adapts them to suit your needs.
 
-                    <br /><br />
+						<br /><br />
 
                     This project was created as part of a final year research project by <a href="https://ahirst.com">Adam Hirst</a> at <a href="https://dundee.ac.uk">the University of Dundee</a>
-                    </div>
-                </Card>
-            </Section>
+					</div>
+				</Card>
+			</Section>
 
-            <Section title="Contributors">
-                <Card>
-                    <div>
+			<Section title="Contributors">
+				<Card>
+					<div>
                     The Adaptive Web remains free through the contribution of it's open source contributors. Please consider helping the platform grow by <a href="https://github.com/TheAdaptiveWeb">contributing on GitHub</a>.
-                    </div>
+					</div>
 
-                </Card>
-            </Section>
-        </Page>);
-    }
+				</Card>
+			</Section>
+		</Page>);
+	}
 }
 
 export default InfoPage;

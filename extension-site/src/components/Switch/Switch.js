@@ -17,39 +17,39 @@ import styled from 'styled-components';
 import Label from '../Label';
 
 class Switch extends React.Component {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.state = {
-            checked: (props.checked) ? props.checked : false,
-            disabled: (props.disabled) ? props.disabled : false
-        }
-    }
+		this.state = {
+			checked: (props.checked) ? props.checked : false,
+			disabled: (props.disabled) ? props.disabled : false
+		};
+	}
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.checked !== this.state.checked) {
-            this.setState({ checked: nextProps.checked });
-        }
-        if (nextProps.disabled !== this.state.disabled) {
-            this.setState({ disabled: nextProps.disabled });
-        }
-    }
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.checked !== this.state.checked) {
+			this.setState({ checked: nextProps.checked });
+		}
+		if (nextProps.disabled !== this.state.disabled) {
+			this.setState({ disabled: nextProps.disabled });
+		}
+	}
 
-    render() {
-        return (
-            <SwitchLabel>
-                <SwitchDiv>
-                    <input type="checkbox" checked={this.state.checked} disabled={this.state.disabled} onChange={(event) => { this.props.onChange(event.target.checked) }} />
-                    <span>
-                        <div />
-                    </span>
-                </SwitchDiv>
-                <LabelDiv>
-                    <Label title={this.props.title} subtitle={this.props.subtitle} />
-                </LabelDiv>
-            </SwitchLabel>
-        );
-    }
+	render() {
+		return (
+			<SwitchLabel>
+				<SwitchDiv>
+					<input type="checkbox" checked={this.state.checked} disabled={this.state.disabled} onChange={(event) => { this.props.onChange(event.target.checked); }} />
+					<span>
+						<div />
+					</span>
+				</SwitchDiv>
+				<LabelDiv>
+					<Label title={this.props.title} subtitle={this.props.subtitle} />
+				</LabelDiv>
+			</SwitchLabel>
+		);
+	}
 }
 
 const SwitchLabel = styled.label`

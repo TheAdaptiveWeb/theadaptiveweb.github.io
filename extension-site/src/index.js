@@ -12,7 +12,7 @@
  *  express or implied. See the License for the specific language governing 
  *  permissions and limitations under the License.
  */
-import React from 'react';
+import React from 'react'; // eslint-disable-line
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

@@ -18,22 +18,22 @@ import { Themes } from '../../context';
 import UnstyledLink from '../UnstyledLink';
 
 class ThemeSwitcher extends React.Component {
-    render() {
-        return (
-            <ThemeSwitcherDiv>
-                {Object.keys(Themes).map(key => {
-                    let theme = Themes[key];
-                    return (
-                    <UnstyledLink key={key} to="/settings">
-                        <Theme onClick={() => this.props.updateGlobalOptions({ theme: key })} active={key === this.props.globalOptions.theme}>
-                            <ThemeImage image={theme.image} />
-                            {theme.name}
-                        </Theme>
-                    </UnstyledLink>);
-                })}
-            </ThemeSwitcherDiv>
-        );
-    }
+	render() {
+		return (
+			<ThemeSwitcherDiv>
+				{Object.keys(Themes).map(key => {
+					let theme = Themes[key];
+					return (
+						<UnstyledLink key={key} to="/settings">
+							<Theme onClick={() => this.props.updateGlobalOptions({ theme: key })} active={key === this.props.globalOptions.theme}>
+								<ThemeImage image={theme.image} />
+								{theme.name}
+							</Theme>
+						</UnstyledLink>);
+				})}
+			</ThemeSwitcherDiv>
+		);
+	}
 }
 
 const ThemeSwitcherDiv = styled.div`

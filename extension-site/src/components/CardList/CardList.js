@@ -16,15 +16,15 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 class CardList extends React.Component {
-    render() {
-        return (
-            <CardListDiv>
-                {React.Children.map(this.props.children, (child, index) => {
-                    return <CardDiv key={'cl-' + index}>{child}</CardDiv>
-                })}
-            </CardListDiv>
-        );
-    }
+	render() {
+		return (
+			<CardListDiv>
+				{React.Children.map(this.props.children, (child, index) => {
+					return <CardDiv key={'cl-' + index}>{child}</CardDiv>;
+				})}
+			</CardListDiv>
+		);
+	}
 }
 
 const CardListDiv = styled.div`

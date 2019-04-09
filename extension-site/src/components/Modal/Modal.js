@@ -19,22 +19,22 @@ import { Card } from '..';
 import { AppContext } from '../../context';
 
 class Modal extends React.Component {
-    render() {
-        return (
-            <AppContext.Consumer>
-                {({ globalOptions }) => (
-                    <ModalContainer>
-                        <CardContainer animations={globalOptions.animations}>
-                            <Card>
-                                {this.props.children}
-                            </Card>
-                        </CardContainer>
-                        <ModalBackground animations={globalOptions.animations} />
-                    </ModalContainer>
-                )}
-            </AppContext.Consumer>
-        );
-    }
+	render() {
+		return (
+			<AppContext.Consumer>
+				{({ globalOptions }) => (
+					<ModalContainer>
+						<CardContainer animations={globalOptions.animations}>
+							<Card>
+								{this.props.children}
+							</Card>
+						</CardContainer>
+						<ModalBackground animations={globalOptions.animations} />
+					</ModalContainer>
+				)}
+			</AppContext.Consumer>
+		);
+	}
 }
 
 const ModalContainer = styled.div`

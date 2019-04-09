@@ -16,14 +16,14 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 class Masthead extends React.PureComponent {
-    render() {
-        return (
-            <MastheadDiv>
-                <Title>The Adaptive Web</Title>
-                <Subtitle>Adaptive Web Accessibility Platform</Subtitle>
-            </MastheadDiv>
-        );
-    }
+	render() {
+		return (
+			<MastheadDiv>
+				<Title>The Adaptive Web</Title>
+				<Subtitle>Adaptive Web Accessibility Platform</Subtitle>
+			</MastheadDiv>
+		);
+	}
 }
 
 const MastheadDiv = styled.div`

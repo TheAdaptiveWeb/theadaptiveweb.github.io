@@ -16,14 +16,14 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 class Card extends React.Component {
-    render() {
-        return (
-            <CardDiv>
-                {React.Children.map(this.props.children, (child, index) => (
-                child && <InnerDiv border={index !== 0}>{child}</InnerDiv>))}
-            </CardDiv>
-        );
-    }
+	render() {
+		return (
+			<CardDiv>
+				{React.Children.map(this.props.children, (child, index) => (
+					child && <InnerDiv border={index !== 0}>{child}</InnerDiv>))}
+			</CardDiv>
+		);
+	}
 }
 
 const CardDiv = styled.div`

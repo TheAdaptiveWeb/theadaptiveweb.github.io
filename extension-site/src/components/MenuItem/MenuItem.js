@@ -20,40 +20,40 @@ import { AppContext } from '../../context';
 import UnstyledLink from '../UnstyledLink';
 
 class MenuItem extends React.Component {
-    shouldComponentUpdate(newProps) {
-        let currentlyActive = this.props.location.pathname.startsWith(this.props.path);
-        let nowActive = newProps.location.pathname.startsWith(this.props.path);
-        return currentlyActive !== nowActive;
-    }
+	shouldComponentUpdate(newProps) {
+		let currentlyActive = this.props.location.pathname.startsWith(this.props.path);
+		let nowActive = newProps.location.pathname.startsWith(this.props.path);
+		return currentlyActive !== nowActive;
+	}
 
-    render() {
-        let active = this.props.location.pathname.startsWith(this.props.path);
-        return (
-            <AppContext.Consumer>
-                {({ globalOptions }) => {
-                    if (this.props.path.startsWith('https://')) {
-                    return <a href={this.props.path}>
-                        <MenuItemDiv active={active}>
-                            <Container animations={globalOptions.animations} active={active}>
-                                <Image image={this.props.image} active={active} />
-                                <Label>{this.props.text}</Label>
-                            </Container>
-                        </MenuItemDiv>
-                    </a>
-                    } else {
-                    return <UnstyledLink to={this.props.path}>
-                        <MenuItemDiv active={active}>
-                            <Container animations={globalOptions.animations} active={active}>
-                                <Image image={this.props.image} active={active} />
-                                <Label>{this.props.text}</Label>
-                            </Container>
-                        </MenuItemDiv>
-                    </UnstyledLink>
-                    }
-                }}
-            </AppContext.Consumer>
-        );
-    }
+	render() {
+		let active = this.props.location.pathname.startsWith(this.props.path);
+		return (
+			<AppContext.Consumer>
+				{({ globalOptions }) => {
+					if (this.props.path.startsWith('https://')) {
+						return <a href={this.props.path}>
+							<MenuItemDiv active={active}>
+								<Container animations={globalOptions.animations} active={active}>
+									<Image image={this.props.image} active={active} />
+									<Label>{this.props.text}</Label>
+								</Container>
+							</MenuItemDiv>
+						</a>;
+					} else {
+						return <UnstyledLink to={this.props.path}>
+							<MenuItemDiv active={active}>
+								<Container animations={globalOptions.animations} active={active}>
+									<Image image={this.props.image} active={active} />
+									<Label>{this.props.text}</Label>
+								</Container>
+							</MenuItemDiv>
+						</UnstyledLink>;
+					}
+				}}
+			</AppContext.Consumer>
+		);
+	}
 }
 
 const PassiveFrames = keyframes`

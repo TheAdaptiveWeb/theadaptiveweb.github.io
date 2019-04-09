@@ -24,24 +24,24 @@ import { keyframes, css } from 'styled-components';
 import { AppContext } from '../../context';
 
 class Sidebar extends React.Component {
-    render() {
-        return (
-          <AppContext.Consumer>
-            {({ globalOptions }) => (
-              <SidebarDiv animations={globalOptions.animations}>
-                <Masthead />
-                <Menu>
-                  <MenuItem path="/adapters" image={AdapterImage} text="Adapters" />
-                  <MenuItem path="https://docs.adaptiveweb.io" image={HelpImage} text="Help" />
-                  <MenuItem path="/settings" image={SettingsImage} text="Settings" />
-                  <MenuItem path="/info" image={InfoImage} text="Info" />
-                </Menu>
-              </SidebarDiv>
-            )}
+	render() {
+		return (
+			<AppContext.Consumer>
+				{({ globalOptions }) => (
+					<SidebarDiv animations={globalOptions.animations}>
+						<Masthead />
+						<Menu>
+							<MenuItem path="/adapters" image={AdapterImage} text="Adapters" />
+							<MenuItem path="https://docs.adaptiveweb.io" image={HelpImage} text="Help" />
+							<MenuItem path="/settings" image={SettingsImage} text="Settings" />
+							<MenuItem path="/info" image={InfoImage} text="Info" />
+						</Menu>
+					</SidebarDiv>
+				)}
             
-          </AppContext.Consumer>
-        );
-    }
+			</AppContext.Consumer>
+		);
+	}
 }
 
 const introFrames = keyframes`

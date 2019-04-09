@@ -16,19 +16,19 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 class Separator extends React.Component {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.state = {
-            checked: false
-        }
-    }
+		this.state = {
+			checked: false
+		};
+	}
 
-    render() {
-        return (
-            <SeparatorDiv></SeparatorDiv>
-        );
-    }
+	render() {
+		return (
+			<SeparatorDiv></SeparatorDiv>
+		);
+	}
 }
 
 const SeparatorDiv = styled.div`
