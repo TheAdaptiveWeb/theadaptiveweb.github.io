@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Adaptive Web</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+<body>
+    <style>
+        html, body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #FAFBFC;
+            box-sizing: border-box;
+        }
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+        }
+
+        .flex-content {
+            max-width: 520px;
+            margin: 20px;
+        }
+
+        .text {
+            width: 250px;
+            height: 250px;
+            background-color: #003770;
+            margin: 20px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 250px;  
+        }
+
+        .not-compliant {
+            color: #5E5E5E;
+        }
+
+        .aa {
+            color: #A1A1A1;
+        }
+
+        .aaa {
+            color: #fff;
+        }
+
+    </style>
+
+    <div class="flex-container">
+            <div class="text not-compliant">
+                Not compliant.
+            </div>
+            <div class="text aa">
+                WCAG 2.1 AA compliant.
+            </div>
+            <div class="text aaa">
+                WCAG 2.1 AAA compliant.
+            </div>
+    </div>
+</body>
+</html>
